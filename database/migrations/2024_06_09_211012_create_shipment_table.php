@@ -14,11 +14,12 @@ return new class extends Migration
         Schema::create('shipment', function (Blueprint $table) {
             $table->id();
             $table->timestamps();
+            $table->date('shipment_date');
             $table->string('address');
             $table->string('city');
             $table->string('country');
-            $table->unsignedBigInteger('customer_custom');
-            $table->foreign('customer_custom')->references('id')->on('users');
+            $table->unsignedBigInteger('customer_id');
+            $table->foreign('customer_id')->references('id')->on('users');
             
         });
     }

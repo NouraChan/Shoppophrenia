@@ -12,7 +12,7 @@ class Items extends Model
     protected $fillable = [
         "quantity",
         "price",
-        "product_custom",
-        "order_custom"
+        "product_id",
+        "order_id"
     ];
 }

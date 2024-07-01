@@ -13,6 +13,6 @@ class Shipment extends Model
         "address",
         "city",
         "country",
-        "customer_custom"
+        "customer_id"
     ];
 }

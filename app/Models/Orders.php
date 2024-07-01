@@ -11,8 +11,8 @@ class Orders extends Model
     protected $table = "orders";
     protected $fillable = [
         "total_price",
-        "customer_custom",
-        "payment_custom",
-        "shipment_custom"
+        "customer_id",
+        "payment_id",
+        "shipment_id"
     ];
 }

@@ -16,10 +16,10 @@ return new class extends Migration
             $table->timestamps();
             $table->integer('quantity');
             $table->decimal('price');
-            $table->unsignedBigInteger('order_custom');
-            $table->foreign('order_custom')->references('id')->on('orders');
-            $table->unsignedBigInteger('product_custom');
-            $table->foreign('product_custom')->references('id')->on('product');
+            $table->unsignedBigInteger('order_id');
+            $table->foreign('order_id')->references('id')->on('orders');
+            $table->unsignedBigInteger('product_id');
+            $table->foreign('product_id')->references('id')->on('product');
             
         });
     }

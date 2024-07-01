@@ -15,12 +15,12 @@ return new class extends Migration
             $table->id();
             $table->timestamps();
             $table->decimal('total_price');
-            $table->unsignedBigInteger('customer_custom');
-            $table->foreign('customer_custom')->references('id')->on('users');
-            $table->unsignedBigInteger('payment_custom');
-            $table->foreign('payment_custom')->references('id')->on('payment');
-            $table->unsignedBigInteger('shipment_custom');
-            $table->foreign('shipment_custom')->references('id')->on('shipment');
+            $table->unsignedBigInteger('customer_id');
+            $table->foreign('customer_id')->references('id')->on('users');
+            $table->unsignedBigInteger('payment_id');
+            $table->foreign('payment_id')->references('id')->on('payment');
+            $table->unsignedBigInteger('shipment_id');
+            $table->foreign('shipment_id')->references('id')->on('shipment');
             
         });
     }

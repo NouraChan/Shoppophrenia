@@ -18,8 +18,10 @@ return new class extends Migration
             $table->text('description');
             $table->integer('stock');
             $table->decimal('price');
-            $table->unsignedBigInteger('category_custom');
-            $table->foreign('category_custom')->references('id')->on('category');
+            $table->integer('rate');
+            $table->string('product_img');
+            $table->unsignedBigInteger('category_id');
+            $table->foreign('category_id')->references('id')->on('category');
             
         });
     }

@@ -12,6 +12,6 @@ class Payment extends Model
     protected $fillable = [
         "method",
         "amount",
-        "customer_custom"
+        "customer_id"
     ];
 }
