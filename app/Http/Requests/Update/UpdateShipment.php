@@ -22,9 +22,11 @@ class UpdateShipment extends FormRequest
     public function rules(): array
     {
         return [
-            'name' => 'required|string',
-            'time' => 'required|timestamp',
-            'summary' => 'required|text',
+            'address' => 'required|string',
+            'city' => 'required|string',
+            'country' => 'required|string',
+            'shipment_date' => 'required|date'
+
         ];
     }
 }

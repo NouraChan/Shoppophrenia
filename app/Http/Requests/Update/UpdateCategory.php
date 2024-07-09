@@ -22,8 +22,8 @@ class UpdateCategory extends FormRequest
     public function rules(): array
     {
         return [
-            'title' => 'required|string',
-            'description' => 'required|text'
+            'name' => 'required|string',
+
         ];
     }
 }

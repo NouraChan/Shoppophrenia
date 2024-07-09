@@ -22,7 +22,8 @@ class UpdateOrderitem extends FormRequest
     public function rules(): array
     {
         return [
-            'treatment' => 'required|text'
+            'quantity' => 'required|integer',
+            'price' => 'required|decimal',
         ];
     }
 }

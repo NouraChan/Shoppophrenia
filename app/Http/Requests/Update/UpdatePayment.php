@@ -22,9 +22,9 @@ class UpdatePayment extends FormRequest
     public function rules(): array
     {
         return [
-            'name' => 'required|string',
-            'time' => 'required|timestamp',
-            'summary' => 'required|text',
+            'payment_date' => 'required|date',
+            'amount' => 'required|decimal',
+            'method' => 'required|string',
         ];
     }
 }
