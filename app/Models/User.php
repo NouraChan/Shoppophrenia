@@ -26,7 +26,10 @@ class User extends Authenticatable
         'address',
         'phone_number',
         'role',
-        'serial_key'
+        'serial_key',
+        'fullname',
+        'user_img',
+        'gender',
     ];
 
     /**

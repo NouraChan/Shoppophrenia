@@ -35,10 +35,18 @@ class RegisterController extends Controller
      *
      * @return void
      */
-    public function __construct()
-    {
-        $this->middleware('guest');
+
+
+     protected $userRepository;
+
+    public function __construct(IUserRepository $userRepository){
+        $this->userRepository = $userRepository;
     }
+
+    // public function __construct(IUserRepository $userRepository)
+    // {
+    //     $this->middleware('guest');
+    // }
 
     /**
      * Get a validator for an incoming registration request.

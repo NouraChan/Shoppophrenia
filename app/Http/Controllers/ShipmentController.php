@@ -14,12 +14,16 @@ class ShipmentController extends Controller
         //
     }
 
+    public function __construct(IDepartmentRepository $departmentRepository){
+        $this->departmentRepository = $departmentRepository;
+    }
+
     /**
      * Show the form for creating a new resource.
      */
     public function create()
     {
-        //
+        return view('admin.departments.departmentcreate');
     }
 
     /**

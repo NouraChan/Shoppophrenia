@@ -16,12 +16,13 @@ return new class extends Migration
             $table->string('username')->unique();
             $table->string('first_name')->nullable();
             $table->string('last_name')->nullable();
+            $table->string ('fullname');
             $table->string('email')->unique();
             $table->timestamp('email_verified_at')->nullable();
             $table->string('password');
             $table->string('address')->nullable();
             $table->string('phone_number')->nullable();
-            $table->string('role')->default('Customer');
+            $table->enum('role',['customer','seller','admin'])->default('customer');
             $table->enum('gender', ['male', 'female'])->nullable();
             $table->string('user_img')->nullable();
             $table->rememberToken();
