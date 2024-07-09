@@ -3,6 +3,7 @@
 namespace App\Http\Controllers;
 
 use Illuminate\Http\Request;
+use App\Repository\Interface\IAnnouncementRepository;
 
 class AnnouncementController extends Controller
 {
@@ -17,9 +18,15 @@ class AnnouncementController extends Controller
     /**
      * Show the form for creating a new resource.
      */
+    public function __construct(IAnnouncementRepository $announcementRepository){
+        $this->announcementRepository = $announcementRepository;
+    }
+    /**
+     * Show the form for creating a new resource.
+     */
     public function create()
     {
-        //
+        return view('admin.announcements.announcementcreate');
     }
 
     /**

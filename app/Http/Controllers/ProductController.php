@@ -3,6 +3,7 @@
 namespace App\Http\Controllers;
 
 use Illuminate\Http\Request;
+use App\Repository\Interface\IProductRepository;
 
 class ProductController extends Controller
 {
@@ -17,12 +18,12 @@ class ProductController extends Controller
     /**
      * Show the form for creating a new resource.
      */
-    public function __construct(IDepartmentRepository $departmentRepository){
-        $this->departmentRepository = $departmentRepository;
+    public function __construct(IProductRepository $productRepository){
+        $this->productRepository = $productRepository;
     }
     public function create()
     {
-        return view('admin.departments.departmentcreate');
+        return view('admin.products.productcreate');
     }
 
     /**

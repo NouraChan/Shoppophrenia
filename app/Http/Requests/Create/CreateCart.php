@@ -22,7 +22,7 @@ class CreateCart extends FormRequest
     public function rules(): array
     {
         return [
-            'time' => 'required|timestamp'
+            'quantity' => 'required|integer'
         ];
     }
 }

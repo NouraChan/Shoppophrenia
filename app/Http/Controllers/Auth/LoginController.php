@@ -32,9 +32,9 @@ class LoginController extends Controller
      *
      * @return void
      */
-    public function __construct(IDepartmentRepository $departmentRepository){
-        $this->departmentRepository = $departmentRepository;
-    }
+    // public function __construct(IDepartmentRepository $departmentRepository){
+    //     $this->departmentRepository = $departmentRepository;
+    // }
     public function __construct()
     {
         $this->middleware('guest')->except('logout');

@@ -3,6 +3,7 @@
 namespace App\Http\Controllers;
 
 use Illuminate\Http\Request;
+use App\Repository\Interface\IItemsRepository;
 
 class ItemsController extends Controller
 {
@@ -14,8 +15,8 @@ class ItemsController extends Controller
         //
     }
 
-    public function __construct(IDepartmentRepository $departmentRepository){
-        $this->departmentRepository = $departmentRepository;
+    public function __construct(IItemsRepository $itemsRepository){
+        $this->itemsRepository = $itemsRepository;
     }
     /**
      * Show the form for creating a new resource.

@@ -3,8 +3,10 @@
 namespace App\Http\Controllers;
 
 use Illuminate\Http\Request;
+use App\Repository\Interface\ICartRepository;
 
 class CartController extends Controller
+
 {
     /**
      * Display a listing of the resource.
@@ -14,15 +16,15 @@ class CartController extends Controller
         //
     }
 
-    public function __construct(IDepartmentRepository $departmentRepository){
-        $this->departmentRepository = $departmentRepository;
+    public function __construct(ICartRepository $cartRepository){
+        $this->cartRepository = $cartRepository;
     }
     /**
      * Show the form for creating a new resource.
      */
     public function create()
     {
-        return view('admin.departments.departmentcreate');
+        return view('admin.carts.cartcreate');
     }
 
     /**

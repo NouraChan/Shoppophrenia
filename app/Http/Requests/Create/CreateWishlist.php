@@ -22,9 +22,6 @@ class CreateWishlist extends FormRequest
     public function rules(): array
     {
         return [
-            'title' => 'required|string',
-            'description' => 'required|text',
-            'content' => 'required|text'
         ];
     }
 }

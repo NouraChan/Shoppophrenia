@@ -22,17 +22,18 @@ class CreateUser extends FormRequest
     public function rules(): array
     {
         return [
-            'firstname'=>'nullable|string',
-            'lastname'=>'nullable|string',
-            'name' => 'required|string',
+            'first_name'=>'nullable|string',
+            'last_name'=>'nullable|string',
+            'username' => 'required|string',
             'email' => 'required|email|string',
             'password'=> 'required|string',
             'role'=> 'required',
             'gender'=> 'required',
-            'image'=>'nullable|string',
+            'user_img'=>'nullable|string',
             'address'=>'nullable|string',
-            'bio'=>'nullable|text',
-            'birthdate'=>'nullable|date',
+            'serial_key'=>'nullable|text',
+            'phone_number'=>'required|string',
+            'fullname' => "first_name" . " " . "last_name",
         ];
     }
 }

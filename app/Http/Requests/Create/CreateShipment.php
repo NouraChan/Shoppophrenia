@@ -22,9 +22,12 @@ class CreateShipment extends FormRequest
     public function rules(): array
     {
         return [
-            'title' => 'required|string',
-            'description' => 'required|text',
-            'content' => 'required|text'
+            'address' => 'required|string',
+            'city' => 'required|string',
+            'country' => 'required|string',
+            'shipment_date' => 'required|date'
+
+
         ];
     }
 }

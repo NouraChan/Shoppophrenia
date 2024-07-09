@@ -3,6 +3,7 @@
 namespace App\Http\Controllers;
 
 use Illuminate\Http\Request;
+use App\Repository\Interface\IWishlistsRepository;
 
 class WishlistsController extends Controller
 {
@@ -17,12 +18,12 @@ class WishlistsController extends Controller
     /**
      * Show the form for creating a new resource.
      */
-    public function __construct(IDepartmentRepository $departmentRepository){
-        $this->departmentRepository = $departmentRepository;
+    public function __construct(IWishlistsRepository $wishlistsRepository){
+        $this->wishlistsRepository = $wishlistsRepository;
     }
     public function create()
     {
-        return view('admin.departments.departmentcreate');
+        return view('admin.wishlistss.wishlistscreate');
     }
 
     /**

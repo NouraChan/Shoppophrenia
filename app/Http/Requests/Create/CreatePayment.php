@@ -22,9 +22,9 @@ class CreatePayment extends FormRequest
     public function rules(): array
     {
         return [
-            'title' => 'required|string',
-            'description' => 'required|text',
-            'content' => 'required|text'
+            'payment_date' => 'required|date',
+            'amount' => 'required|decimal',
+            'method' => 'required|string'
         ];
     }
 }

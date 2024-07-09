@@ -9,6 +9,7 @@ use App\Http\Controllers\ProductController;
 use App\Http\Controllers\ShipmentController;
 use App\Http\Controllers\WishlistsController;
 use App\Http\Controllers\ItemsController; 
+use App\Http\Controllers\AnnouncementController;
 use Illuminate\Support\Facades\Auth;
 
 
@@ -120,4 +121,15 @@ Route::group(['prefix' => 'payment'], function () {
     Route::get('/index', [PaymentController::class, 'index'])->name('payment.index');
     Route::post('/update{id}', [PaymentController::class, 'update'])->name('payment.update');
     Route::get('/edit/{id}', [PaymentController::class, 'edit'])->name('payment.edit');
+});
+
+//Announcement group
+
+Route::group(['prefix' => 'announcement'], function () {
+    Route::get('/create', [AnnouncementController::class, 'create'])->name('announcement.create');
+    Route::post('/store', [AnnouncementController::class, 'store'])->name('announcement.store');
+    Route::get('/destroy{id}', [AnnouncementController::class, 'destroy'])->name('announcement.destroy');
+    Route::get('/index', [AnnouncementController::class, 'index'])->name('announcement.index');
+    Route::post('/update{id}', [AnnouncementController::class, 'update'])->name('announcement.update');
+    Route::get('/edit/{id}', [AnnouncementController::class, 'edit'])->name('announcement.edit');
 });

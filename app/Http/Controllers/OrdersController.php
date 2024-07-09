@@ -3,6 +3,7 @@
 namespace App\Http\Controllers;
 
 use Illuminate\Http\Request;
+use App\Repository\Interface\IOrdersRepository;
 
 class OrdersController extends Controller
 {
@@ -17,12 +18,12 @@ class OrdersController extends Controller
     /**
      * Show the form for creating a new resource.
      */
-    public function __construct(IDepartmentRepository $departmentRepository){
-        $this->departmentRepository = $departmentRepository;
+    public function __construct(IOrdersRepository $ordersRepository){
+        $this->ordersRepository = $ordersRepository;
     }
     public function create()
     {
-        return view('admin.departments.departmentcreate');
+        return view('admin.orders.orderscreate');
     }
 
     /**

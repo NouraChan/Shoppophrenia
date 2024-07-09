@@ -3,6 +3,7 @@
 namespace App\Http\Controllers;
 
 use Illuminate\Http\Request;
+use App\Repository\Interface\IShipmentRepository;
 
 class ShipmentController extends Controller
 {
@@ -14,8 +15,8 @@ class ShipmentController extends Controller
         //
     }
 
-    public function __construct(IDepartmentRepository $departmentRepository){
-        $this->departmentRepository = $departmentRepository;
+    public function __construct(IShipmentRepository $shipmentRepository){
+        $this->shipmentRepository = $shipmentRepository;
     }
 
     /**
@@ -23,7 +24,7 @@ class ShipmentController extends Controller
      */
     public function create()
     {
-        return view('admin.departments.departmentcreate');
+        return view('admin.shipments.shipmentcreate');
     }
 
     /**

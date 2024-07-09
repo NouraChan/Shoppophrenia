@@ -3,6 +3,7 @@
 namespace App\Http\Controllers;
 
 use Illuminate\Http\Request;
+use App\Repository\Interface\IPaymentRepository;
 
 class PaymentController extends Controller
 {
@@ -17,8 +18,8 @@ class PaymentController extends Controller
     /**
      * Show the form for creating a new resource.
      */
-    public function __construct(IDepartmentRepository $departmentRepository){
-        $this->departmentRepository = $departmentRepository;
+    public function __construct(IPaymentRepository $paymentRepository){
+        $this->paymentRepository = $paymentRepository;
     }
     public function create()
     {
