@@ -3,6 +3,26 @@
 namespace App\Providers;
 
 use Illuminate\Support\ServiceProvider;
+use App\Repository\AnnouncementRepository;
+use App\Repository\CartRepository;
+use App\Repository\WishlistsRepository;
+use App\Repository\UserRepository;
+use App\Repository\ProductRepository;
+use App\Repository\ShipmentRepository;
+use App\Repository\PaymentRepository;
+use App\Repository\OrdersRepository;
+use App\Repository\ItemsRepository;
+use App\Repository\CategoryRepository;
+use App\Repository\Interface\IAnnouncementRepository;
+use App\Repository\Interface\ICartRepository;
+use App\Repository\Interface\IWishlistsRepository;
+use App\Repository\Interface\IUserRepository;
+use App\Repository\Interface\IProductRepository;
+use App\Repository\Interface\IShipmentRepository;
+use App\Repository\Interface\IPaymentRepository;
+use App\Repository\Interface\IOrdersRepository;
+use App\Repository\Interface\IItemsRepository;
+use App\Repository\Interface\ICategoryRepository;
 
 class AppServiceProvider extends ServiceProvider
 {
@@ -12,11 +32,17 @@ class AppServiceProvider extends ServiceProvider
     public function register(): void
     {
         $this->app->singleton(IUserRepository::class,UserRepository::class);
-        $this->app->singleton(IDepartmentRepository::class,DepartmentRepository::class);
-        $this->app->singleton(IVisitRepository::class,VisitRepository::class);
-        $this->app->singleton(ISurgeryRepository::class,SurgeryRepository::class);
-        $this->app->singleton(IPharmaRepository::class,PharmaRepository::class);
-        $this->app->singleton(IPostRepository::class,PostRepository::class);
+        $this->app->singleton(ICategoryRepository::class,CategoryRepository::class);
+        $this->app->singleton(IOrdersRepository::class,OrdersRepository::class);
+        $this->app->singleton(IProductRepository::class,ProductRepository::class);
+        $this->app->singleton(ICartRepository::class,CartRepository::class);
+        $this->app->singleton(IAnnouncementRepository::class,AnnouncementRepository::class);
+        $this->app->singleton(IPaymentRepository::class,PaymentRepository::class);
+        $this->app->singleton(IShipmentRepository::class,ShipmentRepository::class);
+        $this->app->singleton(IItemsRepository::class,ItemsRepository::class);
+        $this->app->singleton(IWishlistsRepository::class,WishlistsRepository::class);
+
+
     }
 
     /**
