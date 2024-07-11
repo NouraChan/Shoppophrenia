@@ -16,5 +16,15 @@ class UserRepository implements IUserRepository {
         }
 return false;
 }
+
+
+
+// public function getAll(){
+//     return User::all();
+// }
+
+// public function store($createUser){ 
+//     return User::create($createUser); 
+// }
 }
 

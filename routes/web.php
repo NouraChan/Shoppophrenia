@@ -1,5 +1,6 @@
 <?php
 
+use App\Http\Controllers\HomeController;
 use Illuminate\Support\Facades\Route;
 use App\Http\Controllers\CartController;
 use App\Http\Controllers\CategoryController;
@@ -11,7 +12,8 @@ use App\Http\Controllers\WishlistsController;
 use App\Http\Controllers\ItemsController; 
 use App\Http\Controllers\AnnouncementController;
 use Illuminate\Support\Facades\Auth;
-
+use App\Models\User;
+use App\Http\Controllers\UserController;
 
 
 /*
@@ -31,7 +33,29 @@ Route::get('/', function () {
 
 Auth::routes();
 
-Route::get('/home', [App\Http\Controllers\HomeController::class, 'index'])->name('home');
+Route::get('/home', [HomeController::class, 'index'])->name('home');
+Route::get('/dashboard', [HomeController::class, 'index2'])->name('dash');
+Route::get('/users', [HomeController::class, 'usersAffair'])->name('usersdash');
+Route::get('/usersindex', [HomeController::class, 'usersIndex'])->name('usersindex');
+// Route::get('/usersindex', [HomeController::class, 'showUser'])->name('usersindex');
+// Route::get('/usersindex', [HomeController::class, 'showUser'])->name('usersindex');
+
+
+
+
+
+
+
+//User group
+
+Route::group(['prefix' => 'user'], function () {
+    Route::get('/create', [UserController::class, 'create'])->name('user.create');
+    Route::post('/store', [UserController::class, 'store'])->name('user.store');
+    Route::get('/destroy{id}', [UserController::class, 'destroy'])->name('user.destroy');
+    Route::get('/index', [UserController::class, 'index'])->name('user.index');
+    Route::post('/update{id}', [UserController::class, 'update'])->name('user.update');
+    Route::get('/edit/{id}', [UserController::class, 'edit'])->name('user.edit');
+});
 
 
 
@@ -133,3 +157,26 @@ Route::group(['prefix' => 'announcement'], function () {
     Route::post('/update{id}', [AnnouncementController::class, 'update'])->name('announcement.update');
     Route::get('/edit/{id}', [AnnouncementController::class, 'edit'])->name('announcement.edit');
 });
+
+
+Route::get('/user',function(){
+    $users = User::with('profile')->get();
+    dd($users);
+});
+
+
+// Route::get('/one-to-one',function(){
+//     $user = User::create(['name'=>'Maitrik','email'=>'Maitrik1@test.com','password'=>123456]);
+//     Profile::create([
+//         'firstname'=>'Maitrik',
+//         'lastname'=>'T',
+//         'birthday'=>'15-10-1990',
+//         'user_id'=>$user->id
+//     ]);
+//     return response()->json([
+//         'username' => $user->name,
+//         'email' => $user->email,
+//         'firstname' => $user->profile->firstname,
+//         'lastname' => $user->profile->lastname,
+//     ]);
+// });

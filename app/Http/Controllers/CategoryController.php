@@ -2,20 +2,27 @@
 
 namespace App\Http\Controllers;
 
+use App\DTO\CategoryDTO;
+use App\Http\Requests\CreateCategoryRequest;
 use Illuminate\Http\Request;
 use App\Repository\Interface\ICategoryRepository;
 
 class CategoryController extends Controller
 {
+    protected $categoryRepository;
     /**
      * Display a listing of the resource.
      */
     public function index()
     {
-        //
+        $departments = Department::all();
+
+        return view('admin.departments.departmentindex', ['departments' => $departments]);
+  
     }
 
-    public function __construct(ICategoryRepository $categoryRepository){
+    public function __construct(ICategoryRepository $categoryRepository)
+    {
         $this->categoryRepository = $categoryRepository;
     }
     /**
@@ -29,11 +36,16 @@ class CategoryController extends Controller
     /**
      * Store a newly created resource in storage.
      */
-    public function store(Request $request)
+    public function store(CreateCategoryRequest $createCategoryRequest)
     {
-        //
-    }
+        $categoryDTO = CategoryDTO::from($createCategoryRequest->all());
+        $category = $this->categoryRepository->createCategory($categoryDTO);
 
+        return redirect()->route('department.index');
+
+
+
+    }
     /**
      * Display the specified resource.
      */
@@ -47,7 +59,10 @@ class CategoryController extends Controller
      */
     public function edit(string $id)
     {
-        //
+        
+        // $department = Department::findOrFail($id);
+        // return view('admin.departments.departmentupdate', ['department' => $department]);
+ 
     }
 
     /**
@@ -55,7 +70,13 @@ class CategoryController extends Controller
      */
     public function update(Request $request, string $id)
     {
-        //
+        // $department = Department::findOrFail($id);
+        // $department->update([
+        //     'title' => $request->title,
+        //     'description' => $request->description
+        // ]);
+
+        // return redirect()->route('department.index');
     }
 
     /**
@@ -63,6 +84,8 @@ class CategoryController extends Controller
      */
     public function destroy(string $id)
     {
-        //
+        $department = Department::findOrFail($id);
+        $department->delete();
+        return redirect()->back();
     }
 }

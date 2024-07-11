@@ -2,6 +2,7 @@
 
 namespace App\DTO;
 
+use App\Http\Requests\CreateUser;
 use Spatie\LaravelData\Data;
 
 class UserDTO extends Data {
@@ -15,7 +16,7 @@ class UserDTO extends Data {
         public string $user_img ,
         public string $address ,
         public string $email ,
-        public string $serial_key ,
+        protected string $serial_key ,
         public string $phone_number ,
         protected string $password ,
 
@@ -24,6 +25,26 @@ class UserDTO extends Data {
     {
 
     }
+
+    // public static function handleInputs(CreateUser $createuser){
+
+    //     $data = [
+    //         'first_name'=> $createuser->first_name,
+    //         'last_name'=> $createuser->last_name,
+    //         'username' =>  $createuser->username,
+    //         'email' =>  $createuser->email,
+    //         'password'=>  $createuser->password,
+    //         'role'=>  $createuser-> role,
+    //         'gender'=>  $createuser-> gender,
+    //         'user_img'=> $createuser-> user_img,
+    //         'address'=> $createuser-> address,
+    //         'serial_key'=> $createuser-> serial_key,
+    //         'phone_number'=> $createuser->phone_number,
+    //         'fullname' => $createuser->first_name . " " . $createuser->last_name,
+    //     ];
+    //     return $data;
+
+    // }
 
 }
 

@@ -13,7 +13,10 @@ class CartController extends Controller
      */
     public function index()
     {
-        //
+        $departments = Department::all();
+
+        return view('admin.departments.departmentindex', ['departments' => $departments]);
+  
     }
 
     public function __construct(ICartRepository $cartRepository){
@@ -33,6 +36,9 @@ class CartController extends Controller
     public function store(Request $request)
     {
         //
+
+        return redirect()->route('department.index');
+
     }
 
     /**
@@ -64,6 +70,7 @@ class CartController extends Controller
      */
     public function destroy(string $id)
     {
-        //
-    }
+        $department = Department::findOrFail($id);
+        $department->delete();
+        return redirect()->back();    }
 }

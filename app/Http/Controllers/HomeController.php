@@ -2,6 +2,7 @@
 
 namespace App\Http\Controllers;
 
+use App\Models\User;
 use Illuminate\Http\Request;
 
 class HomeController extends Controller
@@ -25,4 +26,25 @@ class HomeController extends Controller
     {
         return view('home');
     }
+
+    public function index2()
+    {
+        return view('admindashboard.home');
+    }
+
+    public function usersAffair(){
+        return view('admindashboard.users');
+    }
+
+    public function usersIndex(){
+
+        $users = User::all();
+
+        return view('admindashboard.usersindex' , ['users' => $users]);
+    }
+
+    
+
+
 }
+

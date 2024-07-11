@@ -10,7 +10,7 @@ class CategoryRepository implements ICategoryRepository {
     public function createCategory(CategoryDTO $categoryDTO) : bool
     {
         
-        if (Category::create($categoryDTO->toArray())) {
+        if (Category::store($categoryDTO->toArray())) {
 
             return true;
         }

@@ -12,7 +12,10 @@ class PaymentController extends Controller
      */
     public function index()
     {
-        //
+        $departments = Department::all();
+
+        return view('admin.departments.departmentindex', ['departments' => $departments]);
+  
     }
 
     /**
@@ -32,6 +35,9 @@ class PaymentController extends Controller
     public function store(Request $request)
     {
         //
+
+        return redirect()->route('department.index');
+
     }
 
     /**
@@ -63,6 +69,7 @@ class PaymentController extends Controller
      */
     public function destroy(string $id)
     {
-        //
-    }
+        $department = Department::findOrFail($id);
+        $department->delete();
+        return redirect()->back();    }
 }

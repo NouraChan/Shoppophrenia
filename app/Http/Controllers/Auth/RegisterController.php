@@ -40,14 +40,13 @@ class RegisterController extends Controller
 
      protected $userRepository;
 
-    public function __construct(IUserRepository $userRepository){
-        $this->userRepository = $userRepository;
-    }
-
-    // public function __construct(IUserRepository $userRepository)
-    // {
-    //     $this->middleware('guest');
+    // public function __construct(IUserRepository $userRepository){
+    //     $this->userRepository = $userRepository;
     // }
+    public function __construct()
+    {
+        $this->middleware('guest');
+    }
 
     /**
      * Get a validator for an incoming registration request.
@@ -61,6 +60,15 @@ class RegisterController extends Controller
             'username' => ['required', 'string', 'max:255'],
             'email' => ['required', 'string', 'email', 'max:255', 'unique:users'],
             'password' => ['required', 'string', 'min:8', 'confirmed'],
+            // 'first_name'  => ['nullable', 'string'],
+            // 'last_name'  => ['nullable', 'string'],
+            // 'gender'  => ['nullable', 'string'],
+            // 'serial_key'  => ['nullable', 'string'],
+            // 'fullname'  => ['nullable', 'string'],
+            // 'phone_number'  => ['nullable', 'string'],
+            // 'role'  => ['nullable', 'string'],
+            // 'user_img'  => ['nullable', 'string'],
+            // 'address' => ['nullable', 'string'],
         ]);
     }
 
@@ -75,7 +83,17 @@ class RegisterController extends Controller
         return User::create([
             'username' => $data['username'],
             'email' => $data['email'],
-            'password' => Hash::make($data['password']),
+            'password' => Hash::make($data['password'],),
+            // 'first_name' => $data['first_name'],
+            // 'last_name'  => $data['last_name'],
+            // 'gender'  =>$data ['gender'],
+            // 'serial_key'  =>$data ['serial_key'],
+            // 'fullname'  => $data['fullname'],
+            // 'phone_number'  =>$data ['phone_number'],
+            // 'role'  => $data['role'],
+            // 'user_img'  =>$data ['user_img'],
+            // 'address' => $data['address'],
+     
         ]);
     }
 }

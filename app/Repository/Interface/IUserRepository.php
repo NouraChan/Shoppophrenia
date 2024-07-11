@@ -8,5 +8,12 @@ interface IUserRepository {
 
     public function createUser(UserDTO $userDTO) : bool;
 
+
+    
+    // public function getAll();
+
+    // public function store($createUser) ;
+
+
 }
 

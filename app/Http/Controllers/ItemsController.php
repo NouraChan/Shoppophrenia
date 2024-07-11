@@ -12,7 +12,10 @@ class ItemsController extends Controller
      */
     public function index()
     {
-        //
+        $departments = Department::all();
+
+        return view('admin.departments.departmentindex', ['departments' => $departments]);
+  
     }
 
     public function __construct(IItemsRepository $itemsRepository){
@@ -32,6 +35,9 @@ class ItemsController extends Controller
     public function store(Request $request)
     {
         //
+
+        return redirect()->route('department.index');
+
     }
 
     /**
@@ -63,6 +69,7 @@ class ItemsController extends Controller
      */
     public function destroy(string $id)
     {
-        //
-    }
+        $department = Department::findOrFail($id);
+        $department->delete();
+        return redirect()->back();    }
 }
