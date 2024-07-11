@@ -20,8 +20,8 @@ return new class extends Migration
             $table->decimal('price');
             $table->integer('rate');
             $table->string('product_img');
-            $table->unsignedBigInteger('category_id');
-            $table->foreign('category_id')->references('id')->on('category');
+            $table->unsignedBigInteger('genre_id');
+            $table->foreign('genre_id')->references('id')->on('genre');
             
         });
     }

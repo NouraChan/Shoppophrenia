@@ -8,100 +8,19 @@
           <div class="card mb-4">
             <div class="card-header pb-0">
               <h6 class="d-inline headerh6">Users' Affairs</h6>
-              <button class="btn btn-primary bghalf me-3 w-10 text-nowrap text-center d-inline">Create</button>
+              <!-- <button class="btn btn-primary bghalf me-3 w-10 text-nowrap text-center d-inline">Create</button> -->
             </div>
             <div class="card-body px-0 pt-0 pb-2">
               <div class="filtertns gap-4 px-5 mt-3 mb-3">
                 <a class="btn btn-primary bghalf me-3 w-10 text-nowrap" href="{{route('usersindex')}}">Users</a>
                 <a class="btn btn-primary bghalf me-3 w-10 text-nowrap" href="">Payments</a>
                 <a class="btn btn-primary bghalf me-3 w-10 text-nowrap" href="">Orders</a>
-                <a class="btn btn-primary bghalf me-3 w-10 text-nowrap" href="">Carts</a>
-                <a class="btn btn-primary bghalf me-3 w-10 text-nowrap" href="">Wishlists</a>
+                <!-- <a class="btn btn-primary bghalf me-3 w-10 text-nowrap" href="">Carts</a>
+                <a class="btn btn-primary bghalf me-3 w-10 text-nowrap" href="">Wishlists</a> -->
               </div>
 
               @yield('table')
-              <!-- <div class="table-responsive p-0">
-                <table class="table align-items-center mb-0">
-                  <thead>
-                    <tr>
-                      <th class="text-uppercase text-secondary text-xxs font-weight-bolder opacity-7">Id</th>
-                      <th class="text-uppercase text-secondary text-xxs font-weight-bolder opacity-7 ps-3">User</th>
-                      <th class="text-uppercase text-secondary text-xxs font-weight-bolder opacity-7">Order History</th>
-                      <th class="text-uppercase text-secondary text-xxs font-weight-bolder opacity-7">Role</th>
-                      <th class="text-secondary opacity-7"></th>
-                    </tr>
-                  </thead>
-                  <tbody>
-                    <tr>
-                      <td class="align-middle px-4">
-                        <span class="text-secondary text-xs font-weight-bold">1</span>
-                      </td>
-                      <td>
-                        <div class="d-flex px-2 py-1">
-                          <div>
-                            <img src="../assets/img/team-2.jpg" class="avatar avatar-sm me-3" alt="user1">
-                          </div>
-                          <div class="d-flex flex-column justify-content-center">
-                            <h6 class="mb-0 text-sm">John Michael</h6>
-                            <p class="text-xs text-secondary mb-0">john@creative-tim.com</p>
-                          </div>
-                        </div>
-                      </td>
-                      <td>
-                        <p class="text-xs font-weight-bold mb-0 ms-4 text-secondary text-xs"><a href="">Click here</a>
-                        </p>
-                      </td>
-                      <td class="align-middle text-sm px-3">
-                        <span class="text-secondary text-xs font-weight-bold">Customer</span>
-                      </td>
-                      <td class="align-middle">
-                        <a href="javascript:;" class="text-secondary font-weight-bold text-xs" data-toggle="tooltip"
-                          data-original-title="Edit user">
-                          Edit
-                        </a>
-                        <a href="javascript:;" class="text-secondary font-weight-bold text-xs ms-4"
-                          data-toggle="tooltip" data-original-title="Edit user">
-                          Delete
-                        </a>
-                      </td>
-                    </tr>
-                    <tr>
-                      <td class="align-middle px-4">
-                        <span class="text-secondary text-xs font-weight-bold">1</span>
-                      </td>
-                      <td>
-                        <div class="d-flex px-2 py-1">
-                          <div>
-                            <img src="../assets/img/team-2.jpg" class="avatar avatar-sm me-3" alt="user1">
-                          </div>
-                          <div class="d-flex flex-column justify-content-center">
-                            <h6 class="mb-0 text-sm">John Michael</h6>
-                            <p class="text-xs text-secondary mb-0">john@creative-tim.com</p>
-                          </div>
-                        </div>
-                      </td>
-                      <td>
-                        <p class="text-xs font-weight-bold mb-0 ms-4 text-secondary text-xs"><a href="">Click here</a>
-                        </p>
-                      </td>
-                      <td class="align-middle text-sm px-3">
-                        <span class="text-secondary text-xs font-weight-bold">Customer</span>
-                      </td>
-                      <td class="align-middle">
-                        <a href="javascript:;" class="text-secondary font-weight-bold text-xs" data-toggle="tooltip"
-                          data-original-title="Edit user">
-                          Edit
-                        </a>
 
-                        <a href="javascript:;" class="text-secondary font-weight-bold text-xs ms-4"
-                          data-toggle="tooltip" data-original-title="Edit user">
-                          Delete
-                        </a>
-                      </td>
-                    </tr>
-                  </tbody>
-                </table>
-              </div> -->
             </div>
           </div>
         </div>

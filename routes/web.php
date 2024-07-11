@@ -3,7 +3,7 @@
 use App\Http\Controllers\HomeController;
 use Illuminate\Support\Facades\Route;
 use App\Http\Controllers\CartController;
-use App\Http\Controllers\CategoryController;
+use App\Http\Controllers\GenreController;
 use App\Http\Controllers\OrdersController;
 use App\Http\Controllers\PaymentController;
 use App\Http\Controllers\ProductController;
@@ -27,18 +27,23 @@ use App\Http\Controllers\UserController;
 |
 */
 
-Route::get('/', function () {
-    return view('welcome');
-});
+// Route::get('/', function () {
+//     return view('welcome');
+// });
 
 Auth::routes();
 
-Route::get('/home', [HomeController::class, 'index'])->name('home');
+Route::get('/', [HomeController::class, 'index'])->name('home');
 Route::get('/dashboard', [HomeController::class, 'index2'])->name('dash');
 Route::get('/users', [HomeController::class, 'usersAffair'])->name('usersdash');
 Route::get('/usersindex', [HomeController::class, 'usersIndex'])->name('usersindex');
+Route::get('/settings', [HomeController::class, 'index2'])->name('settings');
 // Route::get('/usersindex', [HomeController::class, 'showUser'])->name('usersindex');
-// Route::get('/usersindex', [HomeController::class, 'showUser'])->name('usersindex');
+Route::get('/genres', [HomeController::class, 'genreIndex'])->name('genres');
+Route::get('/products', [HomeController::class, 'productIndex'])->name('products');
+// Route::get('/settings', [HomeController::class, 'index2'])->name('settings');
+// Route::get('/settings', [HomeController::class, 'index2'])->name('settings');
+
 
 
 
@@ -114,15 +119,15 @@ Route::group(['prefix' => 'wishlists'], function () {
     Route::get('/edit/{id}', [WishlistsController::class, 'edit'])->name('wishlists.edit');
 });
 
-//Category group
+//Genre group
 
-Route::group(['prefix' => 'category'], function () {
-    Route::get('/create', [CategoryController::class, 'create'])->name('category.create');
-    Route::post('/store', [CategoryController::class, 'store'])->name('category.store');
-    Route::get('/destroy{id}', [CategoryController::class, 'destroy'])->name('category.destroy');
-    Route::get('/index', [CategoryController::class, 'index'])->name('category.index');
-    Route::post('/update{id}', [CategoryController::class, 'update'])->name('category.update');
-    Route::get('/edit/{id}', [CategoryController::class, 'edit'])->name('category.edit');
+Route::group(['prefix' => 'genre'], function () {
+    Route::get('/create', [GenreController::class, 'create'])->name('genre.create');
+    Route::post('/store', [GenreController::class, 'store'])->name('genre.store');
+    Route::get('/destroy{id}', [GenreController::class, 'destroy'])->name('genre.destroy');
+    Route::get('/index', [GenreController::class, 'index'])->name('genre.index');
+    Route::post('/update{id}', [GenreController::class, 'update'])->name('genre.update');
+    Route::get('/edit/{id}', [GenreController::class, 'edit'])->name('genre.edit');
 });
 
 //Shipment group

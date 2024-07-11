@@ -2,14 +2,14 @@
 
 namespace App\Http\Controllers;
 
-use App\DTO\CategoryDTO;
-use App\Http\Requests\CreateCategoryRequest;
+use App\DTO\GenreDTO;
+use App\Http\Requests\CreategenreRequest;
 use Illuminate\Http\Request;
-use App\Repository\Interface\ICategoryRepository;
+use App\Repository\Interface\IGenreRepository;
 
-class CategoryController extends Controller
+class GenreController extends Controller
 {
-    protected $categoryRepository;
+    protected $genreRepository;
     /**
      * Display a listing of the resource.
      */
@@ -21,9 +21,9 @@ class CategoryController extends Controller
   
     }
 
-    public function __construct(ICategoryRepository $categoryRepository)
+    public function __construct(IGenreRepository $genreRepository)
     {
-        $this->categoryRepository = $categoryRepository;
+        $this->genreRepository = $genreRepository;
     }
     /**
      * Show the form for creating a new resource.
@@ -36,10 +36,10 @@ class CategoryController extends Controller
     /**
      * Store a newly created resource in storage.
      */
-    public function store(CreateCategoryRequest $createCategoryRequest)
+    public function store(CreateGenreRequest $creategenreRequest)
     {
-        $categoryDTO = CategoryDTO::from($createCategoryRequest->all());
-        $category = $this->categoryRepository->createCategory($categoryDTO);
+        $genreDTO = GenreDTO::from($creategenreRequest->all());
+        $genre = $this->genreRepository->creategenre($genreDTO);
 
         return redirect()->route('department.index');
 
