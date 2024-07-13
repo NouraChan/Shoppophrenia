@@ -19,7 +19,7 @@
                 <a class="btn btn-primary bghalf me-3 w-10 text-nowrap" href="">Wishlists</a> -->
               </div>
 
-              @yield('table')
+              @yield('datashow')
 
             </div>
           </div>

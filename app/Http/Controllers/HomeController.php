@@ -61,9 +61,9 @@ class HomeController extends Controller
         return view('admindashboard.products.index' , ['products' => $products]);
     } 
     
-    public function userProfile(){
+    public function checkOut(){
 
-        return view('layouts.profile');
+        return view('checkout');
     }
 
     

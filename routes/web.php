@@ -14,6 +14,7 @@ use App\Http\Controllers\AnnouncementController;
 use Illuminate\Support\Facades\Auth;
 use App\Models\User;
 use App\Http\Controllers\UserController;
+use App\Http\Controllers\ProfileController;
 
 
 /*
@@ -27,18 +28,19 @@ use App\Http\Controllers\UserController;
 |
 */
 
-// Route::get('/', function () {
-//     return view('welcome');
-// });
+Route::get('/', function () {
+    return view('index');
+})->name('home');
 
 Auth::routes();
 
-Route::get('/', [HomeController::class, 'index'])->name('home');
+//Navigation
+
+// Route::get('/', [HomeController::class, 'index'])->name('home');
 Route::get('/dashboard', [HomeController::class, 'index2'])->name('dash');
 Route::get('/users', [HomeController::class, 'usersAffair'])->name('usersdash');
 Route::get('/usersindex', [HomeController::class, 'usersIndex'])->name('usersindex');
 Route::get('/settings', [HomeController::class, 'index2'])->name('settings');
-Route::get('/profile', [HomeController::class, 'userProfile'])->name('profile');
 Route::get('/genres', [HomeController::class, 'genreIndex'])->name('genres');
 Route::get('/products', [HomeController::class, 'productIndex'])->name('products');
 // Route::get('/settings', [HomeController::class, 'index2'])->name('settings');
@@ -46,7 +48,12 @@ Route::get('/products', [HomeController::class, 'productIndex'])->name('products
 
 
 
-
+Route::group([ 'prefix' => 'profile'] , function(){
+    Route::get('/', [ProfileController::class, 'index'])->name('profile.index');
+    Route::post('/update{id}', [ProfileController::class, 'update'])->name('profile.update');
+    Route::get('/edit/{id}', [ProfileController::class, 'edit'])->name('profile.edit');
+    
+});
 
 
 

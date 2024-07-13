@@ -11,10 +11,7 @@ class ProfileController extends Controller
      */
     public function index()
     {
-        $departments = Department::all();
-
-        return view('admindashboard.profile.index', ['departments' => $departments]);
-  
+        return view('profile.show');
     }
 
     /**
@@ -49,7 +46,7 @@ class ProfileController extends Controller
      */
     public function edit(string $id)
     {
-        return view('admindashboard.profile.edit');
+        return view('profile.edit');
     }
 
     /**
