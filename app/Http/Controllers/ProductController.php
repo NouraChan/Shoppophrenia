@@ -14,7 +14,7 @@ class ProductController extends Controller
     {
         $departments = Department::all();
 
-        return view('admin.departments.departmentindex', ['departments' => $departments]);
+        return view('admindashboard.products.index', ['departments' => $departments]);
   
     }
 
@@ -26,7 +26,7 @@ class ProductController extends Controller
     }
     public function create()
     {
-        return view('admin.products.productcreate');
+        return view('admindashboard.products.create');
     }
 
     /**

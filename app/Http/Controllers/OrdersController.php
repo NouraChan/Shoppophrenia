@@ -14,7 +14,7 @@ class OrdersController extends Controller
     {
         $departments = Department::all();
 
-        return view('admin.departments.departmentindex', ['departments' => $departments]);
+        return view('admindashboard.orders.index', ['departments' => $departments]);
   
     }
 
@@ -26,7 +26,7 @@ class OrdersController extends Controller
     }
     public function create()
     {
-        return view('admin.orders.orderscreate');
+        return view('admindashboard.orders.create');
     }
 
     /**

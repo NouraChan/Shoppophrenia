@@ -14,7 +14,7 @@ class WishlistsController extends Controller
     {
         $departments = Department::all();
 
-        return view('admin.departments.departmentindex', ['departments' => $departments]);
+        return view('admindashboard.wishlists.index', ['departments' => $departments]);
   
     }
 
@@ -26,7 +26,7 @@ class WishlistsController extends Controller
     }
     public function create()
     {
-        return view('admin.wishlistss.wishlistscreate');
+        return view('admindashboard.wishlists.create');
     }
 
     /**

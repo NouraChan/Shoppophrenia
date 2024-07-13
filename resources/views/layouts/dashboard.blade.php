@@ -139,9 +139,13 @@
             <li class="nav-item d-flex align-items-center">
               <a href="#" class="nav-link text-white font-weight-bold px-0"
                 id="dropdownMenuButtonuser" data-bs-toggle="dropdown" aria-expanded="false">
-                <img src="../assets/img/marie.jpg" class="rounded-circle" style="width: 30px; height: 30px;" alt="">
+                <img src="{{asset('../assets/img/marie.jpg')}}" class="rounded-circle" style="width: 30px; height: 30px;" alt="">
               </a>
-              <ul class="dropdown-menu  dropdown-menu-end  px-2 py-3 me-sm-n4" aria-labelledby="dropdownMenuButtonuser">
+              <ul class="dropdown-menu  dropdown-menu-end  px-2 py-3 me-sm-n4 m-0" aria-labelledby="dropdownMenuButtonuser">
+              <li>
+                  <a class="dropdown-item border-radius-md" href="{{route('profile')}}">Profile
+                  </a>
+                </li>
               <li>
                   <a class="dropdown-item border-radius-md" href="{{route('settings')}}">Settings
                   </a>

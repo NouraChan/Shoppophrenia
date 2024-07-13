@@ -2,6 +2,7 @@
 
 namespace App\Http\Controllers;
 
+use App\Models\Cart;
 use Illuminate\Http\Request;
 use App\Repository\Interface\ICartRepository;
 
@@ -13,9 +14,9 @@ class CartController extends Controller
      */
     public function index()
     {
-        $departments = Department::all();
+        $carts = Cart::all();
 
-        return view('admin.departments.departmentindex', ['departments' => $departments]);
+        return view('admindashboard.carts.index', ['carts' => $carts]);
   
     }
 
@@ -27,7 +28,7 @@ class CartController extends Controller
      */
     public function create()
     {
-        return view('admin.carts.cartcreate');
+        return view('admindashboard.carts.create');
     }
 
     /**

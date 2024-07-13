@@ -4,6 +4,7 @@ namespace App\Http\Controllers;
 
 use App\DTO\GenreDTO;
 use App\Http\Requests\CreategenreRequest;
+use App\Models\Genre;
 use Illuminate\Http\Request;
 use App\Repository\Interface\IGenreRepository;
 
@@ -15,9 +16,9 @@ class GenreController extends Controller
      */
     public function index()
     {
-        $departments = Department::all();
+        $genres = Genre::all();
 
-        return view('admin.departments.departmentindex', ['departments' => $departments]);
+        return view('admindashboard.genres.index', ['genres' => $genres]);
   
     }
 
@@ -30,7 +31,7 @@ class GenreController extends Controller
      */
     public function create()
     {
-        return view('admin.departments.departmentcreate');
+        return view('admindashboard.genres.create');
     }
 
     /**

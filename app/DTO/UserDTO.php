@@ -26,7 +26,7 @@ class UserDTO extends Data {
 
     }
 
-    // public static function handleInputs(CreateUser $createuser){
+    // public static function dataHandle(CreateUserRequest $createuserRequest){
 
     //     $data = [
     //         'first_name'=> $createuser->first_name,

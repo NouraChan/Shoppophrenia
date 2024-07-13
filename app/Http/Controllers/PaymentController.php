@@ -14,7 +14,7 @@ class PaymentController extends Controller
     {
         $departments = Department::all();
 
-        return view('admin.departments.departmentindex', ['departments' => $departments]);
+        return view('admindashboard.payments.index', ['departments' => $departments]);
   
     }
 
@@ -26,7 +26,7 @@ class PaymentController extends Controller
     }
     public function create()
     {
-        return view('admin.departments.departmentcreate');
+        return view('admindashboard.payments.create');
     }
 
     /**

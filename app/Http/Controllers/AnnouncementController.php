@@ -2,6 +2,7 @@
 
 namespace App\Http\Controllers;
 
+use App\Models\Announcement;
 use Illuminate\Http\Request;
 use App\Repository\Interface\IAnnouncementRepository;
 
@@ -12,9 +13,9 @@ class AnnouncementController extends Controller
      */
     public function index()
     {
-        $departments = Department::all();
+        $announcements = Announcement::all();
 
-        return view('admin.departments.departmentindex', ['departments' => $departments]);
+        return view('admindashboard.announcements.index', ['announcements' => $announcements]);
   
     }
 
@@ -29,7 +30,7 @@ class AnnouncementController extends Controller
      */
     public function create()
     {
-        return view('admin.announcements.announcementcreate');
+        return view('admindashboard.announcements.create');
     }
 
     /**
@@ -39,7 +40,7 @@ class AnnouncementController extends Controller
     {
         //
 
-        return redirect()->route('department.index');
+        return redirect()->route('announcement.index');
 
     }
 
@@ -56,7 +57,7 @@ class AnnouncementController extends Controller
      */
     public function edit(string $id)
     {
-        //
+        return view('admindashboard.announcements.edit');
     }
 
     /**
@@ -72,7 +73,7 @@ class AnnouncementController extends Controller
      */
     public function destroy(string $id)
     {
-        $department = Department::findOrFail($id);
-        $department->delete();
+        $announcement = Announcement::findOrFail($id);
+        $announcement->delete();
         return redirect()->back();    }
 }

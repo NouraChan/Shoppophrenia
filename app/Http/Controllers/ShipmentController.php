@@ -14,7 +14,7 @@ class ShipmentController extends Controller
     {
         $departments = Department::all();
 
-        return view('admin.departments.departmentindex', ['departments' => $departments]);
+        return view('admindashboard.shipments.index', ['departments' => $departments]);
   
     }
 
@@ -27,7 +27,7 @@ class ShipmentController extends Controller
      */
     public function create()
     {
-        return view('admin.shipments.shipmentcreate');
+        return view('admindashboard.shipments.create');
     }
 
     /**

@@ -38,7 +38,7 @@ Route::get('/dashboard', [HomeController::class, 'index2'])->name('dash');
 Route::get('/users', [HomeController::class, 'usersAffair'])->name('usersdash');
 Route::get('/usersindex', [HomeController::class, 'usersIndex'])->name('usersindex');
 Route::get('/settings', [HomeController::class, 'index2'])->name('settings');
-// Route::get('/usersindex', [HomeController::class, 'showUser'])->name('usersindex');
+Route::get('/profile', [HomeController::class, 'userProfile'])->name('profile');
 Route::get('/genres', [HomeController::class, 'genreIndex'])->name('genres');
 Route::get('/products', [HomeController::class, 'productIndex'])->name('products');
 // Route::get('/settings', [HomeController::class, 'index2'])->name('settings');

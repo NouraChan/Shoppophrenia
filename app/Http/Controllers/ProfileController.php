@@ -13,7 +13,7 @@ class ProfileController extends Controller
     {
         $departments = Department::all();
 
-        return view('admin.departments.departmentindex', ['departments' => $departments]);
+        return view('admindashboard.profile.index', ['departments' => $departments]);
   
     }
 
@@ -49,7 +49,7 @@ class ProfileController extends Controller
      */
     public function edit(string $id)
     {
-        //
+        return view('admindashboard.profile.edit');
     }
 
     /**

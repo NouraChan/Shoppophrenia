@@ -3,6 +3,7 @@
 namespace App\Http\Controllers;
 
 use App\Models\Category;
+use App\Models\Genre;
 use App\Models\Product;
 use App\Models\User;
 use Illuminate\Http\Request;
@@ -42,30 +43,28 @@ class HomeController extends Controller
 
         $users = User::all();
 
-        return view('admindashboard.usersindex' , ['users' => $users]);
+        return view('admindashboard.users.index' , ['users' => $users]);
     }
 
 
     public function genreIndex(){
 
-        $genres = Category::all();
+        $genres = Genre::all();
 
-        return view('admindashboard.genres' , ['genres' => $genres]);
+        return view('admindashboard.genres.index' , ['genres' => $genres]);
     } 
     
     public function productIndex(){
 
         $products = Product::all();
 
-        return view('admindashboard.products' , ['products' => $products]);
+        return view('admindashboard.products.index' , ['products' => $products]);
     } 
     
-    // public function usersIndex(){
+    public function userProfile(){
 
-    //     $users = User::all();
-
-    //     return view('admindashboard.usersindex' , ['users' => $users]);
-    // }
+        return view('layouts.profile');
+    }
 
     
 
