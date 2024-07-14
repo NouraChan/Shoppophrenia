@@ -2,16 +2,23 @@
 
 namespace App\Http\Controllers;
 
+use App\Http\Requests\CreateProfileRequest;
 use Illuminate\Http\Request;
-
+use App\Repository\Interface\IProfileRepository;
 class ProfileController extends Controller
 {
+
+    protected $profileRepository;
+
+    public function __construct(IProfileRepository $profileRepository){
+        $this->profileRepository = $profileRepository;
+    }
+
     /**
      * Display a listing of the resource.
      */
     public function index()
     {
-        return view('profile.show');
     }
 
     /**
@@ -29,7 +36,6 @@ class ProfileController extends Controller
     {
         //
 
-        return redirect()->route('department.index');
 
     }
 
@@ -38,7 +44,9 @@ class ProfileController extends Controller
      */
     public function show(string $id)
     {
-        //
+        $profile = $this->profileRepository->getObject($id);
+        return view('profile.show', ['profiles'=>$profile]);
+
     }
 
     /**
@@ -52,9 +60,15 @@ class ProfileController extends Controller
     /**
      * Update the specified resource in storage.
      */
-    public function update(Request $request, string $id)
+    public function update(CreateProfileRequest $createProfileRequest, string $id)
     {
-        //
+        $genre = $this->profileRepository->getObject($id);
+        // $genre->update([
+        //     'title' => $request->title,
+        //     'description' => $request->description
+        // ]);
+
+        return redirect()->route('profile.index');
     }
 
     /**
@@ -62,7 +76,7 @@ class ProfileController extends Controller
      */
     public function destroy(string $id)
     {
-        $department = Department::findOrFail($id);
+        $department = $this->profileRepository->getObject($id);
         $department->delete();
         return redirect()->back();    }
 }

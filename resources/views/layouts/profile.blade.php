@@ -7,17 +7,17 @@
         <div class="row gx-4">
           <div class="col-auto">
             <div class="avatar avatar-xl position-relative">
-              <img src="../assets/img/team-1.jpg" alt="profile_image" class="w-100 border-radius-lg shadow-sm">
+              <img src="{{$profile->user_img}}" alt="profile_image" class="w-100 border-radius-lg shadow-sm">
             </div>
           </div>
           <div class="col-auto my-auto">
             <div class="h-100">
               <h5 class="mb-1">
-                Sayo Kravits
+                {{$profile->fullname}}
               </h5>
-              <p class="mb-0 font-weight-bold text-sm">
+              <!-- <p class="mb-0 font-weight-bold text-sm">
                 Public Relations
-              </p>
+              </p> -->
             </div>
           </div>
           <div class="col-lg-4 col-md-6 my-sm-auto ms-sm-auto me-sm-0 mx-auto mt-3">

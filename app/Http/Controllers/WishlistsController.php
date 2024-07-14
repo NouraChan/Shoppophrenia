@@ -6,24 +6,27 @@ use Illuminate\Http\Request;
 use App\Repository\Interface\IWishlistsRepository;
 
 class WishlistsController extends Controller
-{
+{ 
+    protected $wishlistsRepository;
+
+    public function __construct(IWishlistsRepository $wishlistsRepository){
+        $this->wishlistsRepository = $wishlistsRepository;
+    }
     /**
      * Display a listing of the resource.
      */
     public function index()
     {
-        $departments = Department::all();
+        $wishlists = $this->wishlistsRepository->getAll();
 
-        return view('admindashboard.wishlists.index', ['departments' => $departments]);
+        return view('admindashboard.wishlists.index', ['wishlists' => $wishlists]);
   
     }
 
     /**
      * Show the form for creating a new resource.
      */
-    public function __construct(IWishlistsRepository $wishlistsRepository){
-        $this->wishlistsRepository = $wishlistsRepository;
-    }
+   
     public function create()
     {
         return view('admindashboard.wishlists.create');

@@ -6,7 +6,16 @@ use App\DTO\ProductDTO;
 
 interface IProductRepository {
 
-    public function createProduct(ProductDTO $productDTO) : bool;
 
+    public function createObject(ProductDTO $productDTO) : bool;
+
+    public function updateObject(ProductDTO $productDTO , $id) : bool;
+
+
+    public function getAll();
+
+    public function getObject($id) : object;
+
+    public function deleteObject($id): bool;
 }
 

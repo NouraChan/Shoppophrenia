@@ -2,25 +2,28 @@
 
 namespace App\Http\Controllers;
 
+use App\Models\Items;
 use Illuminate\Http\Request;
 use App\Repository\Interface\IItemsRepository;
 
 class ItemsController extends Controller
 {
+    protected $itemsRepository;
+
+    public function __construct(IItemsRepository $itemsRepository){
+        $this->itemsRepository = $itemsRepository;
+    }
     /**
      * Display a listing of the resource.
      */
     public function index()
     {
-        $departments = Department::all();
+        $items = $this->itemsRepository->getAll();
 
-        return view('admindashboard.items.index', ['departments' => $departments]);
+        return view('admindashboard.items.index', ['items' => $items]);
   
     }
 
-    public function __construct(IItemsRepository $itemsRepository){
-        $this->itemsRepository = $itemsRepository;
-    }
     /**
      * Show the form for creating a new resource.
      */

@@ -4,7 +4,7 @@ namespace App\Http\Requests;
 
 use Illuminate\Foundation\Http\FormRequest;
 
-class UpdateWishlist extends FormRequest
+class CreateUserRequest extends FormRequest
 {
     /**
      * Determine if the user is authorized to make this request.
@@ -22,17 +22,18 @@ class UpdateWishlist extends FormRequest
     public function rules(): array
     {
         return [
-            'firstname' => 'nullable|string',
-            'lastname' => 'nullable|string',
-            'name' => 'required|string',
+            'first_name'=>'nullable|string',
+            'last_name'=>'nullable|string',
+            'username' => 'required|string',
             'email' => 'required|email|string',
-            'password' => 'required|string',
-            'role' => 'required',
-            'gender' => 'required',
-            'image' => 'nullable|string',
-            'address' => 'nullable|string',
-            'bio' => 'nullable|text',
-            'birthdate' => 'nullable|date',
+            'password'=> 'required|string',
+            'role'=> 'required',
+            'gender'=> 'required',
+            'user_img'=>'nullable|string',
+            'address'=>'nullable|string',
+            'serial_key'=>'nullable|text',
+            'phone_number'=>'required|string',
+            'fullname' => 'nullable|string',
         ];
     }
 }

@@ -6,22 +6,25 @@ use Illuminate\Http\Request;
 use App\Repository\Interface\IShipmentRepository;
 
 class ShipmentController extends Controller
-{
-    /**
-     * Display a listing of the resource.
-     */
-    public function index()
-    {
-        $departments = Department::all();
-
-        return view('admindashboard.shipments.index', ['departments' => $departments]);
-  
-    }
+{  
+    protected $shipmentRepository;
 
     public function __construct(IShipmentRepository $shipmentRepository){
         $this->shipmentRepository = $shipmentRepository;
     }
 
+    /**
+     * Display a listing of the resource.
+     */
+    public function index()
+    {
+        $shipments = $this->shipmentRepository->getAll();
+
+        return view('admindashboard.shipments.index', ['shipments' => $shipments]);
+  
+    }
+
+  
     /**
      * Show the form for creating a new resource.
      */

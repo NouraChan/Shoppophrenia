@@ -12,7 +12,7 @@ use App\Repository\ShipmentRepository;
 use App\Repository\PaymentRepository;
 use App\Repository\OrdersRepository;
 use App\Repository\ItemsRepository;
-use App\Repository\CategoryRepository;
+use App\Repository\GenreRepository;
 use App\Repository\Interface\IAnnouncementRepository;
 use App\Repository\Interface\ICartRepository;
 use App\Repository\Interface\IWishlistsRepository;
@@ -22,7 +22,7 @@ use App\Repository\Interface\IShipmentRepository;
 use App\Repository\Interface\IPaymentRepository;
 use App\Repository\Interface\IOrdersRepository;
 use App\Repository\Interface\IItemsRepository;
-use App\Repository\Interface\ICategoryRepository;
+use App\Repository\Interface\IGenreRepository;
 
 class AppServiceProvider extends ServiceProvider
 {
@@ -32,7 +32,7 @@ class AppServiceProvider extends ServiceProvider
     public function register(): void
     {
         $this->app->singleton(IUserRepository::class,UserRepository::class);
-        $this->app->singleton(ICategoryRepository::class,CategoryRepository::class);
+        $this->app->singleton(IGenreRepository::class,GenreRepository::class);
         $this->app->singleton(IOrdersRepository::class,OrdersRepository::class);
         $this->app->singleton(IProductRepository::class,ProductRepository::class);
         $this->app->singleton(ICartRepository::class,CartRepository::class);

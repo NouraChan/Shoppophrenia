@@ -7,23 +7,26 @@ use App\Repository\Interface\IPaymentRepository;
 
 class PaymentController extends Controller
 {
+    protected $paymentRepository;
+
+     public function __construct(IPaymentRepository $paymentRepository){
+        $this->paymentRepository = $paymentRepository;
+    }
     /**
      * Display a listing of the resource.
      */
     public function index()
     {
-        $departments = Department::all();
+        $payments = $this->paymentRepository->getAll();
 
-        return view('admindashboard.payments.index', ['departments' => $departments]);
+        return view('admindashboard.payments.index', ['payments' => $payments]);
   
     }
 
     /**
      * Show the form for creating a new resource.
      */
-    public function __construct(IPaymentRepository $paymentRepository){
-        $this->paymentRepository = $paymentRepository;
-    }
+   
     public function create()
     {
         return view('admindashboard.payments.create');

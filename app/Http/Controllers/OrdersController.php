@@ -7,23 +7,26 @@ use App\Repository\Interface\IOrdersRepository;
 
 class OrdersController extends Controller
 {
+    protected $ordersRepository;
+
+    public function __construct(IOrdersRepository $ordersRepository){
+        $this->ordersRepository = $ordersRepository;
+    }
     /**
      * Display a listing of the resource.
      */
     public function index()
     {
-        $departments = Department::all();
+        $orders = $this->ordersRepository->getAll();
 
-        return view('admindashboard.orders.index', ['departments' => $departments]);
+        return view('admindashboard.orders.index', ['orders' => $orders]);
   
     }
 
     /**
      * Show the form for creating a new resource.
      */
-    public function __construct(IOrdersRepository $ordersRepository){
-        $this->ordersRepository = $ordersRepository;
-    }
+  
     public function create()
     {
         return view('admindashboard.orders.create');

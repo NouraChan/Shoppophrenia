@@ -37,7 +37,7 @@ Auth::routes();
 //Navigation
 
 // Route::get('/', [HomeController::class, 'index'])->name('home');
-Route::get('/dashboard', [HomeController::class, 'index2'])->name('dash');
+Route::get('/home', [HomeController::class, 'index2'])->name('dash');
 Route::get('/users', [HomeController::class, 'usersAffair'])->name('usersdash');
 Route::get('/usersindex', [HomeController::class, 'usersIndex'])->name('usersindex');
 Route::get('/settings', [HomeController::class, 'index2'])->name('settings');
@@ -49,7 +49,7 @@ Route::get('/products', [HomeController::class, 'productIndex'])->name('products
 
 
 Route::group([ 'prefix' => 'profile'] , function(){
-    Route::get('/', [ProfileController::class, 'index'])->name('profile.index');
+    Route::get('/show{id}', [ProfileController::class, 'show'])->name('profile.show');
     Route::post('/update{id}', [ProfileController::class, 'update'])->name('profile.update');
     Route::get('/edit/{id}', [ProfileController::class, 'edit'])->name('profile.edit');
     
@@ -66,7 +66,7 @@ Route::group(['prefix' => 'user'], function () {
     Route::get('/destroy{id}', [UserController::class, 'destroy'])->name('user.destroy');
     Route::get('/index', [UserController::class, 'index'])->name('user.index');
     Route::post('/update{id}', [UserController::class, 'update'])->name('user.update');
-    Route::get('/edit/{id}', [UserController::class, 'edit'])->name('user.edit');
+    Route::get('/edit{id}', [UserController::class, 'edit'])->name('user.edit');
 });
 
 
@@ -79,7 +79,7 @@ Route::group(['prefix' => 'cart'], function () {
     Route::get('/destroy{id}', [CartController::class, 'destroy'])->name('cart.destroy');
     Route::get('/index', [CartController::class, 'index'])->name('cart.index');
     Route::post('/update{id}', [CartController::class, 'update'])->name('cart.update');
-    Route::get('/edit/{id}', [CartController::class, 'edit'])->name('cart.edit');
+    Route::get('/edit{id}', [CartController::class, 'edit'])->name('cart.edit');
 });
 
 //Items group
@@ -90,7 +90,7 @@ Route::group(['prefix' => 'orderitems'], function () {
     Route::get('/destroy{id}', [ItemsController::class, 'destroy'])->name('orderitems.destroy');
     Route::get('/index', [ItemsController::class, 'index'])->name('orderitems.index');
     Route::post('/update{id}', [ItemsController::class, 'update'])->name('orderitems.update');
-    Route::get('/edit/{id}', [ItemsController::class, 'edit'])->name('orderitems.edit');
+    Route::get('/edit{id}', [ItemsController::class, 'edit'])->name('orderitems.edit');
 });
 
 //Product group
@@ -112,7 +112,7 @@ Route::group(['prefix' => 'orders'], function () {
     Route::get('/destroy{id}', [OrdersController::class, 'destroy'])->name('orders.destroy');
     Route::get('/index', [OrdersController::class, 'index'])->name('orders.index');
     Route::post('/update{id}', [OrdersController::class, 'update'])->name('orders.update');
-    Route::get('/edit/{id}', [OrdersController::class, 'edit'])->name('orders.edit');
+    Route::get('/edit{id}', [OrdersController::class, 'edit'])->name('orders.edit');
 });
 
 //Wishlists group
@@ -123,7 +123,7 @@ Route::group(['prefix' => 'wishlists'], function () {
     Route::get('/destroy{id}', [WishlistsController::class, 'destroy'])->name('wishlists.destroy');
     Route::get('/index', [WishlistsController::class, 'index'])->name('wishlists.index');
     Route::post('/update{id}', [WishlistsController::class, 'update'])->name('wishlists.update');
-    Route::get('/edit/{id}', [WishlistsController::class, 'edit'])->name('wishlists.edit');
+    Route::get('/edit{id}', [WishlistsController::class, 'edit'])->name('wishlists.edit');
 });
 
 //Genre group
@@ -134,7 +134,7 @@ Route::group(['prefix' => 'genre'], function () {
     Route::get('/destroy{id}', [GenreController::class, 'destroy'])->name('genre.destroy');
     Route::get('/index', [GenreController::class, 'index'])->name('genre.index');
     Route::post('/update{id}', [GenreController::class, 'update'])->name('genre.update');
-    Route::get('/edit/{id}', [GenreController::class, 'edit'])->name('genre.edit');
+    Route::get('/edit{id}', [GenreController::class, 'edit'])->name('genre.edit');
 });
 
 //Shipment group
@@ -145,7 +145,7 @@ Route::group(['prefix' => 'shipment'], function () {
     Route::get('/destroy{id}', [ShipmentController::class, 'destroy'])->name('shipment.destroy');
     Route::get('/index', [ShipmentController::class, 'index'])->name('shipment.index');
     Route::post('/update{id}', [ShipmentController::class, 'update'])->name('shipment.update');
-    Route::get('/edit/{id}', [ShipmentController::class, 'edit'])->name('shipment.edit');
+    Route::get('/edit{id}', [ShipmentController::class, 'edit'])->name('shipment.edit');
 });
 
 //Payment group
@@ -156,7 +156,7 @@ Route::group(['prefix' => 'payment'], function () {
     Route::get('/destroy{id}', [PaymentController::class, 'destroy'])->name('payment.destroy');
     Route::get('/index', [PaymentController::class, 'index'])->name('payment.index');
     Route::post('/update{id}', [PaymentController::class, 'update'])->name('payment.update');
-    Route::get('/edit/{id}', [PaymentController::class, 'edit'])->name('payment.edit');
+    Route::get('/edit{id}', [PaymentController::class, 'edit'])->name('payment.edit');
 });
 
 //Announcement group
@@ -167,13 +167,13 @@ Route::group(['prefix' => 'announcement'], function () {
     Route::get('/destroy{id}', [AnnouncementController::class, 'destroy'])->name('announcement.destroy');
     Route::get('/index', [AnnouncementController::class, 'index'])->name('announcement.index');
     Route::post('/update{id}', [AnnouncementController::class, 'update'])->name('announcement.update');
-    Route::get('/edit/{id}', [AnnouncementController::class, 'edit'])->name('announcement.edit');
+    Route::get('/edit{id}', [AnnouncementController::class, 'edit'])->name('announcement.edit');
 });
 
 
 Route::get('/user',function(){
-    $users = User::with('profile')->get();
-    dd($users);
+    // $users = User::with('profile')->get();
+    // dd($users);
 });
 
 

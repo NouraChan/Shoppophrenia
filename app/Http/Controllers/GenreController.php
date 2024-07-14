@@ -9,23 +9,25 @@ use Illuminate\Http\Request;
 use App\Repository\Interface\IGenreRepository;
 
 class GenreController extends Controller
-{
-    protected $genreRepository;
-    /**
-     * Display a listing of the resource.
-     */
-    public function index()
-    {
-        $genres = Genre::all();
-
-        return view('admindashboard.genres.index', ['genres' => $genres]);
-  
-    }
+{    protected $genreRepository;
 
     public function __construct(IGenreRepository $genreRepository)
     {
         $this->genreRepository = $genreRepository;
     }
+    /**
+     * Display a listing of the resource.
+     */
+    public function index()
+
+    {
+        $genres = $this->genreRepository->getAll();
+
+        return view('admindashboard.genres.index', ['genres' => $genres]);
+  
+    }
+
+   
     /**
      * Show the form for creating a new resource.
      */
@@ -37,13 +39,12 @@ class GenreController extends Controller
     /**
      * Store a newly created resource in storage.
      */
-    public function store(CreateGenreRequest $creategenreRequest)
+    public function store(CreateGenreRequest $createGenreRequest)
     {
-        $genreDTO = GenreDTO::from($creategenreRequest->all());
-        $genre = $this->genreRepository->creategenre($genreDTO);
+        $genreDTO = GenreDTO::from($createGenreRequest->all());
+        $genre = $this->genreRepository->createObject($genreDTO);
 
-        return redirect()->route('department.index');
-
+        return redirect()->route('genre.index');
 
 
     }
@@ -61,8 +62,8 @@ class GenreController extends Controller
     public function edit(string $id)
     {
         
-        // $department = Department::findOrFail($id);
-        // return view('admin.departments.departmentupdate', ['department' => $department]);
+        $genre =$this->genreRepository->getObject($id);
+        return view('admindashboard.genres.edit', ['genre' => $genre]);
  
     }
 
@@ -71,13 +72,13 @@ class GenreController extends Controller
      */
     public function update(Request $request, string $id)
     {
-        // $department = Department::findOrFail($id);
-        // $department->update([
-        //     'title' => $request->title,
-        //     'description' => $request->description
-        // ]);
+        $genre = $this->genreRepository->getObject($id);
+        $genre->update([
+            'title' => $request->title,
+            'description' => $request->description
+        ]);
 
-        // return redirect()->route('department.index');
+        return redirect()->route('genre.index');
     }
 
     /**
@@ -85,8 +86,8 @@ class GenreController extends Controller
      */
     public function destroy(string $id)
     {
-        $department = Department::findOrFail($id);
-        $department->delete();
+        $genre = $this->genreRepository->getObject($id);
+        $genre->delete();
         return redirect()->back();
     }
 }

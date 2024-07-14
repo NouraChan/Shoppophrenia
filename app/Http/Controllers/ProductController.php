@@ -7,23 +7,26 @@ use App\Repository\Interface\IProductRepository;
 
 class ProductController extends Controller
 {
+    protected $productRepository;
+
+    public function __construct(IProductRepository $productRepository){
+        $this->productRepository = $productRepository;
+    }
     /**
      * Display a listing of the resource.
      */
     public function index()
     {
-        $departments = Department::all();
+        $products = $this->productRepository->getAll();
 
-        return view('admindashboard.products.index', ['departments' => $departments]);
+        return view('admindashboard.products.index', ['products' => $products]);
   
     }
 
     /**
      * Show the form for creating a new resource.
      */
-    public function __construct(IProductRepository $productRepository){
-        $this->productRepository = $productRepository;
-    }
+    
     public function create()
     {
         return view('admindashboard.products.create');

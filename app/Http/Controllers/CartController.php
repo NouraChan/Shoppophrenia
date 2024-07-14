@@ -9,20 +9,24 @@ use App\Repository\Interface\ICartRepository;
 class CartController extends Controller
 
 {
+    protected $cartRepository;   
+    
+    public function __construct(ICartRepository $cartRepository){
+        $this->cartRepository = $cartRepository;
+    }
+
     /**
      * Display a listing of the resource.
      */
     public function index()
     {
-        $carts = Cart::all();
+        $carts = $this->cartRepository->getAll();
 
         return view('admindashboard.carts.index', ['carts' => $carts]);
-  
+ 
     }
 
-    public function __construct(ICartRepository $cartRepository){
-        $this->cartRepository = $cartRepository;
-    }
+ 
     /**
      * Show the form for creating a new resource.
      */

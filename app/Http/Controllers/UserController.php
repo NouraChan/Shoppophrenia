@@ -3,6 +3,7 @@
 namespace App\Http\Controllers;
 
 use App\Http\Requests\CreateUser;
+use App\Http\Requests\CreateUserRequest;
 use Illuminate\Http\Request;
 use App\Repository\Interface\IUserRepository;
 use App\DTO\UserDTO;
@@ -20,10 +21,10 @@ class UserController extends Controller
      */
     public function index()
     {
-        $departments = Department::all();
+        $users = $this->userRepository->getAll();
 
-        return view('admin.departments.departmentindex', ['departments' => $departments]);
-  
+        return view('admin.users.index', ['users' => $users]);
+
     }
 
     /**
@@ -37,15 +38,15 @@ class UserController extends Controller
     /**
      * Store a newly created resource in storage.
      */
-    public function store(CreateUser $createuser)
+    public function store(CreateUserRequest $createUserRequest)
     {
-$users = userDTO::handleInputs($createuser);    
-$this->userRepository->store($users);
+        
+        $userDTO = UserDTO::handleData($createUserRequest);
+       $user = $this->userRepository->createObject($userDTO);
+        return redirect()->route('users.index');
 
-return redirect()->route('department.index');
 
-
-}
+    }
 
     /**
      * Display the specified resource.
