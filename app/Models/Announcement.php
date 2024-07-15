@@ -15,6 +15,7 @@ class Announcement extends Model
         'title',
         'content',
         'image',
-        'user_id'
+        'user_id',
+        
     ];
 }

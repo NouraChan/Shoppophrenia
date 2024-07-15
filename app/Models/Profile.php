@@ -21,6 +21,7 @@ class Profile extends Model
         'fullname',
         'address',
         'phone_number',
+        'birthday',
 
     ];
 
