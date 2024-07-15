@@ -21,6 +21,8 @@ class UserDTO extends Data
         public string $phone_number,
         protected string $password,
         public string $fullname,
+        public string $birthday ,
+
     ) {
     }
 

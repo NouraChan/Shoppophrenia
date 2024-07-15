@@ -4,6 +4,8 @@ namespace App\Http\Controllers;
 
 use Illuminate\Http\Request;
 use App\Repository\Interface\IShipmentRepository;
+use App\DTO\ShipmentDTO;
+use App\Http\Requests\CreateShipmentRequest;
 
 class ShipmentController extends Controller
 {  
@@ -36,11 +38,14 @@ class ShipmentController extends Controller
     /**
      * Store a newly created resource in storage.
      */
-    public function store(Request $request)
+    public function store(CreateShipmentRequest $createShipmentRequest)
     {
-        //
+       
+        $shipment = ShipmentDTO::handleData($createShipmentRequest);
+        $this->shipmentRepository->createObject($shipment);
+        
 
-        return redirect()->route('department.index');
+        return redirect()->route('shipment.index');
 
     }
 

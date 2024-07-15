@@ -12,6 +12,9 @@ class ShipmentDTO extends Data {
         public string $address,
         public string $city ,
         public string $country ,
+        public string $customer_id ,
+
+        
 
     )
     {
@@ -21,27 +24,14 @@ class ShipmentDTO extends Data {
     {
 
         $data = [
-            'first_name' => $createUserRequest->first_name,
-            'last_name' => $createUserRequest->last_name,
-            'username' => $createUserRequest->username,
-            'email' => $createUserRequest->email,
-            'password' => $createUserRequest->password,
-            'role' => $createUserRequest->role,
-            'gender' => $createUserRequest->gender,
-            'user_img' => $createUserRequest->user_img,
-            'address' => $createUserRequest->address,
-            'serial_key' => $createUserRequest->serial_key,
-            'phone_number' => $createUserRequest->phone_number,
-            'fullname' => $createUserRequest->first_name . " " . $createUserRequest->last_name,
-
+            'shipment_date' => $createShipmentRequest->shipment_date,
+            'address' => $createShipmentRequest->address,
+            'city' => $createShipmentRequest->city,
+            'country' => $createShipmentRequest->country,
+            'customer_id' => $createShipmentRequest->customer_id,
+          
         ];
 
-        if ($createUserRequest->user_img) {
-            $img = $createUserRequest->user_img;
-            $newimg = time() . $img->getClientOriginalName();
-            $img->move('img/userimg/', $newimg);
-            $data['user_img'] = 'img/userimg/$newimg/' . $newimg;
-        }
         return $data;
     }
 

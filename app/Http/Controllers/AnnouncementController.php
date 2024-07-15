@@ -3,11 +3,16 @@
 namespace App\Http\Controllers;
 
 use App\Models\Announcement;
+use App\Repository\AnnouncementRepository;
 use Illuminate\Http\Request;
 use App\Repository\Interface\IAnnouncementRepository;
+use App\DTO\AnnouncementDTO;
+use App\Http\Requests\CreateAnnouncementRequest;
 
 class AnnouncementController extends Controller
 {
+
+    protected $announcementRepository;
     /**
      * Display a listing of the resource.
      */
@@ -36,11 +41,14 @@ class AnnouncementController extends Controller
     /**
      * Store a newly created resource in storage.
      */
-    public function store(Request $request)
+    public function store(CreateAnnouncementRequest $createAnnouncementRequest)
     {
-        //
+       
+        $announcement = AnnouncementDTO::handleData($createAnnouncementRequest);
+        $this->announcementRepository->createObject($announcement);
+        
 
-        return redirect()->route('announcement.index');
+        return redirect()->route('Announcement.index');
 
     }
 

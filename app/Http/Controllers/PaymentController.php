@@ -4,6 +4,8 @@ namespace App\Http\Controllers;
 
 use Illuminate\Http\Request;
 use App\Repository\Interface\IPaymentRepository;
+use App\Http\Requests\CreatePaymentRequest;
+use App\DTO\PaymentDTO;
 
 class PaymentController extends Controller
 {
@@ -35,11 +37,14 @@ class PaymentController extends Controller
     /**
      * Store a newly created resource in storage.
      */
-    public function store(Request $request)
+    public function store(CreatePaymentRequest $createPaymentRequest)
     {
-        //
+       
+        $payment = PaymentDTO::handleData($createPaymentRequest);
+        $this->paymentRepository->createObject($payment);
+        
 
-        return redirect()->route('department.index');
+        return redirect()->route('payment.index');
 
     }
 

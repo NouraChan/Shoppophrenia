@@ -11,6 +11,7 @@ class AnnouncementDTO extends Data {
         public string $title ,
         public string $content,
         public string $image,
+        public string $user_id
     )
     {
 

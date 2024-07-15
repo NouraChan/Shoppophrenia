@@ -5,7 +5,7 @@ use App\DTO\GenreDTO;
 
 interface IGenreRepository {
 
-    public function createObject(GenreDTO $genreDTO);
+    public function createObject($createGenreRequest) ;
 
     public function updateObject(GenreDTO $genreDTO , $id);
 

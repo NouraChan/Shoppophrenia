@@ -8,6 +8,8 @@ use Illuminate\Http\Request;
 use App\Repository\Interface\ICartRepository;
 use Jackiedo\Cart\Facades\Cart;
 use RealRashid\SweetAlert\Facades\Alert;
+use App\DTO\CartDTO;
+use App\Http\Requests\CreateCartRequest;
 
 
 
@@ -49,11 +51,14 @@ class CartController extends Controller
     /**
      * Store a newly created resource in storage.
      */
-    public function store(Request $request)
+    public function store(CreateCartRequest $createCartRequest)
     {
-        //
+       
+        $cart = CartDTO::handleData($createCartRequest);
+        $this->cartRepository->createObject($cart);
+        
 
-        return redirect() - back();
+        return redirect()->route('cart.index');
 
     }
 

@@ -15,7 +15,6 @@ return new class extends Migration
         Schema::create('cart', function (Blueprint $table) {
             $table->id();
             $table->timestamps();
-            $table->decimal('total_price');
             $table->integer('quantity');
             $table->unsignedBigInteger('product_id');
             $table->foreign('product_id')->references('id')->on('product');

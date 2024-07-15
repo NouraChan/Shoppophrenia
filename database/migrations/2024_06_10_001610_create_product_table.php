@@ -18,7 +18,7 @@ return new class extends Migration
             $table->text('description');
             $table->integer('stock');
             $table->decimal('price');
-            $table->integer('rate');
+            $table->integer('rate')->nullable();
             $table->string('product_img');
             $table->unsignedBigInteger('genre_id');
             $table->foreign('genre_id')->references('id')->on('genre');

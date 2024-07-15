@@ -4,6 +4,8 @@ namespace App\Http\Controllers;
 
 use Illuminate\Http\Request;
 use App\Repository\Interface\IWishlistsRepository;
+use App\DTO\WishlistsDTO;
+use App\Http\Requests\CreateWishlistRequest;
 
 class WishlistsController extends Controller
 { 
@@ -35,11 +37,14 @@ class WishlistsController extends Controller
     /**
      * Store a newly created resource in storage.
      */
-    public function store(Request $request)
+    public function store(CreateWishlistRequest $createWishlistRequest)
     {
-        //
+       
+        $wishlists = WishlistsDTO::handleData($createWishlistRequest);
+        $this->wishlistsRepository->createObject($wishlists);
+        
 
-        return redirect()->route('department.index');
+        return redirect()->route('wishlists.index');
 
     }
 

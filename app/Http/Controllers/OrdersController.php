@@ -2,8 +2,10 @@
 
 namespace App\Http\Controllers;
 
+use App\DTO\OrdersDTO;
 use Illuminate\Http\Request;
 use App\Repository\Interface\IOrdersRepository;
+use App\Http\Requests\CreateOrderRequest;
 
 class OrdersController extends Controller
 {
@@ -35,11 +37,14 @@ class OrdersController extends Controller
     /**
      * Store a newly created resource in storage.
      */
-    public function store(Request $request)
+    public function store(CreateOrderRequest $createOrderRequest)
     {
-        //
+       
+        $order = OrdersDTO::handleData($createOrderRequest);
+        $this->ordersRepository->createObject($order);
+        
 
-        return redirect()->route('department.index');
+        return redirect()->route('order.index');
 
     }
 

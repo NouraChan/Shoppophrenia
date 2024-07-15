@@ -9,16 +9,12 @@ use App\Models\Genre;
 class GenreRepository implements IGenreRepository
 {
 
-    public function createObject(GenreDTO $genreDTO): bool
+    public function createObject($createGenreRequest)
     {
-        if (Genre::create($genreDTO->toArray())) {
-
-            return true;
-        }
-        return false;
+        return Genre::create($createGenreRequest);
     }
 
-    public function updateObject(GenreDTO $genreDTO, $id): bool
+    public function updateObject(GenreDTO $genreDTO, $id)
     {
         if (Genre::edit($genreDTO->toArray())) {
 

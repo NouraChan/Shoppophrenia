@@ -3,41 +3,30 @@
 namespace App\DTO;
 
 use Spatie\LaravelData\Data;
+use App\Http\Requests\CreateWishlistRequest;
 
 class WishlistsDTO extends Data {
 
     public function __construct(
         public string $title ,
         public string $description,
+        public string $product_id,
+        public string $customer_id,
     )
     {
 
     }
-    public static function handleData(CreateUserRequest $createUserRequest)
+    public static function handleData(CreateWishlistRequest $createWishlistRequest)
     {
 
         $data = [
-            'first_name' => $createUserRequest->first_name,
-            'last_name' => $createUserRequest->last_name,
-            'username' => $createUserRequest->username,
-            'email' => $createUserRequest->email,
-            'password' => $createUserRequest->password,
-            'role' => $createUserRequest->role,
-            'gender' => $createUserRequest->gender,
-            'user_img' => $createUserRequest->user_img,
-            'address' => $createUserRequest->address,
-            'serial_key' => $createUserRequest->serial_key,
-            'phone_number' => $createUserRequest->phone_number,
-            'fullname' => $createUserRequest->first_name . " " . $createUserRequest->last_name,
-
+            'title' => $createWishlistRequest->title,
+            'description' => $createWishlistRequest->description,
+            'product_id' => $createWishlistRequest->product_id,
+            'customer_id' => $createWishlistRequest->customer_id,
+           
         ];
 
-        if ($createUserRequest->user_img) {
-            $img = $createUserRequest->user_img;
-            $newimg = time() . $img->getClientOriginalName();
-            $img->move('img/userimg/', $newimg);
-            $data['user_img'] = 'img/userimg/$newimg/' . $newimg;
-        }
         return $data;
     }
 

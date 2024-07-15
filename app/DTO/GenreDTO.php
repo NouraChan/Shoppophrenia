@@ -19,17 +19,17 @@ class GenreDTO extends Data
             'name' => $createGenreRequest->name
         ];
 
-        // if ($createGenreRequest->img){
+      
+        return $data;
+    }
+}
+
+  // if ($createGenreRequest->img){
         //     $img = $createGenreRequest->img;
         //     $newimg = time() . $img->getClientOriginalName();
         //     $img->move('img/userimg/' , $newimg);
         //     $data['image'] = 'img/userimg/$newimg/'. $newimg ;
         // }
-        return $data;
-    }
-}
-
-
 
 
 

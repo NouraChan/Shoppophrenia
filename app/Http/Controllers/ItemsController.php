@@ -2,9 +2,11 @@
 
 namespace App\Http\Controllers;
 
+use App\Http\Requests\CreateOrderitemRequest;
 use App\Models\Items;
 use Illuminate\Http\Request;
 use App\Repository\Interface\IItemsRepository;
+use App\DTO\ItemsDTO;
 
 class ItemsController extends Controller
 {
@@ -35,11 +37,14 @@ class ItemsController extends Controller
     /**
      * Store a newly created resource in storage.
      */
-    public function store(Request $request)
+    public function store(CreateOrderitemRequest $createOrderitemRequest)
     {
-        //
+       
+        $items = ItemsDTO::handleData($createOrderitemRequest);
+        $this->itemsRepository->createObject($items);
+        
 
-        return redirect()->route('department.index');
+        return redirect()->route('items.index');
 
     }
 

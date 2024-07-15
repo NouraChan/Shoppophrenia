@@ -25,7 +25,7 @@ return new class extends Migration
             $table->enum('gender', ['male', 'female'])->nullable();
             $table->string('user_img')->nullable();
             $table->string('address')->nullable(); 
-            $table->string('birthday');
+            $table->string('birthday')->nullable();
             $table->string('serial_key')->nullable();
             $table->rememberToken();
             $table->timestamps();

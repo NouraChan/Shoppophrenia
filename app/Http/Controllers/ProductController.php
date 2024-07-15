@@ -5,6 +5,8 @@ namespace App\Http\Controllers;
 use App\Repository\Interface\ICartRepository;
 use Illuminate\Http\Request;
 use App\Repository\Interface\IProductRepository;
+use App\DTO\ProductDTO;
+use App\Http\Requests\CreateProductRequest;
 use Jackiedo\Cart\Facades\Cart;
 use RealRashid\SweetAlert\Facades\Alert;
 
@@ -43,14 +45,16 @@ class ProductController extends Controller
     /**
      * Store a newly created resource in storage.
      */
-    public function store(Request $request)
+    public function store(CreateProductRequest $createProductRequest)
     {
-        //
+       
+        $product = ProductDTO::handleData($createProductRequest);
+        $this->productRepository->createObject($product);
+        
 
-        return redirect()->route('department.index');
+        return redirect()->route('product.index');
 
     }
-
     /**
      * Display the specified resource.
      */
