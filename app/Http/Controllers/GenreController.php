@@ -41,8 +41,8 @@ class GenreController extends Controller
      */
     public function store(CreateGenreRequest $createGenreRequest)
     {
-        $genreDTO = GenreDTO::from($createGenreRequest->all());
-        $genre = $this->genreRepository->createObject($genreDTO);
+        $genres = GenreDTO::from($createGenreRequest->all());
+        $genre = $this->genreRepository->createObject($genres);
 
         return redirect()->route('genre.index');
 

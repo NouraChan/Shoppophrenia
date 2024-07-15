@@ -2,15 +2,21 @@
 
 namespace App\Http\Controllers;
 
+use App\Repository\Interface\ICartRepository;
 use Illuminate\Http\Request;
 use App\Repository\Interface\IProductRepository;
+use Jackiedo\Cart\Facades\Cart;
+use RealRashid\SweetAlert\Facades\Alert;
 
 class ProductController extends Controller
 {
     protected $productRepository;
+    protected $cart;
 
-    public function __construct(IProductRepository $productRepository){
+    public function __construct(IProductRepository $productRepository, ICartRepository $cartRepository)
+    {
         $this->productRepository = $productRepository;
+        $this->cartRepository = $cartRepository;
     }
     /**
      * Display a listing of the resource.
@@ -19,13 +25,15 @@ class ProductController extends Controller
     {
         $products = $this->productRepository->getAll();
 
-        return view('admindashboard.products.index', ['products' => $products]);
-  
+        return view('admindashboard.products.index', ['products' => $products] );
+
+
     }
 
     /**
      * Show the form for creating a new resource.
      */
+
     
     public function create()
     {
@@ -72,8 +80,8 @@ class ProductController extends Controller
      */
     public function destroy(string $id)
     {
-        $department = Department::findOrFail($id);
-        $department->delete();
+        $product = $this->productRepository->getObject($id);
+        $product->delete();
         return redirect()->back();
     }
 }

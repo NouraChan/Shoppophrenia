@@ -9,8 +9,8 @@
                 <div class="card-header pb-0">
                     <div class="d-flex align-items-center">
                         <!-- <p class="mb-0">Edit Profile</p> -->
-                        <a class="btn btn-primary btn-sm ms-auto"
-                            href="{{route('profile.edit', ['id' => $profile->id])}}">Edit</a>
+                        <!-- <a class="btn btn-primary btn-sm ms-auto"
+                            href="{{route('user.edit', ['id' => $user->id])}}">Edit</a> -->
                     </div>
                 </div>
                 <form action="" method="post">
@@ -26,20 +26,20 @@
                             </div>-->
                             <div class="col-md-12 justify-content-center">
                                 <div class="form-group text-center">
-                                    <label for="img" class="form-control-label"><img src="{{$profile->user_img}}" alt="img"></label>
+                                    <label for="img" class="form-control-label"><img src="{{$user->user_img}}" alt="img"></label>
                                     <input class="form-control" type="file" readonly hidden id="img" name="user_img" readonly>
                                 </div>
                             </div> 
                             <div class="col-md-6">
                                 <div class="form-group">
                                     <label for="example-text-input" class="form-control-label">First name</label>
-                                    <input class="form-control" type="text" value="Jesse" readonly name="first_name">
+                                    <input class="form-control" type="text" value="{{$user->first_name}}" readonly name="first_name">
                                 </div>
                             </div>
                             <div class="col-md-6">
                                 <div class="form-group">
                                     <label for="example-text-input" class="form-control-label">Last name</label>
-                                    <input class="form-control" type="text" value="Lucky" readonly name="last_name">
+                                    <input class="form-control" type="text" value="{{$user->last_name}}" readonly name="last_name">
                                 </div>
                             </div>
                             <div class="col-md-4">
@@ -64,7 +64,7 @@
                             <div class="col-md-4">
                                 <div class="form-group">
                                     <label for="birthday" class="form-control-label">Birthdate</label>
-                                  <input type="date" id="birthday" name="birthday" class="form-control" readonly value="{{$profile->birthday}}">
+                                  <input type="date" id="birthday" name="birthday" class="form-control" readonly value="{{$user->birthday}}">
                                 </div>
                             </div>
                         </div>
@@ -75,7 +75,7 @@
                                 <div class="form-group">
                                     <label for="example-text-input" class="form-control-label">Address</label>
                                     <input class="form-control" type="text" name="address"readonly
-                                        value="{{$profile->address}}">
+                                        value="{{$user->address}}">
                                 </div>
                             </div>
 
@@ -83,7 +83,7 @@
                             <div class="col-md-4">
                                 <div class="form-group">
                                     <label for="example-text-input" class="form-control-label">Phone number</label>
-                                    <input class="form-control" type="text" value="{{$profile->phone_number}}" name="phone_number" readonly>
+                                    <input class="form-control" type="text" value="{{$user->phone_number}}" name="phone_number" readonly>
                                 </div>
                             </div>
                         </div>

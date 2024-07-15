@@ -16,6 +16,6 @@ interface ICartRepository {
 
     public function getObject($id) : object;
 
-    public function deleteObject($id): bool;
+    // public function deleteObject($id): bool;
 }
 

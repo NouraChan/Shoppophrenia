@@ -7,6 +7,7 @@ use App\Http\Requests\CreateUserRequest;
 use Illuminate\Http\Request;
 use App\Repository\Interface\IUserRepository;
 use App\DTO\UserDTO;
+use App\Models\User;
 
 class UserController extends Controller
 {
@@ -43,7 +44,7 @@ class UserController extends Controller
         
         $userDTO = UserDTO::handleData($createUserRequest);
        $user = $this->userRepository->createObject($userDTO);
-        return redirect()->route('users.index');
+        return redirect()->route('admindashboard.users.index');
 
 
     }
@@ -51,17 +52,21 @@ class UserController extends Controller
     /**
      * Display the specified resource.
      */
-    public function show(string $id)
+    public function show(User $user, $id)
     {
-        //
+        $user = $this->userRepository->getObject($id);
+
+        return view('profile.show',['user' => $user]);
     }
 
     /**
      * Show the form for editing the specified resource.
      */
-    public function edit(string $id)
+    public function edit(User $user)
     {
-        //
+        $users = $this->userRepository->getAll();
+
+        return view('profile.edit',['users' => $users]);
     }
 
     /**

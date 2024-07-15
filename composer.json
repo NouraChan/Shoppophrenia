@@ -7,11 +7,13 @@
     "require": {
         "php": "^8.1",
         "guzzlehttp/guzzle": "^7.2",
+        "jackiedo/cart": "^3.0",
         "laravel/framework": "^10.0",
         "laravel/sanctum": "^3.2",
         "laravel/telescope": "^5.1",
         "laravel/tinker": "^2.8",
         "laravel/ui": "^4.5",
+        "realrashid/sweet-alert": "^7.2",
         "spatie/laravel-data": "^4.7"
     },
     "require-dev": {

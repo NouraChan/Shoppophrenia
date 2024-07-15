@@ -28,9 +28,7 @@ use App\Http\Controllers\ProfileController;
 |
 */
 
-Route::get('/', function () {
-    return view('index');
-})->name('home');
+Route::get('/', [CartController::class , 'showHome'])->name('home');
 
 Auth::routes();
 
@@ -48,12 +46,12 @@ Route::get('/products', [HomeController::class, 'productIndex'])->name('products
 
 
 
-Route::group([ 'prefix' => 'profile'] , function(){
-    Route::get('/show{id}', [ProfileController::class, 'show'])->name('profile.show');
-    Route::post('/update{id}', [ProfileController::class, 'update'])->name('profile.update');
-    Route::get('/edit/{id}', [ProfileController::class, 'edit'])->name('profile.edit');
+// Route::group([ 'prefix' => 'profile'] , function(){
+//     Route::get('/show{id}', [ProfileController::class, 'show'])->name('profile.show');
+//     Route::post('/update{id}', [ProfileController::class, 'update'])->name('profile.update');
+//     Route::get('/edit/{id}', [ProfileController::class, 'edit'])->name('profile.edit');
     
-});
+// })->middleware('auth');
 
 
 
@@ -63,11 +61,13 @@ Route::group([ 'prefix' => 'profile'] , function(){
 Route::group(['prefix' => 'user'], function () {
     Route::get('/create', [UserController::class, 'create'])->name('user.create');
     Route::post('/store', [UserController::class, 'store'])->name('user.store');
-    Route::get('/destroy{id}', [UserController::class, 'destroy'])->name('user.destroy');
+    Route::get('/destroy/{id}', [UserController::class, 'destroy'])->name('user.destroy');
     Route::get('/index', [UserController::class, 'index'])->name('user.index');
-    Route::post('/update{id}', [UserController::class, 'update'])->name('user.update');
-    Route::get('/edit{id}', [UserController::class, 'edit'])->name('user.edit');
-});
+    Route::post('/update/{id}', [UserController::class, 'update'])->name('user.update');
+    Route::get('/edit/{$id}', [UserController::class, 'edit'])->name('user.edit');
+    Route::get('/show/{$id}', [UserController::class, 'show'])->name('user.show');
+
+})->middleware('auth');
 
 
 
@@ -80,6 +80,9 @@ Route::group(['prefix' => 'cart'], function () {
     Route::get('/index', [CartController::class, 'index'])->name('cart.index');
     Route::post('/update{id}', [CartController::class, 'update'])->name('cart.update');
     Route::get('/edit{id}', [CartController::class, 'edit'])->name('cart.edit');
+    Route::get('/add/{id}', [CartController::class , 'add'])->name('product.add');
+
+
 });
 
 //Items group
@@ -102,6 +105,7 @@ Route::group(['prefix' => 'product'], function () {
     Route::get('/index', [ProductController::class, 'index'])->name('product.index');
     Route::post('/update{id}', [ProductController::class, 'update'])->name('product.update');
     Route::get('/edit/{id}', [ProductController::class, 'edit'])->name('product.edit');
+
 });
 
 //Orders group

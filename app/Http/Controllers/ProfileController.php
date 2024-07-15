@@ -42,17 +42,17 @@ class ProfileController extends Controller
     /**
      * Display the specified resource.
      */
-    public function show(string $id)
+    public function show(CreateProfileRequest $createProfileRequest)
     {
-        $profile = $this->profileRepository->getObject($id);
-        return view('profile.show', ['profiles'=>$profile]);
+        // $profile = $this->profileRepository->getObject($id);
+        return view('profile.show',compact('profile'));
 
     }
 
     /**
      * Show the form for editing the specified resource.
      */
-    public function edit(string $id)
+    public function edit(CreateProfileRequest $createProfileRequest)
     {
         return view('profile.edit');
     }
@@ -76,7 +76,5 @@ class ProfileController extends Controller
      */
     public function destroy(string $id)
     {
-        $department = $this->profileRepository->getObject($id);
-        $department->delete();
-        return redirect()->back();    }
+        }
 }

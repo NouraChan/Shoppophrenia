@@ -181,6 +181,8 @@ return [
         Illuminate\Translation\TranslationServiceProvider::class,
         Illuminate\Validation\ValidationServiceProvider::class,
         Illuminate\View\ViewServiceProvider::class,
+        Jackiedo\Cart\CartServiceProvider::class,
+
 
         /*
          * Package Service Providers...
@@ -195,6 +197,8 @@ return [
         App\Providers\EventServiceProvider::class,
         App\Providers\RouteServiceProvider::class,
         App\Providers\TelescopeServiceProvider::class,
+        RealRashid\SweetAlert\SweetAlertServiceProvider::class,
+
 
     ],
 
@@ -210,6 +214,10 @@ return [
     */
 
     'aliases' => Facade::defaultAliases()->merge([
+        'Cart' => Jackiedo\Cart\Facades\Cart::class,
+        'Alert' => RealRashid\SweetAlert\Facades\Alert::class,
+
+
         // 'ExampleClass' => App\Example\ExampleClass::class,
     ])->toArray(),
 

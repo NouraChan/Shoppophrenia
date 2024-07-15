@@ -36,18 +36,14 @@ class GenreRepository implements IGenreRepository
     {
         return Genre::findOrFail($id);
     }
-    // public function store(GenreDTO $genreDTO): bool
+
+    // public function deleteObject($id): bool
     // {
-    //     return (Genre::create($genreDTO->toArray())) ? true : false;
+    //     if (Genre::destroy($id)) {
+
+    //         return true;
+    //     }
+    //     return false;
     // }
-
-    public function deleteObject($id): bool
-    {
-        if (Genre::destroy($id)) {
-
-            return true;
-        }
-        return false;
-    }
 }
 

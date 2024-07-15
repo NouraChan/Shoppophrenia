@@ -40,7 +40,7 @@ class UserDTO extends Data
             'serial_key' => $createUserRequest->serial_key,
             'phone_number' => $createUserRequest->phone_number,
             'fullname' => $createUserRequest->first_name . " " . $createUserRequest->last_name,
-
+            'birthday' => $createUserRequest->birthday,
         ];
 
         if ($createUserRequest->user_img) {
@@ -51,6 +51,7 @@ class UserDTO extends Data
         }
 
         return $data;
+
     }
 
 }

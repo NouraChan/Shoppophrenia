@@ -16,6 +16,5 @@ interface IProductRepository {
 
     public function getObject($id) : object;
 
-    public function deleteObject($id): bool;
 }
 

@@ -12,7 +12,7 @@
                 
                     </div>
                 </div>
-                <form action="{{route('profile.update' , ['id'=> $profile->id])}}" method="post">
+                <form action="{{route('profile.update')}}" method="post">
                     @csrf
                     <div class="card-body">
 

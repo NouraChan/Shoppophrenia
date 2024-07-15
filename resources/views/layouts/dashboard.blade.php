@@ -22,6 +22,8 @@
 </head>
 
 <body class="g-sidenav-show bg-gray-100">
+@include('sweetalert::alert', ['cdn' => "https://cdn.jsdelivr.net/npm/sweetalert2@9"])
+
   <div class="min-height-300 bg-primary position-absolute w-100 bghalf"></div>
   <aside
     class="sidenav bg-white navbar navbar-vertical navbar-expand-xs border-0 border-radius-xl my-3 fixed-start ms-4 "
@@ -64,7 +66,7 @@
           </a>
         </li>
         <li class="nav-item">
-          <a class="nav-link " href="./pages/virtual-reality.html">
+          <a class="nav-link " href="{{route('product.index')}}">
             <div
               class="icon icon-shape icon-sm border-radius-md text-center me-2 d-flex align-items-center justify-content-center">
               <i class="ni ni-app text-info text-sm opacity-10"></i>
@@ -143,7 +145,7 @@
               </a>
               <ul class="dropdown-menu  dropdown-menu-end  px-2 py-3 me-sm-n4 m-0" aria-labelledby="dropdownMenuButtonuser">
               <li>
-                  <a class="dropdown-item border-radius-md" href="{{route('profile.index')}}">Profile
+                  <a class="dropdown-item border-radius-md" href="{{route('user.show' , [Auth::user()->id])}}">Profile
                   </a>
                 </li>
               <li>

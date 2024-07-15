@@ -1,88 +1,84 @@
-@extends('admindashboard.users')
+@extends('layouts.dashboard')
 
-@section('datashow')
+@section('content')
 
-<div class="table-responsive p-0">
-    <table class="table align-items-center mb-0">
-        <thead>
-            <tr>
-                <th class="text-uppercase text-secondary text-xxs font-weight-bolder opacity-7">Id</th>
-                <th class="text-uppercase text-secondary text-xxs font-weight-bolder opacity-7 ps-3">User</th>
-                <th class="text-uppercase text-secondary text-xxs font-weight-bolder opacity-7">Order History</th>
-                <th class="text-uppercase text-secondary text-xxs font-weight-bolder opacity-7">Role</th>
-                <th class="text-secondary opacity-7"></th>
-            </tr>
-        </thead>
-        <tbody>
-            <tr>
-                <td class="align-middle px-4">
-                    <span class="text-secondary text-xs font-weight-bold">1</span>
-                </td>
-                <td>
-                    <div class="d-flex px-2 py-1">
-                        <div>
-                            <img src="../assets/img/team-2.jpg" class="avatar avatar-sm me-3" alt="user1">
-                        </div>
-                        <div class="d-flex flex-column justify-content-center">
-                            <h6 class="mb-0 text-sm">John Michael</h6>
-                            <p class="text-xs text-secondary mb-0">john@creative-tim.com</p>
-                        </div>
+<div class="container-fluid py-4">
+    <div class="row">
+        <div class="col-12">
+            <div class="card mb-4">
+                <div class="card-header pb-0">
+                    <h6 class="d-inline headerh6">Carts</h6>
+                    <a class="btn btn-primary bghalf me-3 w-10 text-nowrap text-center d-inline mb-4"
+                        href="{{route('cart.create')}}">Create</a>
+                </div>
+                <div class="card-body px-0 pt-0 pb-2">
+
+                    <div class="table-responsive p-0">
+                        <table class="table align-items-center mb-0">
+                            <thead>
+                                <tr>
+                                    <th class="text-uppercase text-secondary text-xxs font-weight-bolder opacity-7">Id
+                                    </th> 
+                                    <th class="text-uppercase text-secondary text-xxs font-weight-bolder opacity-7">
+                                        Image</th>
+                                    <th
+                                        class="text-uppercase text-secondary text-xxs font-weight-bolder opacity-7 ps-3">
+                                        Name</th>
+                                    <th class="text-uppercase text-secondary text-xxs font-weight-bolder opacity-7">
+                                        Description</th>
+                                        <th class="text-uppercase text-secondary text-xxs font-weight-bolder opacity-7">
+                                        Quantity</th>
+                                        <th class="text-uppercase text-secondary text-xxs font-weight-bolder opacity-7">
+                                        Price</th>
+                                      
+                                    <th class="text-secondary opacity-7"></th>
+                                </tr>
+                            </thead>
+                            <tbody>
+                                @foreach ($carts as $cart)
+                                    <tr>
+                                    <td class="align-middle px-4">
+                                            <span class="text-secondary text-xs font-weight-bold"><img src="{{$cart->cart_img}}" alt="" style="width:100;"></span>
+                                        </td>
+                                        <td class="align-middle px-4">
+                                            <span class="text-secondary text-xs font-weight-bold">{{$cart->id}}</span>
+                                        </td>
+                                        <td>
+                                            <span class="text-black text-xs font-weight-bold">{{$cart->name}}</span>
+                                        </td>
+                                        <td>
+                                            <span class="text-secondary text-xs font-weight-bold">{{$cart->description}}</span>
+                                        </td>
+                                        <td>
+                                            <span class="text-secondary text-xs font-weight-bold">{{$cart->stock}}</span>
+                                        </td> 
+                                        <td>
+                                            <span class="text-secondary text-xs font-weight-bold">{{$cart->price}}</span>
+                                        </td> 
+                                        <td>
+                                            <span class="text-secondary text-xs font-weight-bold">{{$cart->rate}}</span>
+                                        </td>
+                                        <td>
+                                            <span class="text-secondary text-xs font-weight-bold">{{$cart->genre_id}}</span>
+                                        </td>
+                                        <td class="align-middle">
+                                            <a href="#" class="text-secondary font-weight-bold text-xs"
+                                                data-toggle="tooltip" data-original-title="Delete user">
+                                                Delete
+                                            </a>
+                                        </td>
+                                    </tr>
+                                @endforeach
+
+                            </tbody>
+                        </table>
                     </div>
-                </td>
-                <td>
-                    <p class="text-xs font-weight-bold mb-0 ms-4 text-secondary text-xs"><a href="">Click here</a>
-                    </p>
-                </td>
-                <td class="align-middle text-sm px-3">
-                    <span class="text-secondary text-xs font-weight-bold">Customer</span>
-                </td>
-                <td class="align-middle">
-                    <a href="javascript:;" class="text-secondary font-weight-bold text-xs" data-toggle="tooltip"
-                        data-original-title="Edit user">
-                        Edit
-                    </a>
-                    <a href="javascript:;" class="text-secondary font-weight-bold text-xs ms-4" data-toggle="tooltip"
-                        data-original-title="Edit user">
-                        Delete
-                    </a>
-                </td>
-            </tr>
-            <tr>
-                <td class="align-middle px-4">
-                    <span class="text-secondary text-xs font-weight-bold">1</span>
-                </td>
-                <td>
-                    <div class="d-flex px-2 py-1">
-                        <div>
-                            <img src="../assets/img/team-2.jpg" class="avatar avatar-sm me-3" alt="user1">
-                        </div>
-                        <div class="d-flex flex-column justify-content-center">
-                            <h6 class="mb-0 text-sm">John Michael</h6>
-                            <p class="text-xs text-secondary mb-0">john@creative-tim.com</p>
-                        </div>
-                    </div>
-                </td>
-                <td>
-                    <p class="text-xs font-weight-bold mb-0 ms-4 text-secondary text-xs"><a href="">Click here</a>
-                    </p>
-                </td>
-                <td class="align-middle text-sm px-3">
-                    <span class="text-secondary text-xs font-weight-bold">Customer</span>
-                </td>
-                <td class="align-middle">
-                    <a href="javascript:;" class="text-secondary font-weight-bold text-xs" data-toggle="tooltip"
-                        data-original-title="Edit user">
-                        Edit
-                    </a>
+                </div>
+            </div>
+        </div>
+    </div>
 
-                    <a href="javascript:;" class="text-secondary font-weight-bold text-xs ms-4" data-toggle="tooltip"
-                        data-original-title="Edit user">
-                        Delete
-                    </a>
-                </td>
-            </tr>
-        </tbody>
-    </table>
+
 </div>
 
 @endsection

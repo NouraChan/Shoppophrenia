@@ -34,6 +34,8 @@ class CreateUserRequest extends FormRequest
             'serial_key'=>'nullable|text',
             'phone_number'=>'required|string',
             'fullname' => 'nullable|string',
+            'birthday' => 'nullable|date',
+
         ];
     }
 }
