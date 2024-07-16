@@ -96,7 +96,7 @@
                                     </a>
                                     <a class="dropdown-item p-3" href="{{ route('logout') }}"
                                         onclick="event.preventDefault();
-                                                                                             document.getElementById('logout-form').submit();">
+                                                                                                 document.getElementById('logout-form').submit();">
                                         Logout
                                     </a>
 
@@ -155,7 +155,8 @@
 
                         @else
                             <a href="{{route('user.show', [Auth::user()->id])}}" class="my-auto">
-                            <img src="{{asset(Auth::user()->user_img)}}" class="rounded-circle" style="width: 50px; height: 50px;" alt="">
+                                <img src="{{asset(Auth::user()->user_img)}}" class="rounded-circle"
+                                    style="width: 50px; height: 50px;" alt="">
                             </a>
 
                         @endguest
@@ -347,42 +348,50 @@
                     <div class="badge-colors my-2 text-start">
                         @foreach ($products as $product)
                             <tr>
-                                <th scope="row">
-                                    <div class="d-flex align-items-center">
-                                        <img src="{{$product->product_img}}" class="img-fluid me-5 rounded-circle"
-                                            style="width: 40px; height: 40px;" alt="">
+                                <div class="d-flex shopitem">
+                                    <div class="d-flex gap-3 justify-content-between">
+                                        <th scope="row">
+                                            <div class="d-flex align-items-center ">
+                                                <img src="{{asset($product->product_img)}}"
+                                                    class="img-fluid rounded-circle" style="width: 40px; height: 40px;"
+                                                    alt="">
+                                            </div>
+                                        </th>
+                                        <td>
+                                            <p class="mb-0 mt-2">{{$product->name}}</p>
+                                        </td>
+                                        <td> 
+                                            <button class="btn btn-md rounded-circle bg-light border d-inline-block">
+                                                <i class="fa fa-times text-danger"></i>
+                                            </button></td>
                                     </div>
-                                </th>
-                                <td>
-                                    <p class="mb-0 mt-4">{{$product->name}}</p>
-                                </td>
-                                <td>
-                                    <p class="mb-0 mt-4">{{$product->price}}$</p>
-                                </td>
-                                <td>
-                                    <div class="input-group quantity mt-4" style="width: 70px;">
-                                        <div class="input-group-btn">
-                                            <button class="btn btn-sm btn-minus rounded-circle bg-light border">
-                                                <i class="fa fa-minus"></i>
-                                            </button>
-                                        </div>
-                                        <input type="text" class="form-control form-control-sm text-center border-0"
-                                            value="1">
-                                        <div class="input-group-btn">
-                                            <button class="btn btn-sm btn-plus rounded-circle bg-light border">
-                                                <i class="fa fa-plus"></i>
-                                            </button>
-                                        </div>
+                                    <div class="d-flex gap-4">
+                                        <td>
+                                            <p class="mb-0 mt-4">{{$product->price}}$</p>
+                                        </td>
+                                        <td>
+                                            <div class="input-group quantity mt-4 d-flex quancount" style="width: 150px;">
+                                                <div class="input-group-btn">
+                                                    <button class="btn btn-sm btn-minus rounded-circle bg-light border">
+                                                        <i class="fa fa-minus"></i>
+                                                    </button>
+                                                </div>
+                                                <input type="text" class="form-control form-control-sm text-center border-0"
+                                                    value="1">
+                                                <div class="input-group-btn">
+                                                    <button class="btn btn-sm btn-plus rounded-circle bg-light border">
+                                                        <i class="fa fa-plus"></i>
+                                                    </button>
+                                                </div>
+                                            </div>
+                                        </td>
                                     </div>
-                                </td>
-                                <td>
-                                    <p class="mb-0 mt-4">{{$product->price}} $</p>
-                                </td>
-                                <td>
-                                    <button class="btn btn-md rounded-circle bg-light border mt-4">
-                                        <i class="fa fa-times text-danger"></i>
-                                    </button>
-                                </td>
+
+                                    <td>
+                                        <p class="mb-0 mt-4">{{$product->price}} $</p>
+                                    </td>
+                                </div>
+
                             </tr>
                         @endforeach               
                     </div>

@@ -560,3 +560,10 @@
     right: 0;
   }
   
+  .shopitem{
+    flex-direction: column;
+  }
+
+  .quancount{
+    flex-direction: row;
+  }

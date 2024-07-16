@@ -9,16 +9,16 @@
                     <h6 class="d-inline headerh6">Edit Genre</h6>
                 </div>
                 <div class="card-body px-4 pt-3 pb-2">
-                    <form action="{{route('genre.update')}}" method="POST">
+                    <form action="{{route('genre.update' ,['id' => $genre->id])}}" method="POST">
                         @csrf
                         <div class="row">
                             <div class="col-md-10">
                                 <div class="form-group">
                                     <label for="example-text-input" class="form-control-label">Genre Name</label>
-                                    <input class="form-control" type="text" name="name">
+                                    <input class="form-control" type="text" name="name" value="{{$genre->name}}">
                                 </div>
                                 <button class="form-control btn bghalf me-3 w-10 text-nowrap text-white align-end"
-                                    type="submit">Create</button>
+                                    type="submit">Submit</button>
                             </div>
                         </div>
                     </form>

@@ -3,7 +3,7 @@
 @section('datashow')
 
 <div class="table-responsive p-0">
-    <table class="table align-items-center mb-0">
+    <table class="table align-items-center mb-0 mt-5">
         <thead>
             <tr>
                 <th class="text-uppercase text-secondary text-xxs font-weight-bolder opacity-7">Id</th>

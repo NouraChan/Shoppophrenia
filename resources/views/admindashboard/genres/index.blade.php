@@ -14,7 +14,7 @@
                 <div class="card-body px-0 pt-0 pb-2">
 
                     <div class="table-responsive p-0">
-                        <table class="table align-items-center mb-0">
+                        <table class="table align-items-center mb-0 mt-5">
                             <thead>
                                 <tr>
                                     <th class="text-uppercase text-secondary text-xxs font-weight-bolder opacity-7">Id
@@ -40,11 +40,11 @@
                                             <span class="text-secondary text-xs font-weight-bold">{{$genre->count}}</span>
                                         </td>
                                         <td class="align-middle">
-                                            <a href="#" class="text-secondary font-weight-bold text-xs"
+                                            <a href="{{route('genre.edit',['id' => $genre->id])}}" class="text-secondary font-weight-bold text-xs"
                                                 data-toggle="tooltip" data-original-title="Edit user">
                                                 Edit
                                             </a>
-                                            <a href="#" class="text-secondary font-weight-bold text-xs ms-4"
+                                            <a href="{{route('genre.destroy',['id' => $genre->id])}}" class="text-secondary font-weight-bold text-xs ms-4"
                                                 data-toggle="tooltip" data-original-title="Delete user">
                                                 Delete
                                             </a>
