@@ -9,23 +9,21 @@ use App\Models\Product;
 class ProductRepository implements IProductRepository
 {
 
-    public function createObject(ProductDTO $productDTO): bool
+    public function createObject($createProductRequest)
     {
-
-        if (Product::create($productDTO->toArray())) {
-
-            return true;
-        }
-        return false;
+        return Product::create($createProductRequest);
     }
-    public function updateObject(ProductDTO $productDTO, $id): bool
-    {  if (Product::edit($productDTO->toArray())) {
 
-        return true;
-    }
-    return false;
+    public function updateObject($createProductRequest, $id)
+    {
+        // if (Genre::edit($genreDTO->toArray())) {
 
+        //     return true;
+        // }
+        // return false;
     }
+
+
     public function getAll()
     {
         return Product::all();
@@ -36,5 +34,3 @@ class ProductRepository implements IProductRepository
     }
 
 }
-
-

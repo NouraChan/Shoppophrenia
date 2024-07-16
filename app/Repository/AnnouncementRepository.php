@@ -9,19 +9,19 @@ use App\Repository\Interface\IAnnouncementRepository;
 class AnnouncementRepository implements IAnnouncementRepository
 {
 
-    public function createObject(AnnouncementDTO $announcementDTO): bool
+    public function createObject($createAnnouncementRequest)
     {
 
-        if (Announcement::create($announcementDTO->toArray())) {
+        // if (Announcement::create($announcementDTO->toArray())) {
 
-            return true;
-        }
-        return false;
+        //     return true;
+        // }
+        // return false;
     }
 
-    public function updateObject(AnnouncementDTO $announcementDTO , $id) : bool {
+    public function updateObject($createAnnouncementRequest , $id) {
 
-        if (Announcement::update($announcementDTO->toArray())) {
+        if (Announcement::update($createAnnouncementRequest->toArray())) {
 
             return true;
         }
@@ -43,8 +43,6 @@ class AnnouncementRepository implements IAnnouncementRepository
 
     }
 
-    public function deleteObject($id): bool {
-
-    }
+  
 }
 

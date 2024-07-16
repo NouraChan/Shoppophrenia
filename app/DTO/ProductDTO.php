@@ -39,7 +39,7 @@ class ProductDTO extends Data {
             $img = $createProductRequest->product_img;
             $newimg = time() . $img->getClientOriginalName();
             $img->move('img/productimg/', $newimg);
-            $data['product_img'] = 'img/productimg/$newimg/' . $newimg;
+            $data['product_img'] = 'img/productimg/' . $newimg;
         }
         return $data;
     }

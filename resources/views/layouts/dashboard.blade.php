@@ -22,6 +22,7 @@
 </head>
 
 <body class="g-sidenav-show bg-gray-100">
+
 @include('sweetalert::alert', ['cdn' => "https://cdn.jsdelivr.net/npm/sweetalert2@9"])
 
   <div class="min-height-300 bg-primary position-absolute w-100 bghalf"></div>
@@ -75,7 +76,7 @@
           </a>
         </li>
         <li class="nav-item">
-          <a class="nav-link " href="./pages/rtl.html">
+          <a class="nav-link " href="{{route('orders.index')}}">
             <div
               class="icon icon-shape icon-sm border-radius-md text-center me-2 d-flex align-items-center justify-content-center">
               <i class="ni ni-world-2 text-danger text-sm opacity-10"></i>
@@ -83,34 +84,31 @@
             <span class="nav-link-text ms-1">Orders</span>
           </a>
         </li>
-        <li class="nav-item mt-3">
-          <h6 class="ps-4 ms-2 text-uppercase text-xs font-weight-bolder opacity-6">Account pages</h6>
-        </li>
         <li class="nav-item">
-          <a class="nav-link " href="./pages/profile.html">
-            <div
-              class="icon icon-shape icon-sm border-radius-md text-center me-2 d-flex align-items-center justify-content-center">
-              <i class="ni ni-single-02 text-dark text-sm opacity-10"></i>
-            </div>
-            <span class="nav-link-text ms-1">Profile</span>
-          </a>
-        </li>
-        <li class="nav-item">
-          <a class="nav-link " href="./pages/sign-in.html">
+          <a class="nav-link " href="{{route('announcement.index')}}">
             <div
               class="icon icon-shape icon-sm border-radius-md text-center me-2 d-flex align-items-center justify-content-center">
               <i class="ni ni-single-copy-04 text-warning text-sm opacity-10"></i>
             </div>
-            <span class="nav-link-text ms-1">Sign In</span>
+            <span class="nav-link-text ms-1">Announcement</span>
           </a>
         </li>
         <li class="nav-item">
-          <a class="nav-link " href="./pages/sign-up.html">
+          <a class="nav-link " href="#">
             <div
               class="icon icon-shape icon-sm border-radius-md text-center me-2 d-flex align-items-center justify-content-center">
               <i class="ni ni-collection text-info text-sm opacity-10"></i>
             </div>
-            <span class="nav-link-text ms-1">Sign Up</span>
+            <span class="nav-link-text ms-1">Gallery</span>
+          </a>
+        </li>
+        <li class="nav-item">
+          <a class="nav-link " href="{{route('settings')}}">
+            <div
+              class="icon icon-shape icon-sm border-radius-md text-center me-2 d-flex align-items-center justify-content-center">
+              <i class="ni ni-single-02 text-dark text-sm opacity-10"></i>
+            </div>
+            <span class="nav-link-text ms-1">Adminstration Settings</span>
           </a>
         </li>
       </ul>
@@ -141,7 +139,7 @@
             <li class="nav-item d-flex align-items-center">
               <a href="#" class="nav-link text-white font-weight-bold px-0"
                 id="dropdownMenuButtonuser" data-bs-toggle="dropdown" aria-expanded="false">
-                <img src="{{asset('../assets/img/marie.jpg')}}" class="rounded-circle" style="width: 30px; height: 30px;" alt="">
+                <img src="{{asset(Auth::user()->user_img)}}" class="rounded-circle" style="width: 30px; height: 30px;" alt="">
               </a>
               <ul class="dropdown-menu  dropdown-menu-end  px-2 py-3 me-sm-n4 m-0" aria-labelledby="dropdownMenuButtonuser">
               <li>

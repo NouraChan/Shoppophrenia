@@ -8,14 +8,30 @@ use App\Models\Wishlist;
 
 class WishlistsRepository implements IWishlistsRepository {
 
-    public function createWishlists(WishlistsDTO $wishlistsDTO) : bool
-    {
-        
-        if (Wishlist::create($wishlistsDTO->toArray())) {
 
-            return true;
-        }
-return false;
-}
+    public function createObject($createWishlistRequest)
+    {
+        return Wishlist::create($createWishlistRequest);
+    }
+
+    public function updateObject($createWishlistRequest, $id)
+    {
+        // if (Genre::edit($genreDTO->toArray())) {
+
+        //     return true;
+        // }
+        // return false;
+    }
+
+
+    public function getAll()
+    {
+        return Wishlist::all();
+    }
+    public function getObject($id): object
+    {
+        return Wishlist::findOrFail($id);
+    }
+
 }
 

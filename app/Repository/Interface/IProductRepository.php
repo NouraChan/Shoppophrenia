@@ -7,14 +7,13 @@ use App\DTO\ProductDTO;
 interface IProductRepository {
 
 
-    public function createObject(ProductDTO $productDTO) : bool;
+    public function createObject($createProductRequest) ;
 
-    public function updateObject(ProductDTO $productDTO , $id) : bool;
+    public function updateObject($createProductRequest , $id);
 
 
     public function getAll();
 
     public function getObject($id) : object;
-
 }
 

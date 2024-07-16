@@ -7,14 +7,29 @@ use App\Models\Shipment;
 
 class ShipmentRepository implements IShipmentRepository {
 
-    public function createShipment(ShipmentDTO $shipmentDTO) : bool
+
+    public function createObject($createShipmentRequest)
     {
-        
-        if (Shipment::create($shipmentDTO->toArray())) {
+        return Shipment::create($createShipmentRequest);
+    }
 
-            return true;
-        }
-return false;
-}
-}
+    public function updateObject($createShipmentRequest, $id)
+    {
+        // if (Genre::edit($genreDTO->toArray())) {
 
+        //     return true;
+        // }
+        // return false;
+    }
+
+
+    public function getAll()
+    {
+        return Shipment::all();
+    }
+    public function getObject($id): object
+    {
+        return Shipment::findOrFail($id);
+    }
+
+}

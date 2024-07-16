@@ -9,23 +9,23 @@ use App\DTO\CartDTO;
 class CartRepository implements ICartRepository
 {
 
-    public function createObject(CartDTO $cartDTO): bool
+    public function createObject($createCartRequest)
     {
 
-        if (Cart::create($cartDTO->toArray())) {
+        // if (Cart::create($cartDTO->toArray())) {
 
-            return true;
-        }
-        return false;
+        //     return true;
+        // }
+        // return false;
     }
 
-    public function updateObject(cartDTO $cartDTO, $id): bool
+    public function updateObject($createCartRequest, $id)
     {
-        if (Cart::edit($cartDTO->toArray())) {
+        // if (Cart::edit($cartDTO->toArray())) {
 
-            return true;
-        }
-        return false;
+        //     return true;
+        // }
+        // return false;
 
     }
     public function getAll()

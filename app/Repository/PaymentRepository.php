@@ -7,14 +7,28 @@ use App\Models\Payment;
 
 class PaymentRepository implements IPaymentRepository {
 
-    public function createPayment(PaymentDTO $paymentDTO) : bool
+    public function createObject($createPaymentRequest)
     {
-        
-        if (Payment::create($paymentDTO->toArray())) {
+        return Payment::create($createPaymentRequest);
+    }
 
-            return true;
-        }
-return false;
-}
-}
+    public function updateObject($createPaymentRequest, $id)
+    {
+        // if (Genre::edit($genreDTO->toArray())) {
 
+        //     return true;
+        // }
+        // return false;
+    }
+
+
+    public function getAll()
+    {
+        return Payment::all();
+    }
+    public function getObject($id): object
+    {
+        return Payment::findOrFail($id);
+    }
+
+}

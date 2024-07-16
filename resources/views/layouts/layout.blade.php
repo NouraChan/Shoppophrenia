@@ -8,6 +8,17 @@
     <meta content="" name="keywords">
     <meta content="" name="description">
 
+
+
+    <!--     Fonts and icons     -->
+    <link href="{{asset('https://fonts.googleapis.com/css?family=Open+Sans:300,400,600,700')}}" rel="stylesheet" />
+    <!-- Nucleo Icons -->
+    <link href="{{asset('../assets/css/nucleo-icons.css')}}" rel="stylesheet" />
+    <link href="{{asset('../assets/css/nucleo-svg.css')}}" rel="stylesheet" />
+    <!-- Font Awesome Icons -->
+    <script src="{{asset('https://kit.fontawesome.com/42d5adcbca.js')}}" crossorigin="anonymous"></script>
+    <link href="{{asset('../assets/css/nucleo-svg.css')}}" rel="stylesheet" />
+
     <!-- Google Web Fonts -->
     <link rel="preconnect" href="{{asset('https://fonts.googleapis.com')}}">
     <link rel="preconnect" href="{{asset('https://fonts.gstatic.com')}}" crossorigin>
@@ -39,6 +50,7 @@
     </div>
     <!-- Spinner End -->
 
+    @include('sweetalert::alert', ['cdn' => "https://cdn.jsdelivr.net/npm/sweetalert2@9"])
 
     <!-- Navbar start -->
     <div class="container-fluid fixed-top">
@@ -82,8 +94,9 @@
 
                                     <a class="dropdown-item p-3" href="{{route('settings')}}">Dashboard
                                     </a>
-                                    <a class="dropdown-item p-3" href="{{ route('logout') }}" onclick="event.preventDefault();
-                                                                 document.getElementById('logout-form').submit();">
+                                    <a class="dropdown-item p-3" href="{{ route('logout') }}"
+                                        onclick="event.preventDefault();
+                                                                                             document.getElementById('logout-form').submit();">
                                         Logout
                                     </a>
 
@@ -110,17 +123,17 @@
                 <div class="collapse navbar-collapse bg-white" id="navbarCollapse">
                     <div class="navbar-nav mx-auto">
                         <a href="{{route('home')}}" class="nav-item nav-link active">Home</a>
-                        <a href="shop.html" class="nav-item nav-link">Browse</a>
+                        <a href="#" class="nav-item nav-link">Browse</a>
                         <div class="nav-item dropdown">
-                            <a href="#" class="nav-link dropdown-toggle" data-bs-toggle="dropdown">Genres</a>
+                            <a href="#" class="nav-link dropdown-toggle" data-bs-toggle="dropdown">Books</a>
                             <div class="dropdown-menu m-0 bg-secondary rounded-0">
-                                <a href="cart.html" class="dropdown-item">Romance</a>
-                                <a href="chackout.html" class="dropdown-item">Mystery</a>
-                                <a href="testimonial.html" class="dropdown-item">Thriller</a>
-                                <a href="404.html" class="dropdown-item">More ...</a>
+                                <a href="#" class="dropdown-item">Educational</a>
+                                <a href="#" class="dropdown-item">Fictions</a>
+                                <a href="#" class="dropdown-item">Historical</a>
+                                <a href="#" class="dropdown-item">More ...</a>
                             </div>
                         </div>
-                        <a href="contact.html" class="nav-item nav-link">Announcements</a>
+                        <a href="#" class="nav-item nav-link">Announcements</a>
                     </div>
                     <div class="d-flex m-3 me-0">
                         <button
@@ -133,9 +146,20 @@
                                 class="position-absolute bg-secondary rounded-circle d-flex align-items-center justify-content-center text-dark px-1"
                                 style="top: -5px; left: 15px; height: 20px; min-width: 20px;">{{$total}}</span>
                         </a>
-                        <a href="{{route('user.show' , [Auth::user()->id])}}" class="my-auto">
-                            <i class="fas fa-user fa-2x"></i>
-                        </a>
+                        @guest
+                            @if (Route::has('login'))
+
+                                <a class="my-auto" href="{{ route('login') }}"> <i class="fas fa-user fa-2x"></i>
+                                </a>
+                            @endif
+
+                        @else
+                            <a href="{{route('user.show', [Auth::user()->id])}}" class="my-auto">
+                            <img src="{{asset(Auth::user()->user_img)}}" class="rounded-circle" style="width: 50px; height: 50px;" alt="">
+                            </a>
+
+                        @endguest
+
                     </div>
                 </div>
             </nav>
@@ -295,6 +319,89 @@
     <!-- Copyright End -->
 
 
+    <!-- Plugin -->
+
+
+    <div class="fixed-plugin">
+        <a class="fixed-plugin-button text-dark position-fixed px-3 py-2">
+            <i class="fa fa-shopping-cart py-2"> </i>
+        </a>
+        <div class="card shadow-lg">
+            <div class="card-header pb-0 pt-3 ">
+                <div class="float-start">
+                    <h5 class="mt-3 mb-0">Your Cart {{$total}}</h5>
+
+                </div>
+                <div class="float-end mt-4">
+                    <button class="btn btn-link text-dark p-0 fixed-plugin-close-button">
+                        <i class="fa fa-close"></i>
+                    </button>
+                </div>
+                <!-- End Toggle Button -->
+            </div>
+            <hr class="horizontal dark my-1">
+            <div class="card-body pt-sm-3 pt-0 overflow-auto">
+                <!-- Sidebar Backgrounds -->
+
+                <a href="javascript:void(0)" class="switch-trigger background-color">
+                    <div class="badge-colors my-2 text-start">
+                        @foreach ($products as $product)
+                            <tr>
+                                <th scope="row">
+                                    <div class="d-flex align-items-center">
+                                        <img src="{{$product->product_img}}" class="img-fluid me-5 rounded-circle"
+                                            style="width: 40px; height: 40px;" alt="">
+                                    </div>
+                                </th>
+                                <td>
+                                    <p class="mb-0 mt-4">{{$product->name}}</p>
+                                </td>
+                                <td>
+                                    <p class="mb-0 mt-4">{{$product->price}}$</p>
+                                </td>
+                                <td>
+                                    <div class="input-group quantity mt-4" style="width: 70px;">
+                                        <div class="input-group-btn">
+                                            <button class="btn btn-sm btn-minus rounded-circle bg-light border">
+                                                <i class="fa fa-minus"></i>
+                                            </button>
+                                        </div>
+                                        <input type="text" class="form-control form-control-sm text-center border-0"
+                                            value="1">
+                                        <div class="input-group-btn">
+                                            <button class="btn btn-sm btn-plus rounded-circle bg-light border">
+                                                <i class="fa fa-plus"></i>
+                                            </button>
+                                        </div>
+                                    </div>
+                                </td>
+                                <td>
+                                    <p class="mb-0 mt-4">{{$product->price}} $</p>
+                                </td>
+                                <td>
+                                    <button class="btn btn-md rounded-circle bg-light border mt-4">
+                                        <i class="fa fa-times text-danger"></i>
+                                    </button>
+                                </td>
+                            </tr>
+                        @endforeach               
+                    </div>
+                </a>
+                <!-- Sidenav Type -->
+
+                <!-- Navbar Fixed -->
+                <div class="d-flex my-3">
+                    <h6 class="mb-0">Grand Total</h6>
+
+                </div>
+                <hr class="horizontal dark my-sm-4">
+                <div class="mt-2 mb-5 ">
+                    <h6 class="mb-0"></h6>
+                </div>
+            </div>
+        </div>
+    </div>
+
 
     <!-- Back to Top -->
     <a href="#" class="btn btn-primary border-3 border-primary rounded-circle back-to-top"><i
@@ -310,6 +417,121 @@
 
     <!-- Template Javascript -->
     <script src="{{asset('js/main.js')}}"></script>
+
+
+
+
+
+
+
+
+
+
+
+
+
+    <!-- <script src="{{asset('../assets/js/core/popper.min.js')}}"></script> -->
+    <script src="{{asset('../assets/js/core/bootstrap.min.js')}}"></script>
+    <script src="{{asset('../assets/js/plugins/perfect-scrollbar.min.js')}}"></script>
+    <script src="{{asset('../assets/js/plugins/smooth-scrollbar.min.js')}}"></script>
+    <script src="{{asset('./assets/js/plugins/chartjs.min.js')}}"></script>
+    <script>
+        var ctx1 = document.getElementById("chart-line").getContext("2d");
+
+        var gradientStroke1 = ctx1.createLinearGradient(0, 230, 0, 50);
+
+        gradientStroke1.addColorStop(1, 'rgba(94, 114, 228, 0.2)');
+        gradientStroke1.addColorStop(0.2, 'rgba(94, 114, 228, 0.0)');
+        gradientStroke1.addColorStop(0, 'rgba(94, 114, 228, 0)');
+        new Chart(ctx1, {
+            type: "line",
+            data: {
+                labels: ["Apr", "May", "Jun", "Jul", "Aug", "Sep", "Oct", "Nov", "Dec"],
+                datasets: [{
+                    label: "Mobile apps",
+                    tension: 0.4,
+                    borderWidth: 0,
+                    pointRadius: 0,
+                    borderColor: "#5e72e4",
+                    backgroundColor: gradientStroke1,
+                    borderWidth: 3,
+                    fill: true,
+                    data: [50, 40, 300, 220, 500, 250, 400, 230, 500],
+                    maxBarThickness: 6
+
+                }],
+            },
+            options: {
+                responsive: true,
+                maintainAspectRatio: false,
+                plugins: {
+                    legend: {
+                        display: false,
+                    }
+                },
+                interaction: {
+                    intersect: false,
+                    mode: 'index',
+                },
+                scales: {
+                    y: {
+                        grid: {
+                            drawBorder: false,
+                            display: true,
+                            drawOnChartArea: true,
+                            drawTicks: false,
+                            borderDash: [5, 5]
+                        },
+                        ticks: {
+                            display: true,
+                            padding: 10,
+                            color: '#fbfbfb',
+                            font: {
+                                size: 11,
+                                family: "Open Sans",
+                                style: 'normal',
+                                lineHeight: 2
+                            },
+                        }
+                    },
+                    x: {
+                        grid: {
+                            drawBorder: false,
+                            display: false,
+                            drawOnChartArea: false,
+                            drawTicks: false,
+                            borderDash: [5, 5]
+                        },
+                        ticks: {
+                            display: true,
+                            color: '#ccc',
+                            padding: 20,
+                            font: {
+                                size: 11,
+                                family: "Open Sans",
+                                style: 'normal',
+                                lineHeight: 2
+                            },
+                        }
+                    },
+                },
+            },
+        });
+    </script>
+    <script>
+        var win = navigator.platform.indexOf('Win') > -1;
+        if (win && document.querySelector('#sidenav-scrollbar')) {
+            var options = {
+                damping: '0.5'
+            }
+            Scrollbar.init(document.querySelector('#sidenav-scrollbar'), options);
+        }
+    </script>
+    <!-- Github buttons -->
+    <script async defer src="{{asset('https://buttons.github.io/buttons.js')}}"></script>
+    <!-- Control Center for Soft Dashboard: parallax effects, scripts for the example pages etc -->
+    <script src="{{asset('../assets/js/argon-dashboard.min.js?v=2.0.4')}}"></script>
+
 </body>
 
 </html>

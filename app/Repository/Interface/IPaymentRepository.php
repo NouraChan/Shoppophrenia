@@ -7,15 +7,14 @@ use App\DTO\PaymentDTO;
 interface IPaymentRepository {
 
 
-    public function createObject(PaymentDTO $paymentDTO) : bool;
+    public function createObject($createPaymentRequest) ;
 
-    public function updateObject(PaymentDTO $paymentDTO , $id) : bool;
+    public function updateObject($createPaymentRequest , $id);
 
 
     public function getAll();
 
     public function getObject($id) : object;
-
-    public function deleteObject($id): bool;
+    // public function deleteObject($id): bool;
 }
 

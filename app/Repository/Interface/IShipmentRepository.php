@@ -7,15 +7,14 @@ use App\DTO\ShipmentDTO;
 interface IShipmentRepository {
 
 
-    public function createObject(ShipmentDTO $shipmentDTO) : bool;
+    public function createObject($createShipmentRequest) ;
 
-    public function updateObject(ShipmentDTO $shipmentDTO , $id) : bool;
+    public function updateObject($createShipmentRequest , $id);
 
 
     public function getAll();
 
     public function getObject($id) : object;
-
-    public function deleteObject($id): bool;
+    // public function deleteObject($id): bool;
 }
 

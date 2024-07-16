@@ -3,6 +3,7 @@
 namespace App\Http\Controllers;
 
 use App\Repository\Interface\ICartRepository;
+use App\Repository\Interface\IGenreRepository;
 use Illuminate\Http\Request;
 use App\Repository\Interface\IProductRepository;
 use App\DTO\ProductDTO;
@@ -13,12 +14,15 @@ use RealRashid\SweetAlert\Facades\Alert;
 class ProductController extends Controller
 {
     protected $productRepository;
+
+    protected $genreRepository;
     protected $cart;
 
-    public function __construct(IProductRepository $productRepository, ICartRepository $cartRepository)
+    public function __construct(IProductRepository $productRepository, ICartRepository $cartRepository, IGenreRepository $genreRepository)
     {
         $this->productRepository = $productRepository;
         $this->cartRepository = $cartRepository;
+        $this->genreRepository = $genreRepository;
     }
     /**
      * Display a listing of the resource.
@@ -39,7 +43,8 @@ class ProductController extends Controller
     
     public function create()
     {
-        return view('admindashboard.products.create');
+        $genres = $this->genreRepository->getAll();
+        return view('admindashboard.products.create' , ['genres' => $genres ]);
     }
 
     /**
@@ -47,11 +52,8 @@ class ProductController extends Controller
      */
     public function store(CreateProductRequest $createProductRequest)
     {
-       
         $product = ProductDTO::handleData($createProductRequest);
         $this->productRepository->createObject($product);
-        
-
         return redirect()->route('product.index');
 
     }

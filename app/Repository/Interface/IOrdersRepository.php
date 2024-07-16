@@ -7,15 +7,15 @@ use App\DTO\OrdersDTO;
 interface IOrdersRepository {
 
 
-    public function createObject(OrdersDTO $ordersDTO) : bool;
+    public function createObject($createOrderRequest) ;
 
-    public function updateObject(OrdersDTO $ordersDTO , $id) : bool;
+    public function updateObject($createOrderRequest , $id);
 
 
     public function getAll();
 
     public function getObject($id) : object;
 
-    public function deleteObject($id): bool;
+    // public function deleteObject($id): bool;
 }
 

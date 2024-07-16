@@ -14,13 +14,13 @@ class GenreRepository implements IGenreRepository
         return Genre::create($createGenreRequest);
     }
 
-    public function updateObject(GenreDTO $genreDTO, $id)
+    public function updateObject($createGenreRequest, $id)
     {
-        if (Genre::edit($genreDTO->toArray())) {
+        // if (Genre::edit($genreDTO->toArray())) {
 
-            return true;
-        }
-        return false;
+        //     return true;
+        // }
+        // return false;
     }
 
 

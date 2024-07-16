@@ -9,16 +9,47 @@
                     <h6 class="d-inline headerh6">Edit Product</h6>
                 </div>
                 <div class="card-body px-4 pt-3 pb-2">
-                    <form action="{{route('product.update')}}" method="POST">
+                    <form enctype="multipart/form-data" action="{{route('product.update' ,['id'=> $product->id])}}" method="POST">
                         @csrf
                         <div class="row">
-                            <div class="col-md-10">
-                                <div class="form-group">
-                                    <label for="example-text-input" class="form-control-label">Product Name</label>
-                                    <input class="form-control" type="text" name="name">
+                            <div class="col-md-10 row">
+                                <div class="form-group col-md-6">
+                                    <label for="name" class="form-control-label">Product Name</label>
+                                    <input class="form-control" type="text" name="name" value="{{$product->name}}">
+                                </div>
+                                <div class="form-group col-md-6">
+                                    <label for="genre" class="form-control-label">Genre</label>
+                                    <select name="genre_id" id="genre_id" class="form-control">
+                                        <option value="" disabled selected>Select...</option>
+                                        @foreach ($genres as $genre)
+                                            <option value="{{$genre->id}}">{{$genre->name}}</option>
+                                        @endforeach
+                                    </select>
+                                </div>
+                                <div class="form-group col-md-2">
+                                    <label for="stock" class="form-control-label">Stock</label>
+                                    <input class="form-control" type="text" name="stock" value="{{$product->stock}}">
+                                </div>
+                                <div class="form-group col-md-2">
+                                    <label for="price" class="form-control-label">Price <span
+                                            class="text-secondary opacity-5">($)</span></label>
+                                    <input class="form-control" type="text" name="price" value="{{$product->price}}">
+                                </div>
+                                <div class="form-group col-md-2">
+                                    <label for="product_img" class="form-control-label"><img class="mt-4"
+                                            src="{{asset('img/add-image.png')}}" alt="img"
+                                            style="width:50px; cursor:pointer;"></label>
+                                    <input class="form-control" type="file" name="product_img" hidden id="product_img">
+                                    <img src="{{$product->product_img}}" alt="">
+
+                                </div>
+                                <div class="form-group col-md-12">
+                                    <label for="example-text-input" class="form-control-label">Description</label>
+                                    <textarea class="form-control" name="description" style="resize:none;"
+                                        rows="5">{{$product->description}}</textarea>
                                 </div>
                                 <button class="form-control btn bghalf me-3 w-10 text-nowrap text-white align-end"
-                                    type="submit">Create</button>
+                                    type="submit">Submit</button>
                             </div>
                         </div>
                     </form>

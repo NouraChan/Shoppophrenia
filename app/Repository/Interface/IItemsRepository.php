@@ -7,15 +7,14 @@ use App\DTO\ItemsDTO;
 interface IItemsRepository {
 
 
-    public function createObject(ItemsDTO $itemsDTO) : bool;
+    public function createObject($createOrderitemtemRequest) ;
 
-    public function updateObject(ItemsDTO $itemsDTO , $id) : bool;
+    public function updateObject($createOrderitemRequest , $id);
 
 
     public function getAll();
 
     public function getObject($id) : object;
-
-    public function deleteObject($id): bool;
+    // public function deleteObject($id): bool;
 }
 

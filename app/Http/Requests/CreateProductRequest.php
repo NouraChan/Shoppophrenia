@@ -22,12 +22,13 @@ class CreateProductRequest extends FormRequest
     public function rules(): array
     {
         return [
-            'name' => 'required|string',
-            'description' => 'required|text',
-            'product_img' => 'required|string',
+            'name' => 'required',
+            'description' => 'required',
+            'product_img' => 'required',
             'stock' => 'required|integer',
-            'price' => 'required|decimal',
-            'rate' => 'required|integer',
+            'price' => 'required',
+            'rate' => 'nullable|integer',
+            'genre_id' => 'required',
 
         ];
     }

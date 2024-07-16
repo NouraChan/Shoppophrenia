@@ -15,7 +15,7 @@ class Product extends Model
         "stock",
         "price",
         "rate",
-        "category_id",
+        "genre_id",
         "product_img",
     ];
 }

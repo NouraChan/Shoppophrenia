@@ -7,7 +7,7 @@ interface IGenreRepository {
 
     public function createObject($createGenreRequest) ;
 
-    public function updateObject(GenreDTO $genreDTO , $id);
+    public function updateObject($createGenreRequest , $id);
 
 
     public function getAll();

@@ -7,14 +7,29 @@ use App\Models\Items;
 
 class ItemsRepository implements IItemsRepository {
 
-    public function createItem(ItemsDTO $itemDTO) : bool
+   
+    public function createObject($createOrderitemRequest)
     {
-        
-        if (Items::create($itemDTO->toArray())) {
+        return Items::create($createOrderitemRequest);
+    }
 
-            return true;
-        }
-return false;
-}
-}
+    public function updateObject($createOrderitemRequest, $id)
+    {
+        // if (Genre::edit($genreDTO->toArray())) {
 
+        //     return true;
+        // }
+        // return false;
+    }
+
+
+    public function getAll()
+    {
+        return Items::all();
+    }
+    public function getObject($id): object
+    {
+        return Items::findOrFail($id);
+    }
+
+}
