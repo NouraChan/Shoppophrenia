@@ -9,25 +9,27 @@ use Illuminate\Http\Request;
 use App\Repository\Interface\IGenreRepository;
 
 class GenreController extends Controller
-{    protected $genreRepository;
+{
+    protected $genreRepository;
 
     public function __construct(IGenreRepository $genreRepository)
     {
+        $this->middleware('auth');
+
         $this->genreRepository = $genreRepository;
     }
     /**
      * Display a listing of the resource.
      */
     public function index()
-
     {
         $genres = $this->genreRepository->getAll();
 
         return view('admindashboard.genres.index', ['genres' => $genres]);
-  
+
     }
 
-   
+
     /**
      * Show the form for creating a new resource.
      */
@@ -43,7 +45,7 @@ class GenreController extends Controller
     {
         $genre = GenreDTO::handleData($createGenreRequest);
         $this->genreRepository->createObject($genre);
-        
+
 
         return redirect()->route('genre.index');
 
@@ -62,22 +64,21 @@ class GenreController extends Controller
      */
     public function edit(string $id)
     {
-        
-        $genre =$this->genreRepository->getObject($id);
+
+        $genre = $this->genreRepository->getObject($id);
         return view('admindashboard.genres.edit', ['genre' => $genre]);
- 
+
     }
 
     /**
      * Update the specified resource in storage.
      */
-    public function update(Request $request, string $id)
+    public function update(CreateGenreRequest $createGenreRequest, $id)
     {
         $genre = $this->genreRepository->getObject($id);
-        $genre->update([
-            'title' => $request->title,
-            'description' => $request->description
-        ]);
+        $genreDTO = GenreDTO::handleData($createGenreRequest);
+        $updated = $this->genreRepository->updateObject($genre, $genreDTO);
+
 
         return redirect()->route('genre.index');
     }

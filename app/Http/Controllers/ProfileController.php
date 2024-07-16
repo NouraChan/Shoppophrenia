@@ -2,6 +2,7 @@
 
 namespace App\Http\Controllers;
 
+use App\DTO\UserDTO;
 use App\Http\Requests\CreateProfileRequest;
 use Illuminate\Http\Request;
 use App\Repository\Interface\IProfileRepository;
@@ -62,11 +63,10 @@ class ProfileController extends Controller
      */
     public function update(CreateProfileRequest $createProfileRequest, string $id)
     {
-        $genre = $this->profileRepository->getObject($id);
-        // $genre->update([
-        //     'title' => $request->title,
-        //     'description' => $request->description
-        // ]);
+        $profile = $this->profileRepository->getObject($id);
+        $profileDTO = UserDTO::handleData($createProfileRequest);
+        $updated = $this->profileRepository->updateObject($profile, $profileDTO);
+
 
         return redirect()->route('profile.index');
     }
@@ -76,5 +76,8 @@ class ProfileController extends Controller
      */
     public function destroy(string $id)
     {
+        $genre = $this->genreRepository->getObject($id);
+        $genre->delete();
+        return redirect()->back();
         }
 }

@@ -6,16 +6,13 @@ use App\DTO\OrdersDTO;
 
 interface IOrdersRepository {
 
-
     public function createObject($createOrderRequest) ;
 
-    public function updateObject($createOrderRequest , $id);
+    public function updateObject(object $order, $orderDTO) :object;
 
 
     public function getAll();
 
     public function getObject($id) : object;
-
-    // public function deleteObject($id): bool;
 }
 

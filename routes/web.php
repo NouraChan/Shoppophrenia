@@ -41,7 +41,7 @@ Route::get('/usersindex', [HomeController::class, 'usersIndex'])->name('usersind
 Route::get('/settings', [HomeController::class, 'index2'])->name('settings');
 Route::get('/genres', [HomeController::class, 'genreIndex'])->name('genres');
 Route::get('/products', [HomeController::class, 'productIndex'])->name('products');
-// Route::get('/settings', [HomeController::class, 'index2'])->name('settings');
+Route::get('/checkout', [HomeController::class, 'checkOut'])->name('checkout');
 // Route::get('/settings', [HomeController::class, 'index2'])->name('settings');
 
 
@@ -81,6 +81,8 @@ Route::group(['prefix' => 'cart'], function () {
     Route::post('/update{id}', [CartController::class, 'update'])->name('cart.update');
     Route::get('/edit{id}', [CartController::class, 'edit'])->name('cart.edit');
     Route::get('/add/{id}', [CartController::class , 'add'])->name('product.add');
+    Route::get('/remove/{id}', [CartController::class , 'remove'])->name('product.remove');
+
 
 
 });

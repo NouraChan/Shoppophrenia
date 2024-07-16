@@ -7,18 +7,17 @@ use App\Models\Orders;
 
 class OrdersRepository implements IOrdersRepository {
 
-    public function createObject($createOrderRequest)
+  
+    public function createObject($createorderRequest)
     {
-        return Orders::create($createOrderRequest);
+        return Orders::create($createorderRequest);
     }
 
-    public function updateObject($createOrderRequest, $id)
+    public function updateObject(object $order, $orderDTO) :object
     {
-        // if (Genre::edit($genreDTO->toArray())) {
 
-        //     return true;
-        // }
-        // return false;
+    return $order->update(['name' => $orderDTO['name']]);
+            
     }
 
 
@@ -30,5 +29,4 @@ class OrdersRepository implements IOrdersRepository {
     {
         return Orders::findOrFail($id);
     }
-
 }

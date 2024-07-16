@@ -4,23 +4,23 @@ namespace App\Repository;
 use App\Repository\Interface\IUserRepository;
 use App\Http\Requests\CreateUserRequest;
 use App\DTO\UserDTO;
+use App\Enums\role;
+use DB;
 use App\Models\User;
 
 class UserRepository implements IUserRepository {
 
 
-    public function createObject($createUserRequest)
+    public function createObject($createuserRequest)
     {
-        return User::create($createUserRequest);
+        return User::create($createuserRequest);
     }
 
-    public function updateObject($createUserRequest, $id)
+    public function updateObject(object $user, $userDTO) :object
     {
-        // if (Genre::edit($genreDTO->toArray())) {
 
-        //     return true;
-        // }
-        // return false;
+    return $user->update(['name' => $userDTO['name']]);
+            
     }
 
 

@@ -7,16 +7,13 @@ use App\DTO\WishlistsDTO;
 interface IWishlistsRepository {
 
 
-   
-    public function createObject($createWishlistRequest) ;
+    public function createObject($createwishlistRequest) ;
 
-    public function updateObject($createWishlistRequest , $id);
+    public function updateObject(object $wishlist, $wishlistDTO) :object;
 
 
     public function getAll();
 
     public function getObject($id) : object;
-
-    // public function deleteObject($id): bool;
 }
 

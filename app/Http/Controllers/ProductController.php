@@ -20,6 +20,7 @@ class ProductController extends Controller
 
     public function __construct(IProductRepository $productRepository, ICartRepository $cartRepository, IGenreRepository $genreRepository)
     {
+        $this->middleware('auth');
         $this->productRepository = $productRepository;
         $this->cartRepository = $cartRepository;
         $this->genreRepository = $genreRepository;
@@ -70,15 +71,21 @@ class ProductController extends Controller
      */
     public function edit(string $id)
     {
-        //
-    }
+
+        $product = $this->productRepository->getObject($id);
+        return view('admindashboard.products.edit', ['product' => $product]);    }
 
     /**
      * Update the specified resource in storage.
      */
-    public function update(Request $request, string $id)
+    public function update(CreateProductRequest $createproductRequest, string $id)
     {
-        //
+        $product = $this->productRepository->getObject($id);
+        $productDTO = ProductDTO::handleData($createproductRequest);
+        $updated = $this->productRepository->updateObject($product, $productDTO);
+
+
+        return redirect()->route('product.index');
     }
 
     /**

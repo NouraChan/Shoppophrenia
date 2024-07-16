@@ -8,18 +8,16 @@ use App\Models\Items;
 class ItemsRepository implements IItemsRepository {
 
    
-    public function createObject($createOrderitemRequest)
+    public function createObject($createitemRequest)
     {
-        return Items::create($createOrderitemRequest);
+        return Items::create($createitemRequest);
     }
 
-    public function updateObject($createOrderitemRequest, $id)
+    public function updateObject(object $item, $itemDTO) :object
     {
-        // if (Genre::edit($genreDTO->toArray())) {
 
-        //     return true;
-        // }
-        // return false;
+    return $item->update(['name' => $itemDTO['name']]);
+            
     }
 
 
@@ -31,5 +29,4 @@ class ItemsRepository implements IItemsRepository {
     {
         return Items::findOrFail($id);
     }
-
 }

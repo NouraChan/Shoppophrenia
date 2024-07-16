@@ -9,18 +9,16 @@ use App\Models\Product;
 class ProductRepository implements IProductRepository
 {
 
-    public function createObject($createProductRequest)
+    public function createObject($createproductRequest)
     {
-        return Product::create($createProductRequest);
+        return Product::create($createproductRequest);
     }
 
-    public function updateObject($createProductRequest, $id)
+    public function updateObject(object $product, $productDTO) :object
     {
-        // if (Genre::edit($genreDTO->toArray())) {
 
-        //     return true;
-        // }
-        // return false;
+    return $product->update(['name' => $productDTO['name']]);
+            
     }
 
 

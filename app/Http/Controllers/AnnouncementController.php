@@ -28,6 +28,7 @@ class AnnouncementController extends Controller
      * Show the form for creating a new resource.
      */
     public function __construct(IAnnouncementRepository $announcementRepository){
+        $this->middleware('auth');
         $this->announcementRepository = $announcementRepository;
     }
     /**
@@ -65,23 +66,29 @@ class AnnouncementController extends Controller
      */
     public function edit(string $id)
     {
-        return view('admindashboard.announcements.edit');
+        
+        $announcement = $this->announcementRepository->getObject($id);
+        return view('admindashboard.announcements.edit', ['announcement' => $announcement]);
     }
 
     /**
      * Update the specified resource in storage.
      */
-    public function update(Request $request, string $id)
+    public function update(CreateAnnouncementRequest $createAnnouncementRequest, string $id)
     {
-        //
-    }
+        $announcement = $this->announcementRepository->getObject($id);
+        $announcementDTO = AnnouncementDTO::handleData($createAnnouncementRequest);
+        $updated = $this->announcementRepository->updateObject($announcement, $announcementDTO);
+        
+
+        return redirect()->route('Announcement.index');    }
 
     /**
      * Remove the specified resource from storage.
      */
     public function destroy(string $id)
     {
-        $announcement = Announcement::findOrFail($id);
+        $announcement = $this->announcementRepository->getObject($id);
         $announcement->delete();
-        return redirect()->back();    }
-}
+        return redirect()->back();
+}}

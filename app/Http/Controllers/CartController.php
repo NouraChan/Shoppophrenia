@@ -97,16 +97,22 @@ class CartController extends Controller
 
     public function edit(string $id)
     {
-        //
-    }
+
+        $cart = $this->cartRepository->getObject($id);
+        return view('admindashboard.carts.edit', ['cart' => $cart]);    }
 
     /**
      * Update the specified resource in storage.
      */
-    public function update(Request $request, string $id)
+    public function update(CreateCartRequest $createCartRequest, string $id)
     {
-        //
-    }
+        $cart = $this->cartRepository->getObject($id);
+        $cartDTO = cartDTO::handleData($createCartRequest);
+        $updated = $this->cartRepository->updateObject($cart, $cartDTO);
+        
+
+        return redirect()->route('cart.index');    }
+    
 
     /**
      * Remove the specified resource from storage.
@@ -131,8 +137,13 @@ class CartController extends Controller
                 'items' => Cart::getDetails()->items,
             ]
         );
+    }
 
-
+    public function remove($id){
+        
+        Cart::removeItem($id);
+        Alert::success('success', 'Product removed to the cart');
+        return redirect()->back();
     }
 }
 

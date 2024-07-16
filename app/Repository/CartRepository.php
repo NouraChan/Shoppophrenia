@@ -9,32 +9,27 @@ use App\DTO\CartDTO;
 class CartRepository implements ICartRepository
 {
 
-    public function createObject($createCartRequest)
+   
+    public function createObject($createcartRequest)
     {
-
-        // if (Cart::create($cartDTO->toArray())) {
-
-        //     return true;
-        // }
-        // return false;
+        return Cart::create($createcartRequest);
     }
 
-    public function updateObject($createCartRequest, $id)
+    public function updateObject(object $cart, $cartDTO) :object
     {
-        // if (Cart::edit($cartDTO->toArray())) {
 
-        //     return true;
-        // }
-        // return false;
-
+    return $cart->update(['name' => $cartDTO['name']]);
+            
     }
+
+
     public function getAll()
     {
         return Cart::all();
     }
     public function getObject($id): object
     {
-        return cart::findOrFail($id);
+        return Cart::findOrFail($id);
     }
 }
 

@@ -61,15 +61,19 @@ class OrdersController extends Controller
      */
     public function edit(string $id)
     {
-        //
-    }
+
+        $order = $this->ordersRepository->getObject($id);
+        return view('admindashboard.orders.edit', ['order' => $order]);    }
 
     /**
      * Update the specified resource in storage.
      */
-    public function update(Request $request, string $id)
-    {
-        //
+    public function update(CreateOrderRequest $createOrderRequest, string $id)
+    { $order = $this->ordersRepository->getObject($id);
+        $orderDTO = OrdersDTO::handleData($createOrderRequest);
+        $updated = $this->ordersRepository->updateObject($order, $orderDTO);
+
+        return redirect()->route('orders.index');
     }
 
     /**
@@ -77,7 +81,7 @@ class OrdersController extends Controller
      */
     public function destroy(string $id)
     {
-        $department = Department::findOrFail($id);
-        $department->delete();
+        $order = $this->ordersRepository->getObject($id);
+        $order->delete();
         return redirect()->back();    }
 }

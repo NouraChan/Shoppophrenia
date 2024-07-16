@@ -8,18 +8,17 @@ use App\Models\Shipment;
 class ShipmentRepository implements IShipmentRepository {
 
 
-    public function createObject($createShipmentRequest)
+
+    public function createObject($createshipmentRequest)
     {
-        return Shipment::create($createShipmentRequest);
+        return Shipment::create($createshipmentRequest);
     }
 
-    public function updateObject($createShipmentRequest, $id)
+    public function updateObject(object $shipment, $shipmentDTO) :object
     {
-        // if (Genre::edit($genreDTO->toArray())) {
 
-        //     return true;
-        // }
-        // return false;
+    return $shipment->update(['name' => $shipmentDTO['name']]);
+            
     }
 
 

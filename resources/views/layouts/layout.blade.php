@@ -96,7 +96,7 @@
                                     </a>
                                     <a class="dropdown-item p-3" href="{{ route('logout') }}"
                                         onclick="event.preventDefault();
-                                                                                                 document.getElementById('logout-form').submit();">
+                                                                                                                 document.getElementById('logout-form').submit();">
                                         Logout
                                     </a>
 
@@ -341,72 +341,80 @@
                 <!-- End Toggle Button -->
             </div>
             <hr class="horizontal dark my-1">
-            <div class="card-body pt-sm-3 pt-0 overflow-auto">
+            <div class="card-body pt-sm-3 pt-0 overflow-auto flex-column d-flex">
                 <!-- Sidebar Backgrounds -->
+                <form action="{{route('cart.store')}}" enctype="multipart/form-data" method="post">
 
-                <a href="javascript:void(0)" class="switch-trigger background-color">
-                    <div class="badge-colors my-2 text-start">
-                        @foreach ($products as $product)
-                            <tr>
-                                <div class="d-flex shopitem">
-                                    <div class="d-flex gap-3 justify-content-between">
-                                        <th scope="row">
-                                            <div class="d-flex align-items-center ">
-                                                <img src="{{asset($product->product_img)}}"
-                                                    class="img-fluid rounded-circle" style="width: 40px; height: 40px;"
-                                                    alt="">
-                                            </div>
-                                        </th>
-                                        <td>
-                                            <p class="mb-0 mt-2">{{$product->name}}</p>
-                                        </td>
-                                        <td> 
-                                            <button class="btn btn-md rounded-circle bg-light border d-inline-block">
-                                                <i class="fa fa-times text-danger"></i>
-                                            </button></td>
-                                    </div>
-                                    <div class="d-flex gap-4">
-                                        <td>
-                                            <p class="mb-0 mt-4">{{$product->price}}$</p>
-                                        </td>
-                                        <td>
-                                            <div class="input-group quantity mt-4 d-flex quancount" style="width: 150px;">
-                                                <div class="input-group-btn">
-                                                    <button class="btn btn-sm btn-minus rounded-circle bg-light border">
-                                                        <i class="fa fa-minus"></i>
-                                                    </button>
+                    <a href="javascript:void(0)" class="switch-trigger background-color">
+                        <div class="badge-colors my-2 text-start">
+                            @foreach ($items as $hash => $item)
+                                <tr>
+                                    <div class="d-flex shopitem">
+                                        <div class="d-flex gap-3 justify-content-between">
+                                            <th scope="row">
+                                                <div class="d-flex align-items-center ">
+                                                    <img src="{{asset($item->product_img)}}"
+                                                        class="img-fluid rounded-circle" style="width: 40px; height: 40px;"
+                                                        alt="">
                                                 </div>
-                                                <input type="text" class="form-control form-control-sm text-center border-0"
-                                                    value="1">
-                                                <div class="input-group-btn">
-                                                    <button class="btn btn-sm btn-plus rounded-circle bg-light border">
-                                                        <i class="fa fa-plus"></i>
-                                                    </button>
+                                            </th>
+                                            <td>
+                                                <p class="mb-0 mt-2">{{$item->name}}</p>
+                                            </td>
+                                            <td>
+                                                <a href="{{route('product.remove', ['id' => $item->hash])}}"
+                                                    class="btn btn-md rounded-circle bg-light border d-inline-block">
+                                                    <i class="fa fa-times text-danger"></i>
+                                                </a>
+                                            </td>
+                                        </div>
+                                        <div class="d-flex gap-4">
+                                            <td>
+                                                <p class="mb-0 mt-4">{{$item->price}}$</p>
+                                            </td>
+                                            <td>
+                                                <div class="input-group quantity mt-4 d-flex quancount"
+                                                    style="width: 150px;">
+                                                    <div class="input-group-btn">
+                                                        <button type="button" class="btn btn-sm btn-minus rounded-circle bg-light border">
+                                                            <i class="fa fa-minus"></i>
+                                                        </button>
+                                                    </div>
+                                                    <input type="text"
+                                                        class="form-control form-control-sm text-center border-0" value="{{$item->quantity}}"
+                                                        name="quantity">
+                                                    <div class="input-group-btn">
+                                                        <button type="button" class="btn btn-sm btn-plus rounded-circle bg-light border">
+                                                            <i class="fa fa-plus"></i>
+                                                        </button>
+                                                    </div>
                                                 </div>
-                                            </div>
+                                            </td>
+                                        </div>
+
+                                        <td>
+                                            <p class="mb-0 mt-4">{{$item->price}} $</p>
                                         </td>
                                     </div>
 
-                                    <td>
-                                        <p class="mb-0 mt-4">{{$product->price}} $</p>
-                                    </td>
-                                </div>
+                                </tr>
+                            @endforeach    
+                                                        
+                        </div>
+                    </a>
+                    <!-- Sidenav Type -->
 
-                            </tr>
-                        @endforeach               
+                    <!-- Navbar Fixed -->
+                    <div class="d-flex my-3">
+                        <h6 class="mb-0">Grand Total</h6>
+
                     </div>
-                </a>
-                <!-- Sidenav Type -->
-
-                <!-- Navbar Fixed -->
-                <div class="d-flex my-3">
-                    <h6 class="mb-0">Grand Total</h6>
-
-                </div>
-                <hr class="horizontal dark my-sm-4">
-                <div class="mt-2 mb-5 ">
-                    <h6 class="mb-0"></h6>
-                </div>
+                    <hr class="horizontal dark my-sm-4">
+                    <div class="mt-2 mb-5 ">
+                        <h6 class="mb-0"></h6>
+                        <a role="submit" href="{{route('checkout')}}" class="btn btn-primary form-control">Proceed to Checkout</a>
+                    </div>
+                </form>
             </div>
         </div>
     </div>

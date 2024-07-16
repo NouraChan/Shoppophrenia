@@ -9,18 +9,16 @@ use App\Models\Wishlist;
 class WishlistsRepository implements IWishlistsRepository {
 
 
-    public function createObject($createWishlistRequest)
+    public function createObject($createwishlistRequest)
     {
-        return Wishlist::create($createWishlistRequest);
+        return Wishlist::create($createwishlistRequest);
     }
 
-    public function updateObject($createWishlistRequest, $id)
+    public function updateObject(object $wishlist, $wishlistDTO) :object
     {
-        // if (Genre::edit($genreDTO->toArray())) {
 
-        //     return true;
-        // }
-        // return false;
+    return $wishlist->update(['name' => $wishlistDTO['name']]);
+            
     }
 
 
@@ -32,6 +30,5 @@ class WishlistsRepository implements IWishlistsRepository {
     {
         return Wishlist::findOrFail($id);
     }
-
 }
 

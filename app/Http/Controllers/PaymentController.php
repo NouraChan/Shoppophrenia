@@ -61,15 +61,21 @@ class PaymentController extends Controller
      */
     public function edit(string $id)
     {
-        //
-    }
+
+        $payment = $this->paymentRepository->getObject($id);
+        return view('admindashboard.payments.edit', ['payment' => $payment]);    }
 
     /**
      * Update the specified resource in storage.
      */
-    public function update(Request $request, string $id)
+    public function update(CreatePaymentRequest $createPaymentRequest, string $id)
     {
-        //
+        $payment = $this->paymentRepository->getObject($id);
+        $paymentDTO = PaymentDTO::handleData($createPaymentRequest);
+        $updated = $this->paymentRepository->updateObject($payment, $paymentDTO);
+
+
+        return redirect()->route('payments.index');
     }
 
     /**
@@ -77,7 +83,7 @@ class PaymentController extends Controller
      */
     public function destroy(string $id)
     {
-        $department = Department::findOrFail($id);
-        $department->delete();
+        $payment = $this->paymentRepository->getObject($id);
+        $payment->delete();
         return redirect()->back();    }
 }

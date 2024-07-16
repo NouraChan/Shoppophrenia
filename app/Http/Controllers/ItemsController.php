@@ -61,15 +61,21 @@ class ItemsController extends Controller
      */
     public function edit(string $id)
     {
-        //
-    }
 
+        // $genre = $this->genreRepository->getObject($id);
+        // return view('admindashboard.genres.edit', ['genre' => $genre]);    }
+    }
     /**
      * Update the specified resource in storage.
      */
-    public function update(Request $request, string $id)
+    public function update(CreateOrderitemRequest $createOrderitemRequest, string $id)
     {
-        //
+        $item = $this->itemsRepository->getObject($id);
+        $itemDTO = ItemsDTO::handleData($createOrderitemRequest);
+        $updated = $this->itemsRepository->updateObject($item, $itemDTO);
+
+
+        return redirect()->route('Item.index');
     }
 
     /**
@@ -77,7 +83,7 @@ class ItemsController extends Controller
      */
     public function destroy(string $id)
     {
-        $department = Department::findOrFail($id);
-        $department->delete();
+        $item = $this->itemsRepository->getObject($id);
+        $item->delete();
         return redirect()->back();    }
 }

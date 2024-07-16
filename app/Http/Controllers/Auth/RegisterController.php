@@ -96,4 +96,22 @@ class RegisterController extends Controller
      
         ]);
     }
-}
+
+    protected function update(array $data){
+        return User::update([
+
+            'username' => $data['username'],
+            'email' => $data['email'],
+            'password' => Hash::make($data['password'],),
+            // 'first_name' => $data['first_name'],
+            // 'last_name'  => $data['last_name'],
+            // 'gender'  =>$data ['gender'],
+            // 'serial_key'  =>$data ['serial_key'],
+            // 'fullname'  => $data['fullname'],
+            // 'phone_number'  =>$data ['phone_number'],
+            // 'role'  => $data['role'],
+            // 'user_img'  =>$data ['user_img'],
+            // 'address' => $data['address'],
+        ]);
+        
+        }}

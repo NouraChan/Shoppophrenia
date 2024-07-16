@@ -6,10 +6,9 @@ use App\DTO\ProductDTO;
 
 interface IProductRepository {
 
-
     public function createObject($createProductRequest) ;
 
-    public function updateObject($createProductRequest , $id);
+    public function updateObject(object $product, $productDTO) :object;
 
 
     public function getAll();

@@ -15,6 +15,7 @@ class UserController extends Controller
 
     public function __construct(IUserRepository $userRepository)
     {
+        $this->middleware('auth');
         $this->userRepository = $userRepository;
     }
     /**
@@ -56,17 +57,18 @@ class UserController extends Controller
     {
         $user = $this->userRepository->getObject($id);
 
-        return view('profile.show',['user' => $user]);
+        return view('profile.show',['users' => $user]);
+
     }
 
     /**
      * Show the form for editing the specified resource.
      */
-    public function edit(User $user)
+    public function edit(string $id)
     {
-        $users = $this->userRepository->getAll();
-
-        return view('profile.edit',['users' => $users]);
+       
+        $user = $this->userRepository->getObject($id);
+        return view('admindashboard.users.edit', ['user' => $user]);
     }
 
     /**
@@ -82,6 +84,8 @@ class UserController extends Controller
      */
     public function destroy(string $id)
     {
-        //
+        $user = $this->userRepository->getObject($id);
+        $user->delete();
+        return redirect()->back();
     }
 }

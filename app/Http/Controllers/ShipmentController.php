@@ -62,15 +62,21 @@ class ShipmentController extends Controller
      */
     public function edit(string $id)
     {
-        //
-    }
+
+        $shipment = $this->shipmentRepository->getObject($id);
+        return view('admindashboard.shipments.edit', ['shipment' => $shipment]);    }
 
     /**
      * Update the specified resource in storage.
      */
-    public function update(Request $request, string $id)
+    public function update(CreateShipmentRequest $createShipmentRequest, string $id)
     {
-        //
+        $shipment = $this->shipmentRepository->getObject($id);
+        $shipmentDTO = ShipmentDTO::handleData($createShipmentRequest);
+        $updated = $this->shipmentRepository->updateObject($shipment, $shipmentDTO);
+
+
+        return redirect()->route('shipments.index');
     }
 
     /**
@@ -78,7 +84,7 @@ class ShipmentController extends Controller
      */
     public function destroy(string $id)
     {
-        $department = Department::findOrFail($id);
-        $department->delete();
-        return redirect()->back();    }
+        $shipment = $this->shipmentRepository->getObject($id);
+        $shipment->delete();
+        return redirect()->back();   }
 }

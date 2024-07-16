@@ -14,13 +14,11 @@ class GenreRepository implements IGenreRepository
         return Genre::create($createGenreRequest);
     }
 
-    public function updateObject($createGenreRequest, $id)
+    public function updateObject(object $genre, $genreDTO) :object
     {
-        // if (Genre::edit($genreDTO->toArray())) {
 
-        //     return true;
-        // }
-        // return false;
+    return $genre->update(['name' => $genreDTO['name']]);
+            
     }
 
 
@@ -33,13 +31,5 @@ class GenreRepository implements IGenreRepository
         return Genre::findOrFail($id);
     }
 
-    // public function deleteObject($id): bool
-    // {
-    //     if (Genre::destroy($id)) {
-
-    //         return true;
-    //     }
-    //     return false;
-    // }
 }
 

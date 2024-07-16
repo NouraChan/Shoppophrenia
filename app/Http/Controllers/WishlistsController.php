@@ -61,15 +61,21 @@ class WishlistsController extends Controller
      */
     public function edit(string $id)
     {
-        //
-    }
+
+        $wishlist = $this->wishlistsRepository->getObject($id);
+        return view('admindashboard.wishlists.edit', ['wishlist' => $wishlist]);    }
 
     /**
      * Update the specified resource in storage.
      */
-    public function update(Request $request, string $id)
+    public function update(CreateWishlistRequest $createWishlistRequest, string $id)
     {
-        //
+        $wishlist = $this->wishlistsRepository->getObject($id);
+        $wishlistDTO = wishlistsDTO::handleData($createWishlistRequest);
+        $updated = $this->wishlistsRepository->updateObject($wishlist, $wishlistDTO);
+
+
+        return redirect()->route('wishlist.index');
     }
 
     /**
@@ -77,7 +83,7 @@ class WishlistsController extends Controller
      */
     public function destroy(string $id)
     {
-        $department = Department::findOrFail($id);
-        $department->delete();
+        $wishlist = $this->wishlistsRepository->getObject($id);
+        $wishlist->delete();
         return redirect()->back();    }
 }
