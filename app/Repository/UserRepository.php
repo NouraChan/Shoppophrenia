@@ -49,4 +49,26 @@ class UserRepository implements IUserRepository
         return User::findOrFail($id);
     }
 
+
+    public function roleCall(role $role){
+
+        return User::where('role',$role->value)->get();
+
+    }
+    public function getCount(role $role){
+        return User::where('role',$role->value)->count();
+
+
+    }
+
+    public function limitedGet(int $limit){
+
+        return User::all()->limit(5);
+
+    }
+
+    public function getAuth(){
+        
+    }
+
 }

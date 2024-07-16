@@ -34,7 +34,6 @@ Auth::routes();
 
 //Navigation
 
-// Route::get('/', [HomeController::class, 'index'])->name('home');
 Route::get('/home', [HomeController::class, 'index2'])->name('dash');
 Route::get('/users', [HomeController::class, 'usersAffair'])->name('usersdash');
 Route::get('/usersindex', [HomeController::class, 'usersIndex'])->name('usersindex');
@@ -42,17 +41,6 @@ Route::get('/settings', [HomeController::class, 'index2'])->name('settings');
 Route::get('/genres', [HomeController::class, 'genreIndex'])->name('genres');
 Route::get('/products', [HomeController::class, 'productIndex'])->name('products');
 Route::get('/checkout', [HomeController::class, 'checkOut'])->name('checkout');
-// Route::get('/settings', [HomeController::class, 'index2'])->name('settings');
-
-
-
-// Route::group([ 'prefix' => 'profile'] , function(){
-//     Route::get('/show{id}', [ProfileController::class, 'show'])->name('profile.show');
-//     Route::post('/update{id}', [ProfileController::class, 'update'])->name('profile.update');
-//     Route::get('/edit/{id}', [ProfileController::class, 'edit'])->name('profile.edit');
-    
-// })->middleware('auth');
-
 
 
 
@@ -66,6 +54,7 @@ Route::group(['prefix' => 'user'], function () {
     Route::post('/update/{id}', [UserController::class, 'update'])->name('user.update');
     Route::get('/edit/{$id}', [UserController::class, 'edit'])->name('user.edit');
     Route::get('/show/{$id}', [UserController::class, 'show'])->name('user.show');
+    Route::get('/{id}', [UserController::class, 'toProfile'])->name('user.profile');
 
 })->middleware('auth');
 
@@ -177,10 +166,10 @@ Route::group(['prefix' => 'announcement'], function () {
 });
 
 
-Route::get('/user',function(){
+// Route::get('/user',function(){
     // $users = User::with('profile')->get();
     // dd($users);
-});
+// });
 
 
 // Route::get('/one-to-one',function(){

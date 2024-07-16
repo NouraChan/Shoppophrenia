@@ -57,7 +57,7 @@
             "dev-master": "10.x-dev"
         },
         "laravel": {
-            "dont-discover": []
+            "dont-discover": ["laravel/telescope"]
         }
     },
     "config": {

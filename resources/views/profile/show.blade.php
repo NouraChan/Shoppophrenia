@@ -8,9 +8,9 @@
             <div class="card">
                 <div class="card-header pb-0">
                     <div class="d-flex align-items-center">
-                        <!-- <p class="mb-0">Edit Profile</p> -->
-                        <!-- <a class="btn btn-primary btn-sm ms-auto"
-                            href="{{route('user.edit', ['id' => $user->id])}}">Edit</a> -->
+                        <p class="mb-0">Edit Profile</p>
+                        <a class="btn btn-primary btn-sm ms-auto"
+                            href="{{route('user.edit', [Auth::user()->id])}}">Edit</a>
                     </div>
                 </div>
                 <form action="" method="post">
@@ -26,7 +26,7 @@
                             </div>-->
                             <div class="col-md-12 justify-content-center">
                                 <div class="form-group text-center">
-                                    <label for="img" class="form-control-label"><img src="{{$user->user_img}}" alt="img"></label>
+                                    <label for="img" class="form-control-label"><img src="../{{$user->user_img}}" alt="img" style="cursor:pointer;"></label>
                                     <input class="form-control" type="file" readonly hidden id="img" name="user_img" readonly>
                                 </div>
                             </div> 

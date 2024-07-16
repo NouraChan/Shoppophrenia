@@ -10,14 +10,14 @@
                     <div class="row">
                         <div class="col-8">
                             <div class="numbers">
-                                <p class="text-sm mb-0 text-uppercase font-weight-bold">Today's Money</p>
+                                <p class="text-sm mb-0 text-uppercase font-weight-bold">Sellers</p>
                                 <h5 class="font-weight-bolder">
-                                    $53,000
+                                    {{$sellers}}
                                 </h5>
-                                <p class="mb-0">
+                                <!-- <p class="mb-0">
                                     <span class="text-success text-sm font-weight-bolder">+55%</span>
                                     since yesterday
-                                </p>
+                                </p> -->
                             </div>
                         </div>
                         <div class="col-4 text-end">
@@ -35,14 +35,14 @@
                     <div class="row">
                         <div class="col-8">
                             <div class="numbers">
-                                <p class="text-sm mb-0 text-uppercase font-weight-bold">Today's Users</p>
+                                <p class="text-sm mb-0 text-uppercase font-weight-bold">Customers</p>
                                 <h5 class="font-weight-bolder">
-                                    2,300
+                                    {{$customers}}
                                 </h5>
-                                <p class="mb-0">
+                                <!-- <p class="mb-0">
                                     <span class="text-success text-sm font-weight-bolder">+3%</span>
                                     since last week
-                                </p>
+                                </p> -->
                             </div>
                         </div>
                         <div class="col-4 text-end">
@@ -64,10 +64,10 @@
                                 <h5 class="font-weight-bolder">
                                     +3,462
                                 </h5>
-                                <p class="mb-0">
+                                <!-- <p class="mb-0">
                                     <span class="text-danger text-sm font-weight-bolder">-2%</span>
                                     since last quarter
-                                </p>
+                                </p> -->
                             </div>
                         </div>
                         <div class="col-4 text-end">
@@ -89,9 +89,9 @@
                                 <h5 class="font-weight-bolder">
                                     $103,430
                                 </h5>
-                                <p class="mb-0">
+                                <!-- <p class="mb-0">
                                     <span class="text-success text-sm font-weight-bolder">+5%</span> than last month
-                                </p>
+                                </p> -->
                             </div>
                         </div>
                         <div class="col-4 text-end">

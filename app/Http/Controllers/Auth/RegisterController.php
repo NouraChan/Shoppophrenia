@@ -8,6 +8,7 @@ use Illuminate\Foundation\Auth\RegistersUsers;
 use Illuminate\Support\Facades\Hash;
 use Illuminate\Support\Facades\Validator;
 use App\Repository\Interface\IUserRepository;
+use App\Enums\role;
 
 class RegisterController extends Controller
 {
@@ -21,6 +22,7 @@ class RegisterController extends Controller
     | provide this functionality without requiring any additional code.
     |
     */
+    protected $userRepository;
 
     use RegistersUsers;
 
@@ -38,13 +40,14 @@ class RegisterController extends Controller
      */
 
 
-     protected $userRepository;
 
     // public function __construct(IUserRepository $userRepository){
     //     $this->userRepository = $userRepository;
     // }
-    public function __construct()
+    public function __construct(IUserRepository $userRepository)
     {
+        $this->userRepository = $userRepository;
+
         $this->middleware('guest');
     }
 
@@ -80,29 +83,35 @@ class RegisterController extends Controller
      */
     protected function create(array $data)
     {
+        $customers = $this->userRepository->roleCall(role::CUSTOMER);
+        $sellers = $this->userRepository->roleCall(role::SELLER);
+        $admin = $this->userRepository->roleCall(role::ADMIN);
+
+
         return User::create([
             'username' => $data['username'],
             'email' => $data['email'],
-            'password' => Hash::make($data['password'],),
-            // 'first_name' => $data['first_name'],
-            // 'last_name'  => $data['last_name'],
-            // 'gender'  =>$data ['gender'],
-            // 'serial_key'  =>$data ['serial_key'],
-            // 'fullname'  => $data['fullname'],
-            // 'phone_number'  =>$data ['phone_number'],
-            // 'role'  => $data['role'],
-            // 'user_img'  =>$data ['user_img'],
-            // 'address' => $data['address'],
-     
+            'password' => Hash::make($data['password'], ),
+            'first_name' => $data['first_name'],
+            'last_name'  => $data['last_name'],
+            'gender'  =>$data ['gender'],
+            'serial_key'  =>$data ['serial_key'],
+            'fullname'  => $data['fullname'],
+            'phone_number'  =>$data ['phone_number'],
+            'role'  => $data['role'],
+            'user_img'  =>$data ['user_img'],
+            'address' => $data['address'],
+
         ]);
     }
 
-    protected function update(array $data){
+    protected function update(array $data)
+    {
         return User::update([
 
             'username' => $data['username'],
             'email' => $data['email'],
-            'password' => Hash::make($data['password'],),
+            'password' => Hash::make($data['password'], ),
             // 'first_name' => $data['first_name'],
             // 'last_name'  => $data['last_name'],
             // 'gender'  =>$data ['gender'],
@@ -113,5 +122,6 @@ class RegisterController extends Controller
             // 'user_img'  =>$data ['user_img'],
             // 'address' => $data['address'],
         ]);
-        
-        }}
+
+    }
+}

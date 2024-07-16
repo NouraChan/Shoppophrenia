@@ -154,7 +154,7 @@
                             @endif
 
                         @else
-                            <a href="{{route('user.show', [Auth::user()->id])}}" class="my-auto">
+                            <a href="{{route('user.profile', [Auth::user()->id])}}" class="my-auto">
                                 <img src="{{asset(Auth::user()->user_img)}}" class="rounded-circle"
                                     style="width: 50px; height: 50px;" alt="">
                             </a>

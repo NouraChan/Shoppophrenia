@@ -24,6 +24,7 @@ class UserDTO extends Data
         public string $birthday ,
 
     ) {
+        $this->password = bcrypt($password);
     }
 
     public static function handleData(CreateUserRequest $createUserRequest) : array

@@ -12,7 +12,7 @@
                 
                     </div>
                 </div>
-                <form action="{{route('profile.update')}}" method="post">
+                <form action="{{route('user.update' ,[Auth::user()->id])}}" method="post">
                     @csrf
                     <div class="card-body">
 
@@ -20,20 +20,20 @@
                         <div class="row">
                             <div class="col-md-12 justify-content-center">
                                 <div class="form-group text-center">
-                                    <label for="img" class="form-control-label"><img src="{{$profile->user_img}}" alt="img"></label>
+                                    <label for="img" class="form-control-label"><img src="{{$user->user_img}}" alt="img"></label>
                                     <input class="form-control" type="file" hidden id="img" name="user_img" >
                                 </div>
                             </div> 
                             <div class="col-md-6">
                                 <div class="form-group">
                                     <label for="example-text-input" class="form-control-label">First name</label>
-                                    <input class="form-control" type="text" value="{{$profile->first_name}}" name="first_name">
+                                    <input class="form-control" type="text" value="{{$user->first_name}}" name="first_name">
                                 </div>
                             </div>
                             <div class="col-md-6">
                                 <div class="form-group">
                                     <label for="example-text-input" class="form-control-label">Last name</label>
-                                    <input class="form-control" type="text" value="{{$profile->last_name}}" name="last_name">
+                                    <input class="form-control" type="text" value="{{$user->last_name}}" name="last_name">
                                 </div>
                             </div>
                             <div class="col-md-4">
@@ -58,7 +58,7 @@
                             <div class="col-md-4">
                                 <div class="form-group">
                                     <label for="birthday" class="form-control-label">Birthdate</label>
-                                  <input type="date" id="birthday" name="birthday" class="form-control" value="{{$profile->birthday}}">
+                                  <input type="date" id="birthday" name="birthday" class="form-control" value="{{$user->birthday}}">
                                 </div>
                             </div>
                         </div>
@@ -69,7 +69,7 @@
                                 <div class="form-group">
                                     <label for="example-text-input" class="form-control-label">Address</label>
                                     <input class="form-control" type="text" name="address"
-                                        value="{{$profile->address}}">
+                                        value="{{$user->address}}">
                                 </div>
                             </div>
 
@@ -77,7 +77,7 @@
                             <div class="col-md-4">
                                 <div class="form-group">
                                     <label for="example-text-input" class="form-control-label">Phone number</label>
-                                    <input class="form-control" type="text" value="{{$profile->phone_number}}" name="phone_number">
+                                    <input class="form-control" type="text" value="{{$user->phone_number}}" name="phone_number">
                                 </div>
                             </div>
                         </div>

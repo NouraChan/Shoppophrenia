@@ -143,7 +143,7 @@
               </a>
               <ul class="dropdown-menu  dropdown-menu-end  px-2 py-3 me-sm-n4 m-0" aria-labelledby="dropdownMenuButtonuser">
               <li>
-                  <a class="dropdown-item border-radius-md" href="{{route('user.show' , [Auth::user()->id])}}">Profile
+                  <a class="dropdown-item border-radius-md" href="{{route('user.profile' , [Auth::user()->id])}}">Profile
                   </a>
                 </li>
               <li>

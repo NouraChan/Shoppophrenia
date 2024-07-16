@@ -9,7 +9,5 @@ enum role : string {
   case SELLER = 'seller';
   case ADMIN = 'admin';
 
-
-
 }
 

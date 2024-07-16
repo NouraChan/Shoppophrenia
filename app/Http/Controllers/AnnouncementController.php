@@ -13,6 +13,11 @@ class AnnouncementController extends Controller
 {
 
     protected $announcementRepository;
+
+    public function __construct(IAnnouncementRepository $announcementRepository){
+        $this->middleware('auth');
+        $this->announcementRepository = $announcementRepository;
+    }
     /**
      * Display a listing of the resource.
      */
@@ -27,10 +32,7 @@ class AnnouncementController extends Controller
     /**
      * Show the form for creating a new resource.
      */
-    public function __construct(IAnnouncementRepository $announcementRepository){
-        $this->middleware('auth');
-        $this->announcementRepository = $announcementRepository;
-    }
+    
     /**
      * Show the form for creating a new resource.
      */
