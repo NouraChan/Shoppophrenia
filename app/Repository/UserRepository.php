@@ -1,6 +1,7 @@
 <?php
 
 namespace App\Repository;
+
 use App\Repository\Interface\IUserRepository;
 use App\Http\Requests\CreateUserRequest;
 use App\DTO\UserDTO;
@@ -8,7 +9,8 @@ use App\Enums\role;
 use DB;
 use App\Models\User;
 
-class UserRepository implements IUserRepository {
+class UserRepository implements IUserRepository
+{
 
 
     public function createObject($createuserRequest)
@@ -16,11 +18,25 @@ class UserRepository implements IUserRepository {
         return User::create($createuserRequest);
     }
 
-    public function updateObject(object $user, $userDTO) :object
+    public function updateObject(object $user, $userDTO): object
     {
 
-    return $user->update(['name' => $userDTO['name']]);
-            
+        return $user->update([
+            'username' => $userDTO['username'],
+            'fullname' => $userDTO['fullname'],
+            'first_name' => $userDTO['first_name'],
+            'last_name' => $userDTO['last_name'],
+            'birthday' => $userDTO['birthday'],
+            'address' => $userDTO['address'],
+            'role' => $userDTO['role'],
+            'gender' => $userDTO['gender'],
+            'email' => $userDTO['email'],
+            'password' => $userDTO['password'],
+            'phone_number' => $userDTO['phone_number'],
+            'user_img' => $userDTO['user_img'],
+            'serial_key' => $userDTO['serial_key'],
+        ]);
+
     }
 
 

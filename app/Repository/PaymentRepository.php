@@ -1,22 +1,29 @@
 <?php
 
 namespace App\Repository;
+
 use App\Repository\Interface\IPaymentRepository;
 use App\DTO\PaymentDTO;
 use App\Models\Payment;
 
-class PaymentRepository implements IPaymentRepository {
+class PaymentRepository implements IPaymentRepository
+{
 
     public function createObject($createpaymentRequest)
     {
         return Payment::create($createpaymentRequest);
     }
 
-    public function updateObject(object $payment, $paymentDTO) :object
+    public function updateObject(object $payment, $paymentDTO): object
     {
 
-    return $payment->update(['name' => $paymentDTO['name']]);
-            
+        return $payment->update([
+            'method' => $paymentDTO['method'],
+            'amount' => $paymentDTO['amount'],
+            'customer_id' => $paymentDTO['customer_id'],
+            'payment_date' => $paymentDTO['payment_date'],
+        ]);
+
     }
 
 

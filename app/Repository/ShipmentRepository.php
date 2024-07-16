@@ -1,11 +1,13 @@
 <?php
 
 namespace App\Repository;
+
 use App\Repository\Interface\IShipmentRepository;
 use App\DTO\ShipmentDTO;
 use App\Models\Shipment;
 
-class ShipmentRepository implements IShipmentRepository {
+class ShipmentRepository implements IShipmentRepository
+{
 
 
 
@@ -14,11 +16,17 @@ class ShipmentRepository implements IShipmentRepository {
         return Shipment::create($createshipmentRequest);
     }
 
-    public function updateObject(object $shipment, $shipmentDTO) :object
+    public function updateObject(object $shipment, $shipmentDTO): object
     {
 
-    return $shipment->update(['name' => $shipmentDTO['name']]);
-            
+        return $shipment->update([
+            'country' => $shipmentDTO['country'],
+            'city' => $shipmentDTO['city'],
+            'customer_id' => $shipmentDTO['customer_id'],
+            'shipment_date' => $shipmentDTO['shipment_date'],
+            'address' => $shipmentDTO['address'],
+        ]);
+
     }
 
 

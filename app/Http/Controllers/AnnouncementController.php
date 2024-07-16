@@ -18,7 +18,7 @@ class AnnouncementController extends Controller
      */
     public function index()
     {
-        $announcements = Announcement::all();
+        $announcements = $this->announcementRepository->getAll();
 
         return view('admindashboard.announcements.index', ['announcements' => $announcements]);
   

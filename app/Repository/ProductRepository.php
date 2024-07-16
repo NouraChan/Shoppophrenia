@@ -14,11 +14,19 @@ class ProductRepository implements IProductRepository
         return Product::create($createproductRequest);
     }
 
-    public function updateObject(object $product, $productDTO) :object
+    public function updateObject(object $product, $productDTO): object
     {
 
-    return $product->update(['name' => $productDTO['name']]);
-            
+        return $product->update([
+            'name' => $productDTO['name'],
+            'description' => $productDTO['description'],
+            'rate' => $productDTO['rate'],
+            'stock' => $productDTO['stock'],
+            'price' => $productDTO['price'],
+            'genre_id' => $productDTO['genre_id'],
+            'product_img' => $productDTO['product_img'],
+        ]);
+
     }
 
 

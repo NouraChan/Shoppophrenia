@@ -15,7 +15,7 @@ class ReviewController extends Controller
      */
     public function index()
     {
-        $reviews = Review::all();
+        $reviews = $this->reviewRepository->getAll();
 
         return view('admindashboard.reviews.index', ['reviews' => $reviews]);
   

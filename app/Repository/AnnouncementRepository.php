@@ -14,11 +14,16 @@ class AnnouncementRepository implements IAnnouncementRepository
         return Announcement::create($createannouncementRequest);
     }
 
-    public function updateObject(object $announcement, $announcementDTO) :object
+    public function updateObject(object $announcement, $announcementDTO): object
     {
 
-    return $announcement->update(['name' => $announcementDTO['name']]);
-            
+        return $announcement->update([
+            'title' => $announcementDTO['title'],
+            'image' => $announcementDTO['content'],
+            'user_id' => $announcementDTO['user_id'],
+            'content' => $announcementDTO['content'],
+        ]);
+
     }
 
 
@@ -31,6 +36,6 @@ class AnnouncementRepository implements IAnnouncementRepository
         return Announcement::findOrFail($id);
     }
 
-  
+
 }
 

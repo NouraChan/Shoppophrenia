@@ -1,11 +1,13 @@
 <?php
 
 namespace App\Repository;
-use App\Repository\Interface\ IReviewRepository;
+
+use App\Repository\Interface\IReviewRepository;
 use App\Models\Review;
 
 
-class ReviewRepository implements IReviewRepository {
+class ReviewRepository implements IReviewRepository
+{
 
 
     public function createObject($createReviewRequest)
@@ -13,11 +15,16 @@ class ReviewRepository implements IReviewRepository {
         return Review::create($createReviewRequest);
     }
 
-    public function updateObject(object $review, $reviewDTO) :object
+    public function updateObject(object $review, $reviewDTO): object
     {
 
-    return $review->update(['name' => $reviewDTO['name']]);
-            
+        return $review->update([
+            'content' => $reviewDTO['content'],
+            'rate' => $reviewDTO['rate'],
+            'customer_id' => $reviewDTO['customer_id'],
+            'product_id' => $reviewDTO['product_id'],
+        ]);
+
     }
 
 
