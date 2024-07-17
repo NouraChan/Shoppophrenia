@@ -8,7 +8,7 @@ interface IProductRepository {
 
     public function createObject($createProductRequest) ;
 
-    public function updateObject(object $product, $productDTO) :object;
+    public function updateObject(object $product, $productDTO) ;
 
 
     public function getAll();

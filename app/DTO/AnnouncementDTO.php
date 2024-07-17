@@ -23,7 +23,7 @@ class AnnouncementDTO extends Data {
         $data = [
             'title' => $createAnnouncementRequest->title,
             'content' => $createAnnouncementRequest->content,
-            'image' => $createAnnouncementRequest->image,
+            // 'image' => $createAnnouncementRequest->image,
             'user_id' => $createAnnouncementRequest->user_id,
                ];
 

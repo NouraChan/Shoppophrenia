@@ -82,7 +82,7 @@ class UserController extends Controller
         $userDTO = UserDTO::handleData($createUserRequest);
         $updated = $this->userRepository->updateObject($user, $userDTO);
 
-        return redirect()->route('profile.show');
+        return redirect()->route('user.profile',Auth::id());
         
     }
 

@@ -8,7 +8,7 @@ interface IShipmentRepository {
 
     public function createObject($createShipmentRequest) ;
 
-    public function updateObject(object $shipment, $shipmentDTO) :object;
+    public function updateObject(object $shipment, $shipmentDTO) ;
 
 
     public function getAll();

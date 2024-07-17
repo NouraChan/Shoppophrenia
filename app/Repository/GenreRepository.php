@@ -15,7 +15,7 @@ class GenreRepository implements IGenreRepository
         return Genre::create($createGenreRequest);
     }
 
-    public function updateObject(object $genre, $genreDTO): object
+    public function updateObject(object $genre, $genreDTO)
     {
 
         return $genre->update(['name' => $genreDTO['name']]);

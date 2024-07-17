@@ -15,7 +15,7 @@ class OrdersRepository implements IOrdersRepository
         return Orders::create($createorderRequest);
     }
 
-    public function updateObject(object $order, $orderDTO): object
+    public function updateObject(object $order, $orderDTO)
     {
 
         return $order->update([

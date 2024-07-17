@@ -9,7 +9,7 @@ interface IWishlistRepository {
 
     public function createObject($createwishlistRequest) ;
 
-    public function updateObject(object $wishlist, $wishlistDTO) :object;
+    public function updateObject(object $wishlist, $wishlistDTO) ;
 
 
     public function getAll();

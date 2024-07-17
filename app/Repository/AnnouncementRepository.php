@@ -14,7 +14,7 @@ class AnnouncementRepository implements IAnnouncementRepository
         return Announcement::create($createannouncementRequest);
     }
 
-    public function updateObject(object $announcement, $announcementDTO): object
+    public function updateObject(object $announcement, $announcementDTO)
     {
 
         return $announcement->update([

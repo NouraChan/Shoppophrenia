@@ -8,7 +8,7 @@ interface IOrdersRepository {
 
     public function createObject($createOrderRequest) ;
 
-    public function updateObject(object $order, $orderDTO) :object;
+    public function updateObject(object $order, $orderDTO);
 
 
     public function getAll();

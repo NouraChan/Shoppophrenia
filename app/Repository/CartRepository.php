@@ -15,7 +15,7 @@ class CartRepository implements ICartRepository
         return Cart::create($createcartRequest);
     }
 
-    public function updateObject(object $cart, $cartDTO): object
+    public function updateObject(object $cart, $cartDTO)
     {
 
         return $cart->update([

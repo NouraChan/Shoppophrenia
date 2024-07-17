@@ -8,7 +8,7 @@ interface IItemsRepository {
 
     public function createObject($createitemRequest) ;
 
-    public function updateObject(object $item, $itemDTO) :object;
+    public function updateObject(object $item, $itemDTO);
 
 
     public function getAll();

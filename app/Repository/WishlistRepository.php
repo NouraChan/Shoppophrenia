@@ -16,7 +16,7 @@ class WishlistRepository implements IWishlistRepository
         return Wishlist::create($createwishlistRequest);
     }
 
-    public function updateObject(object $wishlist, $wishlistDTO): object
+    public function updateObject(object $wishlist, $wishlistDTO)
     {
 
         return $wishlist->update([

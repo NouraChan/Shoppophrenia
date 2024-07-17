@@ -15,7 +15,7 @@ class ReviewRepository implements IReviewRepository
         return Review::create($createReviewRequest);
     }
 
-    public function updateObject(object $review, $reviewDTO): object
+    public function updateObject(object $review, $reviewDTO)
     {
 
         return $review->update([

@@ -8,7 +8,7 @@ interface IPaymentRepository {
 
     public function createObject($createPaymentRequest) ;
 
-    public function updateObject(object $payment, $paymentDTO) :object;
+    public function updateObject(object $payment, $paymentDTO) ;
 
 
     public function getAll();

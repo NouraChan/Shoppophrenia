@@ -18,7 +18,7 @@ class UserRepository implements IUserRepository
         return User::create($createuserRequest);
     }
 
-    public function updateObject(object $user, $userDTO): bool
+    public function updateObject(object $user, $userDTO)
     {
 
         return $user->update([

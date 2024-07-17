@@ -16,7 +16,7 @@ class ShipmentRepository implements IShipmentRepository
         return Shipment::create($createshipmentRequest);
     }
 
-    public function updateObject(object $shipment, $shipmentDTO): object
+    public function updateObject(object $shipment, $shipmentDTO)
     {
 
         return $shipment->update([

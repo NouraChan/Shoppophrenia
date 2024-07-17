@@ -30,7 +30,7 @@ class ProductDTO extends Data {
             'stock' => $createProductRequest->stock,
             'price' => $createProductRequest->price,
             'rate' => $createProductRequest->rate,
-            'product_img' => $createProductRequest->product_img,
+            // 'product_img' => $createProductRequest->product_img,
             'genre_id' => $createProductRequest->genre_id,
            
         ];

@@ -9,7 +9,7 @@ interface IGenreRepository {
 
     public function createObject($createGenreRequest) ;
 
-    public function updateObject(object $genre, $genreDTO) :object;
+    public function updateObject(object $genre, $genreDTO) ;
 
 
     public function getAll();

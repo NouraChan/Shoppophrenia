@@ -15,7 +15,7 @@ class ItemsRepository implements IItemsRepository
         return Items::create($createitemRequest);
     }
 
-    public function updateObject(object $item, $itemDTO): object
+    public function updateObject(object $item, $itemDTO)
     {
 
         return $item->update([

@@ -9,7 +9,7 @@ interface IAnnouncementRepository {
     
     public function createObject($createAnnouncementRequest) ;
 
-    public function updateObject(object $announcement, $announcementDTO) :object;
+    public function updateObject(object $announcement, $announcementDTO);
 
 
     public function getAll();

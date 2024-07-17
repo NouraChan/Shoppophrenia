@@ -38,7 +38,7 @@ class UserDTO extends Data
             'password' => $createUserRequest->password,
             'role' => $createUserRequest->role,
             'gender' => $createUserRequest->gender,
-            'user_img' => $createUserRequest->user_img,
+            // 'user_img' => $createUserRequest->user_img,
             'address' => $createUserRequest->address,
             'serial_key' => $createUserRequest->serial_key,
             'phone_number' => $createUserRequest->phone_number,

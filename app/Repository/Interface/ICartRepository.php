@@ -8,7 +8,7 @@ interface ICartRepository {
 
     public function createObject($createCartRequest) ;
 
-    public function updateObject(object $cart, $cartDTO) :object;
+    public function updateObject(object $cart, $cartDTO) ;
 
 
     public function getAll();

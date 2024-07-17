@@ -14,7 +14,7 @@ class PaymentRepository implements IPaymentRepository
         return Payment::create($createpaymentRequest);
     }
 
-    public function updateObject(object $payment, $paymentDTO): object
+    public function updateObject(object $payment, $paymentDTO)
     {
 
         return $payment->update([

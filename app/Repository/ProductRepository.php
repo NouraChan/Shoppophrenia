@@ -14,7 +14,7 @@ class ProductRepository implements IProductRepository
         return Product::create($createproductRequest);
     }
 
-    public function updateObject(object $product, $productDTO): object
+    public function updateObject(object $product, $productDTO)
     {
 
         return $product->update([
