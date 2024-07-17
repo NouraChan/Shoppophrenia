@@ -42,8 +42,9 @@ class HomeController extends Controller
     {
         $customers = $this->userRepository->getCount(role::CUSTOMER);
         $sellers = $this->userRepository->getCount(role::SELLER);
+        $user = $this->userRepository->getAll();
 
-        return view('admindashboard.home', ['customers' => $customers , 'sellers' => $sellers]);
+        return view('admindashboard.home', ['customers' => $customers , 'sellers' => $sellers ,'user' => $user]);
     }
 
     public function usersAffair()
