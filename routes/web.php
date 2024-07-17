@@ -8,7 +8,7 @@ use App\Http\Controllers\OrdersController;
 use App\Http\Controllers\PaymentController;
 use App\Http\Controllers\ProductController;
 use App\Http\Controllers\ShipmentController;
-use App\Http\Controllers\WishlistsController;
+use App\Http\Controllers\WishlistController;
 use App\Http\Controllers\ItemsController; 
 use App\Http\Controllers\AnnouncementController;
 use Illuminate\Support\Facades\Auth;
@@ -52,11 +52,12 @@ Route::group(['prefix' => 'user'], function () {
     Route::get('/destroy/{id}', [UserController::class, 'destroy'])->name('user.destroy');
     Route::get('/index', [UserController::class, 'index'])->name('user.index');
     Route::post('/update/{id}', [UserController::class, 'update'])->name('user.update');
-    Route::get('/edit/{$id}', [UserController::class, 'edit'])->name('user.edit');
-    Route::get('/show/{$id}', [UserController::class, 'show'])->name('user.show');
-    Route::get('/{id}', [UserController::class, 'toProfile'])->name('user.profile');
+    Route::get('/show/{id}', [UserController::class, 'show'])->name('user.show');
 
 })->middleware('auth');
+
+    Route::get('profile/show/{id}', [UserController::class, 'toProfile'])->name('user.profile');
+    Route::get('profile/edit/{id}', [UserController::class, 'edit'])->name('user.edit');
 
 
 
@@ -79,12 +80,12 @@ Route::group(['prefix' => 'cart'], function () {
 //Items group
 
 Route::group(['prefix' => 'orderitems'], function () {
-    Route::get('/create', [ItemsController::class, 'create'])->name('orderitems.create');
-    Route::post('/store', [ItemsController::class, 'store'])->name('orderitems.store');
-    Route::get('/destroy{id}', [ItemsController::class, 'destroy'])->name('orderitems.destroy');
-    Route::get('/index', [ItemsController::class, 'index'])->name('orderitems.index');
-    Route::post('/update{id}', [ItemsController::class, 'update'])->name('orderitems.update');
-    Route::get('/edit{id}', [ItemsController::class, 'edit'])->name('orderitems.edit');
+    Route::get('/create', [ItemsController::class, 'create'])->name('items.create');
+    Route::post('/store', [ItemsController::class, 'store'])->name('items.store');
+    Route::get('/destroy{id}', [ItemsController::class, 'destroy'])->name('items.destroy');
+    Route::get('/index', [ItemsController::class, 'index'])->name('items.index');
+    Route::post('/update{id}', [ItemsController::class, 'update'])->name('items.update');
+    Route::get('/edit{id}', [ItemsController::class, 'edit'])->name('items.edit');
 });
 
 //Product group
@@ -113,12 +114,12 @@ Route::group(['prefix' => 'orders'], function () {
 //Wishlists group
 
 Route::group(['prefix' => 'wishlists'], function () {
-    Route::get('/create', [WishlistsController::class, 'create'])->name('wishlists.create');
-    Route::post('/store', [WishlistsController::class, 'store'])->name('wishlists.store');
-    Route::get('/destroy{id}', [WishlistsController::class, 'destroy'])->name('wishlists.destroy');
-    Route::get('/index', [WishlistsController::class, 'index'])->name('wishlists.index');
-    Route::post('/update{id}', [WishlistsController::class, 'update'])->name('wishlists.update');
-    Route::get('/edit{id}', [WishlistsController::class, 'edit'])->name('wishlists.edit');
+    Route::get('/create', [WishlistController::class, 'create'])->name('wishlist.create');
+    Route::post('/store', [WishlistController::class, 'store'])->name('wishlist.store');
+    Route::get('/destroy{id}', [WishlistController::class, 'destroy'])->name('wishlist.destroy');
+    Route::get('/index', [WishlistController::class, 'index'])->name('wishlist.index');
+    Route::post('/update{id}', [WishlistController::class, 'update'])->name('wishlist.update');
+    Route::get('/edit{id}', [WishlistController::class, 'edit'])->name('wishlist.edit');
 });
 
 //Genre group

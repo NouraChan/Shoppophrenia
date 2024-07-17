@@ -26,35 +26,35 @@
                             </div>-->
                             <div class="col-md-12 justify-content-center">
                                 <div class="form-group text-center">
-                                    <label for="img" class="form-control-label"><img src="../{{$user->user_img}}" alt="img" style="cursor:pointer;"></label>
-                                    <input class="form-control" type="file" readonly hidden id="img" name="user_img" readonly>
+                                    <label for="img" class="form-control-label"><img src="../../{{$user->user_img}}" alt="img" style="cursor:pointer;"></label>
+                                    <input class="form-control" type="file" readonly hidden id="img" name="user_img" readonly disabled>
                                 </div>
                             </div> 
                             <div class="col-md-6">
                                 <div class="form-group">
                                     <label for="example-text-input" class="form-control-label">First name</label>
-                                    <input class="form-control" type="text" value="{{$user->first_name}}" readonly name="first_name">
+                                    <input class="form-control" type="text" value="{{$user->first_name}}" readonly name="first_name" disabled>
                                 </div>
                             </div>
                             <div class="col-md-6">
                                 <div class="form-group">
                                     <label for="example-text-input" class="form-control-label">Last name</label>
-                                    <input class="form-control" type="text" value="{{$user->last_name}}" readonly name="last_name">
+                                    <input class="form-control" type="text" value="{{$user->last_name}}" readonly name="last_name" disabled>
                                 </div>
                             </div>
                             <div class="col-md-4">
-                                <div class="form-group">
-                                    <label for="gender" class="form-control-label">Gender</label>
+                                <div class="form-group mt-3">
+                                    <label for="gender" class="form-control-label d-block">Gender</label>
                                     <label for="male">Male</label>
-                                    <input type="radio" name="gender" id="male" value="male" class="form-control"> <span> </span>
+                                    <input type="radio" name="gender" id="male" value="male" class="me-8" disabled> <span> </span>
                                     <label for="female">Female</label>
-                                    <input type="radio" name="gender" id="female" value="female" class="form-control">
+                                    <input type="radio" name="gender" id="female" value="female" class="" disabled>
                                 </div>
                             </div>
                             <div class="col-md-4">
                                 <div class="form-group">
                                     <label for="role" class="form-control-label">Role</label>
-                                    <select name="role" id="user_role" readonly class="form-control">
+                                    <select name="role" id="user_role" readonly class="form-control" disabled>
                                         <option value="customer" selected>Customer</option>
                                         <option value="seller" selected>Seller</option>
                                         <option value="admin" selected>Admin</option>
@@ -64,7 +64,7 @@
                             <div class="col-md-4">
                                 <div class="form-group">
                                     <label for="birthday" class="form-control-label">Birthdate</label>
-                                  <input type="date" id="birthday" name="birthday" class="form-control" readonly value="{{$user->birthday}}">
+                                  <input type="date" id="birthday" name="birthday" disabled class="form-control" readonly value="{{$user->birthday}}">
                                 </div>
                             </div>
                         </div>
@@ -75,7 +75,7 @@
                                 <div class="form-group">
                                     <label for="example-text-input" class="form-control-label">Address</label>
                                     <input class="form-control" type="text" name="address"readonly
-                                        value="{{$user->address}}">
+                                        value="{{$user->address}}" disabled>
                                 </div>
                             </div>
 
@@ -83,7 +83,7 @@
                             <div class="col-md-4">
                                 <div class="form-group">
                                     <label for="example-text-input" class="form-control-label">Phone number</label>
-                                    <input class="form-control" type="text" value="{{$user->phone_number}}" name="phone_number" readonly>
+                                    <input class="form-control" type="text" value="{{$user->phone_number}}" name="phone_number" readonly disabled>
                                 </div>
                             </div>
                         </div>

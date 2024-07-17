@@ -1,10 +1,10 @@
 <?php
 
 namespace App\Repository\Interface;
-use App\DTO\WishlistsDTO;
+use App\DTO\WishlistDTO;
 
 
-interface IWishlistsRepository {
+interface IWishlistRepository {
 
 
     public function createObject($createwishlistRequest) ;

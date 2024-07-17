@@ -2,7 +2,7 @@
 
 namespace App\Http\Controllers;
 
-use App\Http\Requests\CreateOrderitemRequest;
+use App\Http\Requests\CreateItemRequest;
 use App\Models\Items;
 use Illuminate\Http\Request;
 use App\Repository\Interface\IItemsRepository;
@@ -37,10 +37,10 @@ class ItemsController extends Controller
     /**
      * Store a newly created resource in storage.
      */
-    public function store(CreateOrderitemRequest $createOrderitemRequest)
+    public function store(CreateItemRequest $createItemRequest)
     {
        
-        $items = ItemsDTO::handleData($createOrderitemRequest);
+        $items = ItemsDTO::handleData($createItemRequest);
         $this->itemsRepository->createObject($items);
         
 
@@ -68,10 +68,10 @@ class ItemsController extends Controller
     /**
      * Update the specified resource in storage.
      */
-    public function update(CreateOrderitemRequest $createOrderitemRequest, string $id)
+    public function update(CreateItemRequest $createItemRequest, string $id)
     {
         $item = $this->itemsRepository->getObject($id);
-        $itemDTO = ItemsDTO::handleData($createOrderitemRequest);
+        $itemDTO = ItemsDTO::handleData($createItemRequest);
         $updated = $this->itemsRepository->updateObject($item, $itemDTO);
 
 

@@ -5,7 +5,7 @@ namespace App\Providers;
 use Illuminate\Support\ServiceProvider;
 use App\Repository\AnnouncementRepository;
 use App\Repository\CartRepository;
-use App\Repository\WishlistsRepository;
+use App\Repository\WishlistRepository;
 use App\Repository\UserRepository;
 use App\Repository\ProductRepository;
 use App\Repository\ShipmentRepository;
@@ -15,7 +15,7 @@ use App\Repository\ItemsRepository;
 use App\Repository\GenreRepository;
 use App\Repository\Interface\IAnnouncementRepository;
 use App\Repository\Interface\ICartRepository;
-use App\Repository\Interface\IWishlistsRepository;
+use App\Repository\Interface\IWishlistRepository;
 use App\Repository\Interface\IUserRepository;
 use App\Repository\Interface\IProductRepository;
 use App\Repository\Interface\IShipmentRepository;
@@ -47,7 +47,7 @@ class AppServiceProvider extends ServiceProvider
         $this->app->singleton(IPaymentRepository::class,PaymentRepository::class);
         $this->app->singleton(IShipmentRepository::class,ShipmentRepository::class);
         $this->app->singleton(IItemsRepository::class,ItemsRepository::class);
-        $this->app->singleton(IWishlistsRepository::class,WishlistsRepository::class);
+        $this->app->singleton(IWishlistRepository::class,WishlistRepository::class);
         $this->app->singleton(IReviewRepository::class,ReviewRepository::class);
 
 

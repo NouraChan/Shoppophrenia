@@ -9,6 +9,7 @@ use App\Repository\Interface\IUserRepository;
 use App\DTO\UserDTO;
 use Auth;
 use App\Models\User;
+use RealRashid\SweetAlert\Facades\Alert;
 
 class UserController extends Controller
 {
@@ -80,6 +81,8 @@ class UserController extends Controller
         $user = $this->userRepository->getObject(Auth::id());
         $userDTO = UserDTO::handleData($createUserRequest);
         $updated = $this->userRepository->updateObject($user, $userDTO);
+
+        return redirect()->route('profile.show');
         
     }
 

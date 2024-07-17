@@ -52,8 +52,8 @@ class UserDTO extends Data
             $img->move('img/userimg/', $newimg);
             $data['user_img'] = 'img/userimg/' . $newimg;
         }
-
         return $data;
+
 
     }
 

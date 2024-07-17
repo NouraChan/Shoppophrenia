@@ -16,7 +16,7 @@ interface IGenreRepository {
 
     public function getObject($id) : object;
 
-    public function getCount(Genres $genres):string ;
+    // public function getCount(Genres $genres):string ;
 
 
 }

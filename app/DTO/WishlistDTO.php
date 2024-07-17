@@ -5,7 +5,7 @@ namespace App\DTO;
 use Spatie\LaravelData\Data;
 use App\Http\Requests\CreateWishlistRequest;
 
-class WishlistsDTO extends Data {
+class WishlistDTO extends Data {
 
     public function __construct(
         public string $title ,

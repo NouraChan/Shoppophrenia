@@ -24,30 +24,22 @@ class GenreController extends Controller
      */
     public function index()
     {
-        $fiction = $this->genreRepository->getCount(Genres::FICTION);
-        $drama = $this->genreRepository->getCount(Genres::DRAMA);
-        $romance = $this->genreRepository->getCount(Genres::ROMANCE);
-        $horror = $this->genreRepository->getCount(Genres::HORROR);
-        $historical = $this->genreRepository->getCount(Genres::HISTORICAL);
-        $educational = $this->genreRepository->getCount(Genres::EDUCATIONAL);
-        $biography = $this->genreRepository->getCount(Genres::BIOGRAPHY);
-        $scifi = $this->genreRepository->getCount(Genres::SCIFI);
-        $mystery = $this->genreRepository->getCount(Genres::MYSTERY);
+        // $fiction = $this->genreRepository->getCount(Genres::FICTION);
+        // $drama = $this->genreRepository->getCount(Genres::DRAMA);
+        // $romance = $this->genreRepository->getCount(Genres::ROMANCE);
+        // $horror = $this->genreRepository->getCount(Genres::HORROR);
+        // $historical = $this->genreRepository->getCount(Genres::HISTORICAL);
+        // $educational = $this->genreRepository->getCount(Genres::EDUCATIONAL);
+        // $biography = $this->genreRepository->getCount(Genres::BIOGRAPHY);
+        // $scifi = $this->genreRepository->getCount(Genres::SCIFI);
+        // $mystery = $this->genreRepository->getCount(Genres::MYSTERY);
 
 
         $genres = $this->genreRepository->getAll();
 
         return view('admindashboard.genres.index', [
             'genres' => $genres,
-            'fiction' => $fiction,
-            'drama' => $drama,
-            'romance' => $romance,
-            'horror' => $horror,
-            'historical' => $historical,
-            'educational' => $educational,
-            'scifi' => $scifi,
-            'biography' => $biography,
-            'mystery' => $mystery,
+           
         ]);
 
     }

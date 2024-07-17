@@ -18,11 +18,10 @@ class UserRepository implements IUserRepository
         return User::create($createuserRequest);
     }
 
-    public function updateObject(object $user, $userDTO): object
+    public function updateObject(object $user, $userDTO): bool
     {
 
         return $user->update([
-            'username' => $userDTO['username'],
             'fullname' => $userDTO['fullname'],
             'first_name' => $userDTO['first_name'],
             'last_name' => $userDTO['last_name'],
@@ -30,8 +29,6 @@ class UserRepository implements IUserRepository
             'address' => $userDTO['address'],
             'role' => $userDTO['role'],
             'gender' => $userDTO['gender'],
-            'email' => $userDTO['email'],
-            'password' => $userDTO['password'],
             'phone_number' => $userDTO['phone_number'],
             'user_img' => $userDTO['user_img'],
             'serial_key' => $userDTO['serial_key'],
@@ -68,7 +65,7 @@ class UserRepository implements IUserRepository
     }
 
     public function getAuth(){
-        
+
     }
 
 }

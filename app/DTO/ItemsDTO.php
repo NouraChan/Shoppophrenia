@@ -2,7 +2,7 @@
 
 namespace App\DTO;
 
-use App\Http\Requests\CreateOrderitemRequest;
+use App\Http\Requests\CreateItemRequest;
 use Spatie\LaravelData\Data;
 
 class ItemsDTO extends Data {
@@ -17,14 +17,14 @@ class ItemsDTO extends Data {
 
     }
 
-    public static function handleData(CreateOrderitemRequest $createOrderitemRequest)
+    public static function handleData(CreateItemRequest $createItemRequest)
     {
 
         $data = [
-            'quantity' => $createOrderitemRequest->quantity,
-            'price' => $createOrderitemRequest->price,
-            'product_id' => $createOrderitemRequest->product_id,
-            'order_id' => $createOrderitemRequest->order_id,
+            'quantity' => $createItemRequest->quantity,
+            'price' => $createItemRequest->price,
+            'product_id' => $createItemRequest->product_id,
+            'order_id' => $createItemRequest->order_id,
            
         ];
 

@@ -12,7 +12,7 @@ interface IUserRepository
 
     public function createObject($createUserRequest);
 
-    public function updateObject(object $user, $userDTO): object;
+    public function updateObject(object $user, $userDTO): bool;
 
 
     public function getAll();

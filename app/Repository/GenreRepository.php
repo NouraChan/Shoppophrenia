@@ -32,10 +32,10 @@ class GenreRepository implements IGenreRepository
         return Genre::findOrFail($id);
     }
 
-    public function getCount(Genres $genres): string
-    {
-        return Genre::where('genre', $genres->value)->count();
-    }
+    // public function getCount(Genres $genre): string
+    // {
+    //     return Genre::where('genre', $genre->value)->count();
+    // }
 
 }
 

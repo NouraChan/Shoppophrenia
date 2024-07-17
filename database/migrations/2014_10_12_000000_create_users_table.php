@@ -23,7 +23,7 @@ return new class extends Migration
             $table->string('phone_number')->nullable();
             $table->enum('role',['customer','seller','admin'])->default('customer');
             $table->enum('gender', ['male', 'female'])->nullable();
-            $table->string('user_img')->nullable();
+            $table->string('user_img')->nullable()->default('img/userimg/avatar.jpg');
             $table->string('address')->nullable(); 
             $table->string('birthday')->nullable();
             $table->string('serial_key')->nullable();

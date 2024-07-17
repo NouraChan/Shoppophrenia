@@ -3,25 +3,25 @@
 namespace App\Http\Controllers;
 
 use Illuminate\Http\Request;
-use App\Repository\Interface\IWishlistsRepository;
-use App\DTO\WishlistsDTO;
+use App\Repository\Interface\IWishlistRepository;
+use App\DTO\WishlistDTO;
 use App\Http\Requests\CreateWishlistRequest;
 
-class WishlistsController extends Controller
+class WishlistController extends Controller
 { 
-    protected $wishlistsRepository;
+    protected $wishlistRepository;
 
-    public function __construct(IWishlistsRepository $wishlistsRepository){
-        $this->wishlistsRepository = $wishlistsRepository;
+    public function __construct(IWishlistRepository $wishlistRepository){
+        $this->wishlistRepository = $wishlistRepository;
     }
     /**
      * Display a listing of the resource.
      */
     public function index()
     {
-        $wishlists = $this->wishlistsRepository->getAll();
+        $wishlist = $this->wishlistRepository->getAll();
 
-        return view('admindashboard.wishlists.index', ['wishlists' => $wishlists]);
+        return view('admindashboard.wishlist.index', ['wishlist' => $wishlist]);
   
     }
 
@@ -31,7 +31,7 @@ class WishlistsController extends Controller
    
     public function create()
     {
-        return view('admindashboard.wishlists.create');
+        return view('admindashboard.wishlist.create');
     }
 
     /**
@@ -40,11 +40,11 @@ class WishlistsController extends Controller
     public function store(CreateWishlistRequest $createWishlistRequest)
     {
        
-        $wishlists = WishlistsDTO::handleData($createWishlistRequest);
-        $this->wishlistsRepository->createObject($wishlists);
+        $wishlist = WishlistDTO::handleData($createWishlistRequest);
+        $this->wishlistRepository->createObject($wishlist);
         
 
-        return redirect()->route('wishlists.index');
+        return redirect()->route('wishlist.index');
 
     }
 
@@ -62,17 +62,17 @@ class WishlistsController extends Controller
     public function edit(string $id)
     {
 
-        $wishlist = $this->wishlistsRepository->getObject($id);
-        return view('admindashboard.wishlists.edit', ['wishlist' => $wishlist]);    }
+        $wishlist = $this->wishlistRepository->getObject($id);
+        return view('admindashboard.wishlist.edit', ['wishlist' => $wishlist]);    }
 
     /**
      * Update the specified resource in storage.
      */
     public function update(CreateWishlistRequest $createWishlistRequest, string $id)
     {
-        $wishlist = $this->wishlistsRepository->getObject($id);
-        $wishlistDTO = wishlistsDTO::handleData($createWishlistRequest);
-        $updated = $this->wishlistsRepository->updateObject($wishlist, $wishlistDTO);
+        $wishlist = $this->wishlistRepository->getObject($id);
+        $wishlistDTO = wishlistDTO::handleData($createWishlistRequest);
+        $updated = $this->wishlistRepository->updateObject($wishlist, $wishlistDTO);
 
 
         return redirect()->route('wishlist.index');
@@ -83,7 +83,7 @@ class WishlistsController extends Controller
      */
     public function destroy(string $id)
     {
-        $wishlist = $this->wishlistsRepository->getObject($id);
+        $wishlist = $this->wishlistRepository->getObject($id);
         $wishlist->delete();
         return redirect()->back();    }
 }
