@@ -47,6 +47,7 @@ class CartRepository implements ICartRepository
             'items' => Cart::name('shopping')->getDetails()->items,
             'sub_total' => Cart::name('shopping')->getSubtotal(),
             'grand_total' => Cart::name('shopping')->getTotal(),
+            // 'taxes_count' => Cart::name('shopping')
         ];
 
     return $cart;

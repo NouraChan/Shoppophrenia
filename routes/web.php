@@ -49,17 +49,17 @@ Route::get('/results', [SearchController::class ,'searchProduct'])->name('search
 //User group
 
 Route::group(['prefix' => 'user'], function () {
-    Route::get('/create', [UserController::class, 'create'])->name('user.create');
-    Route::post('/store', [UserController::class, 'store'])->name('user.store');
+    // Route::get('/create', [UserController::class, 'create'])->name('user.create');
+    // Route::post('/store', [UserController::class, 'store'])->name('user.store');
     Route::get('/destroy/{id}', [UserController::class, 'destroy'])->name('user.destroy');
     Route::get('/index', [UserController::class, 'index'])->name('user.index');
     Route::post('/update/{id}', [UserController::class, 'update'])->name('user.update');
     Route::get('/show/{id}', [UserController::class, 'show'])->name('user.show');
-
-})->middleware('auth');
-
-    Route::get('profile/show/{id}', [UserController::class, 'toProfile'])->name('user.profile');
+ Route::get('profile/show/{id}', [UserController::class, 'toProfile'])->name('user.profile');
     Route::get('profile/edit/{id}', [UserController::class, 'edit'])->name('user.edit');
+});
+
+   
 
 
 
@@ -68,10 +68,10 @@ Route::group(['prefix' => 'user'], function () {
 Route::group(['prefix' => 'cart'], function () {
     Route::get('/create', [CartController::class, 'create'])->name('cart.create');
     Route::post('/store', [CartController::class, 'store'])->name('cart.store');
-    Route::get('/destroy{id}', [CartController::class, 'destroy'])->name('cart.destroy');
+    Route::get('/destroy/{id}', [CartController::class, 'destroy'])->name('cart.destroy');
     Route::get('/index', [CartController::class, 'index'])->name('cart.index');
-    Route::post('/update{id}', [CartController::class, 'update'])->name('cart.update');
-    Route::get('/edit{id}', [CartController::class, 'edit'])->name('cart.edit');
+    Route::post('/update/{id}', [CartController::class, 'update'])->name('cart.update');
+    Route::get('/edit/{id}', [CartController::class, 'edit'])->name('cart.edit');
     Route::get('/add/{id}', [CartController::class , 'add'])->name('product.add');
     Route::get('/remove/{id}', [CartController::class , 'remove'])->name('product.remove');
     Route::get('/show/{id}', [CartController::class , 'show'])->name('cart.show');
@@ -125,7 +125,7 @@ Route::group(['prefix' => 'orders'], function () {
 Route::group(['prefix' => 'wishlists'], function () {
     Route::get('/create', [WishlistController::class, 'create'])->name('wishlist.create');
     Route::post('/store', [WishlistController::class, 'store'])->name('wishlist.store');
-    Route::get('/destroy{id}', [WishlistController::class, 'destroy'])->name('wishlist.destroy');
+    Route::get('/destroy/{id}', [WishlistController::class, 'destroy'])->name('wishlist.destroy');
     Route::get('/index', [WishlistController::class, 'index'])->name('wishlist.index');
     Route::post('/update/{id}', [WishlistController::class, 'update'])->name('wishlist.update');
     Route::get('/edit/{id}', [WishlistController::class, 'edit'])->name('wishlist.edit');

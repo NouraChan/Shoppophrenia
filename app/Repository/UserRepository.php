@@ -6,7 +6,7 @@ use App\Repository\Interface\IUserRepository;
 use App\Http\Requests\CreateUserRequest;
 use App\DTO\UserDTO;
 use App\Enums\role;
-use DB;
+use Auth;
 use App\Models\User;
 
 class UserRepository implements IUserRepository
@@ -65,6 +65,8 @@ class UserRepository implements IUserRepository
     }
 
     public function getAuth(){
+        return User::findOrFail(Auth::id());
+
 
     }
 

@@ -26,7 +26,7 @@
                             </div>-->
                             <div class="col-md-12 justify-content-center">
                                 <div class="form-group text-center">
-                                    <label for="img" class="form-control-label"><img src="../../{{$user->user_img}}" alt="img" style="cursor:pointer;"></label>
+                                    <label for="img" class="form-control-label"><img src="../../../{{$user->user_img}}" alt="img" style="cursor:pointer;"></label>
                                     <input class="form-control" type="file" readonly hidden id="img" name="user_img" readonly disabled>
                                 </div>
                             </div> 

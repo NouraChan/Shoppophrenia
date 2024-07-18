@@ -30,28 +30,6 @@ class UserController extends Controller
         return view('admin.users.index', ['users' => $users]);
 
     }
-
-    /**
-     * Show the form for creating a new resource.
-     */
-    public function create()
-    {
-        return view('auth.passwords.register');
-    }
-
-    /**
-     * Store a newly created resource in storage.
-     */
-    public function store(CreateUserRequest $createUserRequest)
-    {
-        
-        $userDTO = UserDTO::handleData($createUserRequest);
-       $user = $this->userRepository->createObject($userDTO);
-        return redirect()->route('admindashboard.users.index');
-
-
-    }
-
     /**
      * Display the specified resource.
      */
@@ -66,7 +44,7 @@ class UserController extends Controller
     /**
      * Show the form for editing the specified resource.
      */
-    public function edit()
+    public function edit($id)
     {
        
         $user = $this->userRepository->getObject(Auth::id());
@@ -78,7 +56,8 @@ class UserController extends Controller
      */
     public function update(CreateUserRequest $createUserRequest, string $id)
     {
-        $user = $this->userRepository->getObject(Auth::id());
+
+        $user = $this->userRepository->getObject($id);
         $userDTO = UserDTO::handleData($createUserRequest);
         $updated = $this->userRepository->updateObject($user, $userDTO);
 
