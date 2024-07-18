@@ -9,6 +9,8 @@ use Jackiedo\Cart\Facades\Cart;
 use RealRashid\SweetAlert\Facades\Alert;
 use App\DTO\CartDTO;
 use App\Http\Requests\CreateCartRequest;
+use App\Repository\Interface\IQueryRepository;
+
 
 
 
@@ -16,14 +18,15 @@ class CartController extends Controller
 {
     protected $cartRepository;
     protected $productRepository;
+    protected $queryRepository;
 
 
 
-
-    public function __construct(ICartRepository $cartRepository, IProductRepository $productRepository)
+    public function __construct(IQueryRepository $queryRepository, ICartRepository $cartRepository, IProductRepository $productRepository)
     {
         $this->cartRepository = $cartRepository;
         $this->productRepository = $productRepository;
+        $this->queryRepository = $queryRepository;
     }
 
     /**
@@ -84,7 +87,7 @@ class CartController extends Controller
     {
         $product = $this->productRepository->getObject($id);
 
-       $this->cartRepository->addToCart($product);
+        $this->cartRepository->addToCart($product);
 
         Alert::success('success', 'New product added to the cart');
 
@@ -127,11 +130,15 @@ class CartController extends Controller
     {
 
         $products = $this->productRepository->getAll();
+        $roms = $this->queryRepository->getRomance($products);
+
 
         $cart = $this->cartRepository->insertCart($products);
         return view(
             'index',
-            $cart
+            $cart,
+            ['roms' => $roms],
+
         );
 
     }

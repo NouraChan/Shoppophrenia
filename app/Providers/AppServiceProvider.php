@@ -25,6 +25,10 @@ use App\Repository\Interface\IItemsRepository;
 use App\Repository\Interface\IGenreRepository;
 use App\Repository\ReviewRepository;
 use App\Repository\Interface\IReviewRepository;
+use App\Repository\Interface\IQueryRepository;
+use App\Repository\QueryRepository;
+
+
 class AppServiceProvider extends ServiceProvider
 {
     /**
@@ -49,6 +53,8 @@ class AppServiceProvider extends ServiceProvider
         $this->app->singleton(IItemsRepository::class,ItemsRepository::class);
         $this->app->singleton(IWishlistRepository::class,WishlistRepository::class);
         $this->app->singleton(IReviewRepository::class,ReviewRepository::class);
+        $this->app->singleton(IQueryRepository::class,QueryRepository::class);
+
 
 
 

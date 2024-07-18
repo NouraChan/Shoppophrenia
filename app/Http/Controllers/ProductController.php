@@ -5,6 +5,7 @@ namespace App\Http\Controllers;
 use App\Models\Product;
 use App\Repository\Interface\ICartRepository;
 use App\Repository\Interface\IGenreRepository;
+use App\Repository\Interface\IQueryRepository;
 use App\Repository\Interface\IReviewRepository;
 use Illuminate\Http\Request;
 use App\Repository\Interface\IProductRepository;
@@ -19,17 +20,19 @@ class ProductController extends Controller
 {
     protected $productRepository;
     protected $reviewRepository;
-
+protected $queryRepository;
     protected $genreRepository;
     protected $cartRepository;
 
-    public function __construct(IProductRepository $productRepository, ICartRepository $cartRepository, IGenreRepository $genreRepository, IReviewRepository $reviewRepository)
+    public function __construct(IQueryRepository $queryRepository ,IProductRepository $productRepository, ICartRepository $cartRepository, IGenreRepository $genreRepository, IReviewRepository $reviewRepository)
     {
         $this->middleware('auth');
         $this->productRepository = $productRepository;
         $this->cartRepository = $cartRepository;
         $this->genreRepository = $genreRepository;
         $this->reviewRepository = $reviewRepository;
+        $this->queryRepository = $queryRepository;
+
     }
     /**
      * Display a listing of the resource.
@@ -74,8 +77,6 @@ class ProductController extends Controller
         $product = $this->productRepository->getObject($id);
         $products = $this->productRepository->getAll();
         $cart = $this->cartRepository->insertCart($products);
-
-        // $targetgenre=
 
         return view('product.details',$cart , [
             'product' => $product,
