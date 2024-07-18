@@ -27,6 +27,14 @@ class OrdersDTO extends Data {
             'shipment_id' => $createOrderRequest->shipment_id,
            
         ];
+
+        foreach($data as $dat => $val){
+
+            $data["$dat"] = trim($data["$dat"]);
+            $data["$dat"] = stripcslashes($data["$dat"]);
+            $data["$dat"] = htmlspecialchars($data["$dat"]);
+            return $data;
+        }
         return $data;
     }
 

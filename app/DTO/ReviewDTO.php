@@ -5,20 +5,20 @@ namespace App\DTO;
 use Spatie\LaravelData\Data;
 use App\Http\Requests\CreateReviewRequest;
 
-class ReviewDTO extends Data {
+class ReviewDTO extends Data
+{
 
-   
+
     public function __construct(
-        public string $rate ,
+        public string $rate,
         public string $content,
         public string $product_id,
         public string $customer_id
-    )
-    {
+    ) {
 
     }
 
-    public static function handleData(CreateReviewRequest $createReviewRequest) : array
+    public static function handleData(CreateReviewRequest $createReviewRequest): array
     {
 
         $data = [
@@ -26,8 +26,14 @@ class ReviewDTO extends Data {
             'content' => $createReviewRequest->content,
             'product_id' => $createReviewRequest->product_id,
             'customer_id' => $createReviewRequest->customer_id,
-               ];
+        ];
+        foreach ($data as $dat => $val) {
 
+            $data["$dat"] = trim($data["$dat"]);
+            $data["$dat"] = stripcslashes($data["$dat"]);
+            $data["$dat"] = htmlspecialchars($data["$dat"]);
+            return $data;
+        }
         return $data;
     }
 

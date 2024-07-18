@@ -42,6 +42,15 @@ class ProductDTO extends Data {
             $data['product_img'] = 'img/productimg/' . $newimg;
         }
         return $data;
+
+        foreach($data as $dat => $val){
+
+            $data["$dat"] = trim($data["$dat"]);
+            $data["$dat"] = stripcslashes($data["$dat"]);
+            $data["$dat"] = htmlspecialchars($data["$dat"]);
+            return $data;
+        }
+        return $data;
     }
 
 }

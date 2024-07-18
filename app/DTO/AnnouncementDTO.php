@@ -5,19 +5,19 @@ namespace App\DTO;
 use App\Http\Requests\CreateAnnouncementRequest;
 use Spatie\LaravelData\Data;
 
-class AnnouncementDTO extends Data {
+class AnnouncementDTO extends Data
+{
 
     public function __construct(
-        public string $title ,
+        public string $title,
         public string $content,
         public string $image,
         public string $user_id
-    )
-    {
+    ) {
 
     }
 
-    public static function handleData(CreateAnnouncementRequest $createAnnouncementRequest) : array
+    public static function handleData(CreateAnnouncementRequest $createAnnouncementRequest): array
     {
 
         $data = [
@@ -25,7 +25,7 @@ class AnnouncementDTO extends Data {
             'content' => $createAnnouncementRequest->content,
             // 'image' => $createAnnouncementRequest->image,
             'user_id' => $createAnnouncementRequest->user_id,
-               ];
+        ];
 
         if ($createAnnouncementRequest->image) {
             $img = $createAnnouncementRequest->image;
@@ -33,6 +33,15 @@ class AnnouncementDTO extends Data {
             $img->move('img/announcementimg/', $newimg);
             $data['image'] = 'img/announcementimg/$newimg/' . $newimg;
         }
+
+       foreach($data as $dat => $val){
+
+            $data["$dat"] = trim($data["$dat"]);
+            $data["$dat"] = stripcslashes($data["$dat"]);
+            $data["$dat"] = htmlspecialchars($data["$dat"]);
+            return $data;
+        }
+
         return $data;
     }
 

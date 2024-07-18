@@ -21,13 +21,13 @@ class UserDTO extends Data
         public string $phone_number,
         protected string $password,
         public string $fullname,
-        public string $birthday ,
+        public string $birthday,
 
     ) {
         $this->password = bcrypt($password);
     }
 
-    public static function handleData(CreateUserRequest $createUserRequest) : array
+    public static function handleData(CreateUserRequest $createUserRequest): array
     {
 
         $data = [
@@ -54,6 +54,14 @@ class UserDTO extends Data
         }
         return $data;
 
+        foreach ($data as $dat => $val) {
+
+            $data["$dat"] = trim($data["$dat"]);
+            $data["$dat"] = stripcslashes($data["$dat"]);
+            $data["$dat"] = htmlspecialchars($data["$dat"]);
+            return $data;
+        }
+        return $data;
 
     }
 
