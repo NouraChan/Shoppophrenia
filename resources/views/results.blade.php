@@ -1,38 +1,54 @@
-@extends('layout')
+@extends('layouts.layout')
 
 @section('content')
 
-<div class="col-md-12 col-lg-10 col-xl-10">
-    <div class="table-responsive">
-        <table class="table">
-            <thead>
-                <tr>
-                    <th scope="col">Products</th>
-                    <th scope="col">Name</th>
-                    <th scope="col">Price</th>
-                    <th scope="col">Quantity</th>
-                    <th scope="col">Total</th>
-                </tr>
-            </thead>
-            <tbody>
-                @foreach ($results as $result)
-                
-                @endforeach
-                <tr>
-                    <th scope="row">
-                        <div class="d-flex align-items-center mt-2">
-                            <img src="" class="img-fluid rounded-circle"
-                                style="width: 90px; height: 90px;" alt="">
-                        </div>
-                    </th>
-                    <td class="py-5">Awesome Brocoli</td>
-                    <td class="py-5">$69.00</td>
-                    <td class="py-5">2</td>
-                    <td class="py-5">$138.00</td>
-                </tr>
-            </tbody>
-        </table>
+<div class="container py-5">
+    <div class="table-responsive" style="padding-top:200px;">
+        <div class="col-md-12">
+            <h4>Results</h4>
+            <div class="table-responsive mt-10">
+                <table class="table table-hover">
+                    <thead>
+                        <tr>
+                            <th scope="col">Image</th>
+                            <th scope="col">Title</th>
+                            <th scope="col">Desciption</th>
+                            <th scope="col"></th>
+                            <th scope="col"></th>
+                        </tr>
+                    </thead>
+                    <tbody>
+                        @foreach ($results as $result)
+                            <tr>
+                                <td style="height : 75px; padding: 20px 20px" class="">
+                                    <p class="my-auto">
+                                        <img src="{{asset($result->product_img)}}" class="img-fluid" alt="" style="height:70px; width:50px;"></a></p>
+                                </td>
+                                <td style="height : 75px; padding: 20px 20px" class="">
+                                    <p class="my-auto">{{$result->name}}</p>
+                                </td>
+                                <td style="height : 75px; padding: 20px 20px" class="">
+                                    <p class="my-auto">{{$result->description}}</p>
+                                </td>
+                                <td style="height : 75px; padding: 20px 20px" class="">
+                                    <p class="my-auto"><a href="{{route('product.add', ['id' => $result->id])}}"
+                                            class="btn border border-secondary rounded-pill px-3 text-primary"><i
+                                                class="fa fa-shopping-bag me-2 text-primary"></i> Add to
+                                            cart</a></p>
+                                </td>
+                                <td style="height : 75px; padding: 20px 20px" class="">
+                                    <p class="my-auto"><a href="#"
+                                            class="btn border border-secondary rounded-pill px-3 text-primary"><i
+                                                class="fa fa-heart me-2 text-primary"></i> Add to
+                                            wishlist</a></p>
+                                </td>
+                            </tr>
+                        @endforeach
+                    </tbody>
+                </table>
+            </div>
+        </div>
     </div>
 
-
-    @endsection
+</div>
+@endsection

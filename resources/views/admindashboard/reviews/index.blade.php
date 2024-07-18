@@ -7,9 +7,7 @@
         <div class="col-12">
             <div class="card mb-4">
                 <div class="card-header pb-0">
-                    <h6 class="d-inline headerh6">Announcements</h6>
-                    <a class="btn btn-primary bghalf me-3 w-10 text-nowrap text-center d-inline mb-4"
-                        href="{{route('announcement.create')}}">Create</a>
+                    <h6 class="d-inline headerh6">Reviews</h6>
                 </div>
                 <div class="card-body px-0 pt-0 pb-2">
 
@@ -20,16 +18,15 @@
                                     <th class="text-uppercase text-secondary text-xxs font-weight-bolder opacity-7">Id
                                     </th>
                                     <th class="text-uppercase text-secondary text-xxs font-weight-bolder opacity-7">
-                                        Image</th>
-
-                                    <th class="text-uppercase text-secondary text-xxs font-weight-bolder opacity-7">
-                                        Title</th>
+                                        Content</th>
                                     <th
                                         class="text-uppercase text-secondary text-xxs font-weight-bolder opacity-7 ps-3">
-                                        Content</th>
-
+                                        User_id</th>
                                     <th class="text-uppercase text-secondary text-xxs font-weight-bolder opacity-7">
-                                        Date</th>
+                                        Product_id</th>
+                                    <th class="text-uppercase text-secondary text-xxs font-weight-bolder opacity-7">
+                                        Rate</th>
+
 
                                     <th class="text-secondary opacity-7"></th>
                                 </tr>
@@ -55,13 +52,10 @@
                                         <td>
                                             <span class="text-secondary text-xs font-weight-bold">{{$product->stock}}</span>
                                         </td>
-                                        
+
+
                                         <td class="align-middle">
-                                            <a href="{{route('product.edit', ['id' => $product->id])}}"
-                                                class="text-secondary font-weight-bold text-xs" data-toggle="tooltip"
-                                                data-original-title="Edit user">
-                                                <i class="fa fa-pencil text-warning" aria-hidden="true"></i>
-                                            </a>
+
                                             <a href="{{route('product.destroy', ['id' => $product->id])}}"
                                                 class="text-secondary font-weight-bold text-xs ms-4" data-toggle="tooltip"
                                                 data-original-title="Delete user">

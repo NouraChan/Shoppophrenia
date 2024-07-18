@@ -43,7 +43,7 @@ Route::get('/genres', [HomeController::class, 'genreIndex'])->name('genres');
 Route::get('/products', [HomeController::class, 'productIndex'])->name('products');
 Route::get('/checkout', [HomeController::class, 'checkOut'])->name('checkout');
 
-Route::get('/results', [SearchController::class ,'searchProduct'])->name('search');
+Route::post('/results', [SearchController::class ,'searchProduct'])->name('search');
 
 
 //User group

@@ -71,17 +71,16 @@ class ProductController extends Controller
     {
         $genres = $this->genreRepository->getAll();
         $reviews = $this->reviewRepository->getAll();
-        $carts = $this->cartRepository->getAll();
-        $product = $this->productRepository->getObject($id) ;
+        $product = $this->productRepository->getObject($id);
         $products = $this->productRepository->getAll();
+        $cart = $this->cartRepository->insertCart($products);
 
-// $targetgenre=
+        // $targetgenre=
 
-        return view('product.details', [
+        return view('product.details',$cart , [
             'product' => $product,
             'reviews' => $reviews,
             'genres' => $genres,
-            'carts' => $carts,
             'products' => $products,
             'total' => Cart::getDetails()->quantities_sum,
             'items' => Cart::getDetails()->items,

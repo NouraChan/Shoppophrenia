@@ -4,13 +4,8 @@
 
 
 <!-- Single Page Header start -->
-<div class="container-fluid page-header py-5">
-    <h1 class="text-center text-white display-6">Shop Detail</h1>
-    <ol class="breadcrumb justify-content-center mb-0">
-        <li class="breadcrumb-item"><a href="#">Home</a></li>
-        <li class="breadcrumb-item"><a href="#">Pages</a></li>
-        <li class="breadcrumb-item active text-white">Shop Detail</li>
-    </ol>
+<div class="container-fluid bg-white py-5">
+   
 </div>
 <!-- Single Page Header End -->
 
@@ -57,8 +52,13 @@
                                 </button>
                             </div>
                         </div>
-                        <a href="{{route('product.add' , ['id' => $product->id])}}" class="btn border border-secondary rounded-pill px-4 py-2 mb-4 text-primary"><i
+                        <div class=""><a href="{{route('product.add', ['id' => $product->id])}}"
+                            class="btn border border-secondary rounded-pill w-50 px-4 py-2 mb-4 text-primary"><i
                                 class="fa fa-shopping-bag me-2 text-primary"></i> Add to cart</a>
+                        <a href="#" class="btn border border-secondary rounded-pill w-50 px-4 py-2 mb-4 text-primary"><i
+                                class="fa fa-heart me-2 text-primary"></i> Add to
+                            wishlist</a></div>
+                        
                     </div>
                     <div class="col-lg-12">
                         <nav>
@@ -80,44 +80,44 @@
                                             <div
                                                 class="row bg-light align-items-center text-center justify-content-center py-2">
                                                 <div class="col-6">
-                                                    <p class="mb-0">Weight</p>
+                                                    <p class="mb-0">Author</p>
                                                 </div>
                                                 <div class="col-6">
-                                                    <p class="mb-0">1 kg</p>
+                                                    <p class="mb-0"></p>
                                                 </div>
                                             </div>
                                             <div class="row text-center align-items-center justify-content-center py-2">
                                                 <div class="col-6">
-                                                    <p class="mb-0">Country of Origin</p>
+                                                    <p class="mb-0">Release Date</p>
                                                 </div>
                                                 <div class="col-6">
-                                                    <p class="mb-0">Agro Farm</p>
+                                                    <p class="mb-0"></p>
                                                 </div>
                                             </div>
                                             <div
                                                 class="row bg-light text-center align-items-center justify-content-center py-2">
                                                 <div class="col-6">
-                                                    <p class="mb-0">Quality</p>
+                                                    <p class="mb-0">Language</p>
                                                 </div>
                                                 <div class="col-6">
-                                                    <p class="mb-0">Organic</p>
+                                                    <p class="mb-0">English</p>
                                                 </div>
                                             </div>
                                             <div class="row text-center align-items-center justify-content-center py-2">
                                                 <div class="col-6">
-                                                    <p class="mb-0">Сheck</p>
+                                                    <p class="mb-0">Genre</p>
                                                 </div>
                                                 <div class="col-6">
-                                                    <p class="mb-0">Healthy</p>
+                                                    <p class="mb-0"></p>
                                                 </div>
                                             </div>
                                             <div
                                                 class="row bg-light text-center align-items-center justify-content-center py-2">
                                                 <div class="col-6">
-                                                    <p class="mb-0">Min Weight</p>
+                                                    <p class="mb-0">Type</p>
                                                 </div>
                                                 <div class="col-6">
-                                                    <p class="mb-0">250 Kg</p>
+                                                    <p class="mb-0">Hardcover</p>
                                                 </div>
                                             </div>
                                         </div>
@@ -168,7 +168,7 @@
                                 </div>
                                 <div class="col-lg-12">
                                     <div class="border-bottom rounded my-4">
-                                        <textarea name="content" id="" class="form-control border-0" cols="30" rows="8"
+                                        <textarea name="content" id="" class="form-control border-secondary" cols="30" rows="8" style="resize:none;"
                                             placeholder="Your Review *" spellcheck="false"></textarea>
                                     </div>
                                 </div>
@@ -221,7 +221,7 @@
                                     @foreach ($genres as $genre)
                                         <li>
                                             <div class="d-flex justify-content-between fruite-name">
-                                                <a href="#"><i class="fas fa-apple-alt me-2"></i>{{$genre->name}}</a>
+                                                <a href="#"><i class="fa fa-book me-2" aria-hidden="true"></i>{{$genre->name}}</a>
                                                 <span>($)</span>
                                             </div>
                                         </li>

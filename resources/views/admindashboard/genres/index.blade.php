@@ -42,11 +42,11 @@
                                         <td class="align-middle">
                                             <a href="{{route('genre.edit',['id' => $genre->id])}}" class="text-secondary font-weight-bold text-xs"
                                                 data-toggle="tooltip" data-original-title="Edit user">
-                                                Edit
+                                                <i class="fa fa-pencil text-warning" aria-hidden="true"></i>
                                             </a>
                                             <a href="{{route('genre.destroy',['id' => $genre->id])}}" class="text-secondary font-weight-bold text-xs ms-4"
                                                 data-toggle="tooltip" data-original-title="Delete user">
-                                                Delete
+                                                <i class="fa fa-trash text-warning" aria-hidden="true"></i>
                                             </a>
                                         </td>
                                     </tr>
