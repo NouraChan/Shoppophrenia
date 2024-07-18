@@ -18,4 +18,9 @@ class Product extends Model
         "genre_id",
         "product_img",
     ];
+
+    public function genreLink()
+{
+    return $this->belongsTo('Genre');
+}
 }

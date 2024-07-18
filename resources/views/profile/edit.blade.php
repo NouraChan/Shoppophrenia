@@ -97,7 +97,7 @@
                          
                         </div>
                         <button type="submit"
-                                class="btn btn-primary btn-sm ms-auto form-control w-50 text-center">Submit</button>
+                                class="btn bg-gradient-warning btn-sm ms-auto form-control w-50 text-center">Submit</button>
 
                     </div>
                 </form>

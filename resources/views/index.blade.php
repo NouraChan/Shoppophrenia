@@ -10,11 +10,14 @@
                 <h4 class="mb-3 text-secondary">Booktopia</h4>
                 <h1 class="mb-5 display-3 text-primary">All Books You Can Think Of</h1>
                 <div class="position-relative mx-auto">
-                    <input class="form-control border-2 border-secondary w-75 py-3 px-4 rounded-pill" type="number"
-                        placeholder="Search">
-                    <button type="submit"
-                        class="btn btn-primary border-2 border-secondary py-3 px-4 position-absolute rounded-pill text-white h-100"
-                        style="top: 0; right: 25%;">Find</button>
+                    <form action="{{route('search')}}" method="POST">
+                        <input class="form-control border-2 border-secondary w-75 py-3 px-4 rounded-pill" name="search" type="number"
+                            placeholder="Search">
+                        <button type="submit"
+                            class="btn btn-primary border-2 border-secondary py-3 px-4 position-absolute rounded-pill text-white h-100"
+                            style="top: 0; right: 25%;">Find</button>
+                    </form>
+
                 </div>
             </div>
             <div class="col-md-12 col-lg-5">
@@ -145,27 +148,29 @@
                     <div class="row g-4">
                         <div class="col-lg-12">
                             <div class="row g-4">
-                                @foreach ( $products as $p )
-                                <div class="col-md-6 col-lg-4 col-xl-3">
-                                    <div class="rounded position-relative fruite-item">
-                                        <div class="fruite-img">
-                                            <img src="{{asset($p->product_img)}}" class="img-fluid w-100 rounded-top" alt="">
-                                        </div>
-                                        <div class="text-white bg-secondary px-3 py-1 rounded position-absolute"
-                                            style="top: 10px; left: 10px;">Sale</div>
-                                        <div class="p-4 border border-secondary border-top-0 rounded-bottom">
-                                            <h4>{{$p->name}}</h4>
-                                            <p>{{$p->description}}</p>
-                                            <div class="d-flex justify-content-between flex-lg-wrap">
-                                                <p class="text-dark fs-5 fw-bold mb-0">${{$p->price}}</p>
-                                                <a href="{{route('product.add' , ['id' => $p->id])}}"
-                                                    class="btn border border-secondary rounded-pill px-3 text-primary"><i
-                                                        class="fa fa-shopping-bag me-2 text-primary"></i> Add to
-                                                    cart</a>
+                                @foreach ($products as $p)
+                                    <div class="col-md-6 col-lg-4 col-xl-3">
+                                        <div class="rounded position-relative fruite-item">
+                                            <div class="fruite-img">
+                                                <a href="{{route('product.show', ['id' => $p->id])}}"><img
+                                                        src="{{asset($p->product_img)}}" class="img-fluid w-100 rounded-top"
+                                                        alt="" style="height:400px"></a>
+                                            </div>
+                                            <div class="text-white bg-secondary px-3 py-1 rounded position-absolute"
+                                                style="top: 10px; left: 10px;">Sale</div>
+                                            <div class="p-4 border border-secondary border-top-0 rounded-bottom">
+                                                <h4>{{$p->name}}</h4>
+                                                <p>{{$p->description}}</p>
+                                                <div class="d-flex justify-content-between flex-lg-wrap">
+                                                    <p class="text-dark fs-5 fw-bold mb-0">${{$p->price}}</p>
+                                                    <a href="{{route('product.add', ['id' => $p->id])}}"
+                                                        class="btn border border-secondary rounded-pill px-3 text-primary"><i
+                                                            class="fa fa-shopping-bag me-2 text-primary"></i> Add to
+                                                        cart</a>
+                                                </div>
                                             </div>
                                         </div>
                                     </div>
-                                </div>
                                 @endforeach
                             </div>
                         </div>
@@ -474,7 +479,7 @@
                     <img src="img/vegetable-item-1.jpg" class="img-fluid w-100 rounded-top" alt="">
                 </div>
                 <div class="text-white bg-primary px-3 py-1 rounded position-absolute" style="top: 10px; right: 10px;">
-                Trial Available</div>
+                    Trial Available</div>
                 <div class="p-4 rounded-bottom">
                     <h4>Parsely</h4>
                     <p>Lorem ipsum dolor sit amet consectetur adipisicing elit sed do eiusmod te incididunt</p>
@@ -490,7 +495,7 @@
                     <img src="img/vegetable-item-3.png" class="img-fluid w-100 rounded-top bg-light" alt="">
                 </div>
                 <div class="text-white bg-primary px-3 py-1 rounded position-absolute" style="top: 10px; right: 10px;">
-                Trial Available</div>
+                    Trial Available</div>
                 <div class="p-4 rounded-bottom">
                     <h4>Banana</h4>
                     <p>Lorem ipsum dolor sit amet consectetur adipisicing elit sed do eiusmod te incididunt</p>
@@ -506,7 +511,7 @@
                     <img src="img/vegetable-item-4.jpg" class="img-fluid w-100 rounded-top" alt="">
                 </div>
                 <div class="text-white bg-primary px-3 py-1 rounded position-absolute" style="top: 10px; right: 10px;">
-                Trial Available</div>
+                    Trial Available</div>
                 <div class="p-4 rounded-bottom">
                     <h4>Bell Papper</h4>
                     <p>Lorem ipsum dolor sit amet consectetur adipisicing elit sed do eiusmod te incididunt</p>
@@ -522,7 +527,7 @@
                     <img src="img/vegetable-item-5.jpg" class="img-fluid w-100 rounded-top" alt="">
                 </div>
                 <div class="text-white bg-primary px-3 py-1 rounded position-absolute" style="top: 10px; right: 10px;">
-                Trial Available</div>
+                    Trial Available</div>
                 <div class="p-4 rounded-bottom">
                     <h4>Potatoes</h4>
                     <p>Lorem ipsum dolor sit amet consectetur adipisicing elit sed do eiusmod te incididunt</p>
@@ -538,7 +543,7 @@
                     <img src="img/vegetable-item-6.jpg" class="img-fluid w-100 rounded-top" alt="">
                 </div>
                 <div class="text-white bg-primary px-3 py-1 rounded position-absolute" style="top: 10px; right: 10px;">
-                Trial Available</div>
+                    Trial Available</div>
                 <div class="p-4 rounded-bottom">
                     <h4>Parsely</h4>
                     <p>Lorem ipsum dolor sit amet consectetur adipisicing elit sed do eiusmod te incididunt</p>
@@ -554,7 +559,7 @@
                     <img src="img/vegetable-item-5.jpg" class="img-fluid w-100 rounded-top" alt="">
                 </div>
                 <div class="text-white bg-primary px-3 py-1 rounded position-absolute" style="top: 10px; right: 10px;">
-                Trial Available</div>
+                    Trial Available</div>
                 <div class="p-4 rounded-bottom">
                     <h4>Potatoes</h4>
                     <p>Lorem ipsum dolor sit amet consectetur adipisicing elit sed do eiusmod te incididunt</p>
@@ -570,7 +575,7 @@
                     <img src="img/vegetable-item-6.jpg" class="img-fluid w-100 rounded-top" alt="">
                 </div>
                 <div class="text-white bg-primary px-3 py-1 rounded position-absolute" style="top: 10px; right: 10px;">
-                Trial Available</div>
+                    Trial Available</div>
                 <div class="p-4 rounded-bottom">
                     <h4>Parsely</h4>
                     <p>Lorem ipsum dolor sit amet consectetur adipisicing elit sed do eiusmod te incididunt</p>
@@ -593,18 +598,18 @@
         <div class="row g-4 align-items-center">
             <div class="col-lg-6">
                 <div class="py-4">
-                    <h1 class="display-3 text-white">#1 On Trend!</h1>
-                    <p class="fw-normal display-3 text-dark mb-4">grap your copy now</p>
-                    <p class="mb-4 text-dark">The generated Lorem Ipsum is therefore always free from repetition
+                    <h1 class="display-3 text-white">#1 On Trend</h1>
+                    <p class="fw-normal display-3 text-white mb-4">Grap your copy now!</p>
+                    <p class="mb-4 text-white">The generated Lorem Ipsum is therefore always free from repetition
                         injected humour, or non-characteristic words etc.</p>
-                    <a href="#" class="banner-btn btn border-2 border-white rounded-pill text-dark py-3 px-5">MINE</a>
+                    <a href="#" class="banner-btn btn border-2 border-white rounded-pill text-white py-3 px-5">MINE!</a>
                 </div>
             </div>
             <div class="col-lg-6">
                 <div class="position-relative">
-                    <img src="img/baner-1.png" class="img-fluid w-100 rounded" alt="">
+                    <img src="{{asset('img/books.png')}}" class="img-fluid w-100 rounded mt-4" alt="">
                     <div class="d-flex align-items-center justify-content-center bg-white rounded-circle position-absolute"
-                        style="width: 140px; height: 140px; top: 0; left: 0;">
+                        style="width: 140px; height: 140px; top: 50px; left: 50px;">
                         <!-- <h1 style="font-size: 100px;">1</h1> -->
                         <div class="d-flex flex-column">
                             <span class="h2 mb-0">30$</span>
@@ -624,7 +629,8 @@
     <div class="container py-5">
         <div class="text-center mx-auto mb-5" style="max-width: 700px;">
             <h1 class="display-4">Booktopia Exclusives</h1>
-            <p>Fictions picked by our specialists, promotion reward for our yearly competetion. <br> Follow announcements for more details. </p>
+            <p>Fictions picked by our specialists, promotion reward for our yearly competetion. <br> Follow
+                announcements for more details. </p>
         </div>
         <div class="row g-4">
             <div class="col-lg-6 col-xl-4">

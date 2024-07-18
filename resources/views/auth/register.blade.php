@@ -37,7 +37,7 @@
  
     <main class="main-content mt-0">
         <div class="page-header align-items-start min-vh-50 pt-0 pb-10 m-3 border-radius-lg"
-            style="background-image: url('https://raw.githubusercontent.com/creativetimofficial/public-assets/master/argon-dashboard-pro/assets/img/signup-cover.jpg'); background-position: top;">
+            style="background-image: url('img/reglib.jpg'); background-position: top;">
             <span class="mask bg-gradient-dark opacity-6"></span>
             <div class="container">
                 <div class="row justify-content-center">
@@ -53,7 +53,7 @@
                 <div class="col-xl-4 col-lg-5 col-md-7 mx-auto">
                     <div class="card z-index-0">
                         <div class="card-header text-center pt-4">
-                            <h5>Register with</h5>
+                            <h5 class="text-warning">Register with</h5>
                         </div>
                         <div class="row px-xl-5 px-sm-4 px-3">
                             <div class="col-3 ms-auto px-1">
@@ -157,19 +157,19 @@
                                         placeholder="confirm password">
                                 </div>
                                 <div class="form-check form-check-info text-start">
-                                    <input class="form-check-input" type="checkbox" value="" id="flexCheckDefault"
+                                    <input class="form-check-input text-gradient-warning" type="checkbox" value="" id="flexCheckDefault"
                                         checked>
                                     <label class="form-check-label" for="flexCheckDefault">
-                                        I agree the <a href="javascript:;" class="text-dark font-weight-bolder">Terms
+                                        I agree the <a href="javascript:;" class="text-warning font-weight-bolder">Terms
                                             and Conditions</a>
                                     </label>
                                 </div>
                                 <div class="text-center">
-                                    <button class="btn bg-gradient-dark w-100 my-4 mb-2"
+                                    <button class="btn bg-gradient-warning w-100 my-4 mb-2"
                                         type="submit">Sign up</button>
                                 </div>
                                 <p class="text-sm mt-3 mb-0">Already have an account? <a href="{{route('login')}}"
-                                        class="text-dark font-weight-bolder">Sign in</a></p>
+                                        class="text-warning font-weight-bolder">Sign in</a></p>
                             </form>
                         </div>
                     </div>
@@ -182,39 +182,39 @@
         <div class="container">
             <div class="row">
                 <div class="col-lg-8 mb-4 mx-auto text-center">
-                    <a href="javascript:;" target="_blank" class="text-secondary me-xl-5 me-3 mb-sm-0 mb-2">
+                    <a href="javascript:;" target="_blank" class="text-warning me-xl-5 me-3 mb-sm-0 mb-2">
                         Company
                     </a>
-                    <a href="javascript:;" target="_blank" class="text-secondary me-xl-5 me-3 mb-sm-0 mb-2">
+                    <a href="javascript:;" target="_blank" class="text-warning me-xl-5 me-3 mb-sm-0 mb-2">
                         About Us
                     </a>
-                    <a href="javascript:;" target="_blank" class="text-secondary me-xl-5 me-3 mb-sm-0 mb-2">
+                    <a href="javascript:;" target="_blank" class="text-warning me-xl-5 me-3 mb-sm-0 mb-2">
                         Team
                     </a>
-                    <a href="javascript:;" target="_blank" class="text-secondary me-xl-5 me-3 mb-sm-0 mb-2">
+                    <a href="javascript:;" target="_blank" class="text-warning me-xl-5 me-3 mb-sm-0 mb-2">
                         Products
                     </a>
-                    <a href="javascript:;" target="_blank" class="text-secondary me-xl-5 me-3 mb-sm-0 mb-2">
+                    <a href="javascript:;" target="_blank" class="text-warning me-xl-5 me-3 mb-sm-0 mb-2">
                         Blog
                     </a>
-                    <a href="javascript:;" target="_blank" class="text-secondary me-xl-5 me-3 mb-sm-0 mb-2">
+                    <a href="javascript:;" target="_blank" class="text-warning me-xl-5 me-3 mb-sm-0 mb-2">
                         Pricing
                     </a>
                 </div>
                 <div class="col-lg-8 mx-auto text-center mb-4 mt-2">
-                    <a href="javascript:;" target="_blank" class="text-secondary me-xl-4 me-4">
+                    <a href="javascript:;" target="_blank" class="text-warning me-xl-4 me-4">
                         <span class="text-lg fab fa-dribbble"></span>
                     </a>
-                    <a href="javascript:;" target="_blank" class="text-secondary me-xl-4 me-4">
+                    <a href="javascript:;" target="_blank" class="text-warning me-xl-4 me-4">
                         <span class="text-lg fab fa-twitter"></span>
                     </a>
-                    <a href="javascript:;" target="_blank" class="text-secondary me-xl-4 me-4">
+                    <a href="javascript:;" target="_blank" class="text-warning me-xl-4 me-4">
                         <span class="text-lg fab fa-instagram"></span>
                     </a>
-                    <a href="javascript:;" target="_blank" class="text-secondary me-xl-4 me-4">
+                    <a href="javascript:;" target="_blank" class="text-warning me-xl-4 me-4">
                         <span class="text-lg fab fa-pinterest"></span>
                     </a>
-                    <a href="javascript:;" target="_blank" class="text-secondary me-xl-4 me-4">
+                    <a href="javascript:;" target="_blank" class="text-warning me-xl-4 me-4">
                         <span class="text-lg fab fa-github"></span>
                     </a>
                 </div>

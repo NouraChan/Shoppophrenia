@@ -14,5 +14,13 @@ interface ICartRepository {
     public function getAll();
 
     public function getObject($id) : object;
+
+    public function insertCart($products) : array ;
+
+    public function addToCart($product) ;
+
+    public function removeFromCart($id);
+
+
 }
 

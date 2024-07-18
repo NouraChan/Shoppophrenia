@@ -1,6 +1,7 @@
 <?php
 
 use App\Http\Controllers\HomeController;
+use App\Http\Controllers\SearchController;
 use Illuminate\Support\Facades\Route;
 use App\Http\Controllers\CartController;
 use App\Http\Controllers\GenreController;
@@ -11,8 +12,8 @@ use App\Http\Controllers\ShipmentController;
 use App\Http\Controllers\WishlistController;
 use App\Http\Controllers\ItemsController; 
 use App\Http\Controllers\AnnouncementController;
+use App\Http\Controllers\ReviewController;
 use Illuminate\Support\Facades\Auth;
-use App\Models\User;
 use App\Http\Controllers\UserController;
 use App\Http\Controllers\ProfileController;
 
@@ -42,6 +43,7 @@ Route::get('/genres', [HomeController::class, 'genreIndex'])->name('genres');
 Route::get('/products', [HomeController::class, 'productIndex'])->name('products');
 Route::get('/checkout', [HomeController::class, 'checkOut'])->name('checkout');
 
+Route::get('/results', [SearchController::class ,'searchProduct'])->name('search');
 
 
 //User group
@@ -72,6 +74,9 @@ Route::group(['prefix' => 'cart'], function () {
     Route::get('/edit{id}', [CartController::class, 'edit'])->name('cart.edit');
     Route::get('/add/{id}', [CartController::class , 'add'])->name('product.add');
     Route::get('/remove/{id}', [CartController::class , 'remove'])->name('product.remove');
+    Route::get('/show/{id}', [CartController::class , 'show'])->name('cart.show');
+
+    
 
 
 
@@ -79,7 +84,7 @@ Route::group(['prefix' => 'cart'], function () {
 
 //Items group
 
-Route::group(['prefix' => 'orderitems'], function () {
+Route::group(['prefix' => 'items'], function () {
     Route::get('/create', [ItemsController::class, 'create'])->name('items.create');
     Route::post('/store', [ItemsController::class, 'store'])->name('items.store');
     Route::get('/destroy{id}', [ItemsController::class, 'destroy'])->name('items.destroy');
@@ -97,6 +102,8 @@ Route::group(['prefix' => 'product'], function () {
     Route::get('/index', [ProductController::class, 'index'])->name('product.index');
     Route::post('/update{id}', [ProductController::class, 'update'])->name('product.update');
     Route::get('/edit/{id}', [ProductController::class, 'edit'])->name('product.edit');
+    Route::get('/show/{id}', [ProductController::class, 'show'])->name('product.show');
+
 
 });
 
@@ -167,24 +174,12 @@ Route::group(['prefix' => 'announcement'], function () {
 });
 
 
-// Route::get('/user',function(){
-    // $users = User::with('profile')->get();
-    // dd($users);
-// });
 
-
-// Route::get('/one-to-one',function(){
-//     $user = User::create(['name'=>'Maitrik','email'=>'Maitrik1@test.com','password'=>123456]);
-//     Profile::create([
-//         'firstname'=>'Maitrik',
-//         'lastname'=>'T',
-//         'birthday'=>'15-10-1990',
-//         'user_id'=>$user->id
-//     ]);
-//     return response()->json([
-//         'username' => $user->name,
-//         'email' => $user->email,
-//         'firstname' => $user->profile->firstname,
-//         'lastname' => $user->profile->lastname,
-//     ]);
-// });
+Route::group(['prefix' => 'review'], function () {
+    Route::get('/create', [ReviewController::class, 'create'])->name('review.create');
+    Route::post('/store', [ReviewController::class, 'store'])->name('review.store');
+    Route::get('/destroy{id}', [ReviewController::class, 'destroy'])->name('review.destroy');
+    Route::get('/index', [ReviewController::class, 'index'])->name('review.index');
+    Route::post('/update{id}', [ReviewController::class, 'update'])->name('review.update');
+    Route::get('/edit{id}', [ReviewController::class, 'edit'])->name('review.edit');
+});

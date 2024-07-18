@@ -9,7 +9,7 @@
                 <div class="card-header pb-0">
                     <div class="d-flex align-items-center">
                         <p class="mb-0">Edit Profile</p>
-                        <a class="btn btn-primary btn-sm ms-auto"
+                        <a class="btn bg-gradient-warning btn-sm ms-auto"
                             href="{{route('user.edit', [Auth::user()->id])}}">Edit</a>
                     </div>
                 </div>

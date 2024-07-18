@@ -33,16 +33,16 @@
                 </thead>
                 <tbody>
 
-                @foreach ($products as $product )
+                @foreach ($items as $hash => $product )
                   <tr>
                         <th scope="row">
                             <div class="d-flex align-items-center">
-                                <img src="{{$product->product_img}}" class="img-fluid me-5 rounded-circle"
+                                <img src="{{asset($product->options->product_img)}}" class="img-fluid me-5 rounded-circle"
                                     style="width: 80px; height: 80px;" alt="">
                             </div>
                         </th>
                         <td>
-                            <p class="mb-0 mt-4">{{$product->name}}</p>
+                            <p class="mb-0 mt-4">{{$product->title}}</p>
                         </td>
                         <td>
                             <p class="mb-0 mt-4">{{$product->price}}$</p>
@@ -54,7 +54,7 @@
                                         <i class="fa fa-minus"></i>
                                     </button>
                                 </div>
-                                <input type="text" class="form-control form-control-sm text-center border-0" value="1">
+                                <input type="text" class="form-control form-control-sm text-center border-0" value="{{$product->quantity}}">
                                 <div class="input-group-btn">
                                     <button class="btn btn-sm btn-plus rounded-circle bg-light border">
                                         <i class="fa fa-plus"></i>
@@ -66,9 +66,9 @@
                             <p class="mb-0 mt-4">{{$product->price}} $</p>
                         </td>
                         <td>
-                            <button class="btn btn-md rounded-circle bg-light border mt-4">
+                            <a class="btn btn-md rounded-circle bg-light border mt-4" href="{{route('product.remove', ['id' => $product->hash])}}">
                                 <i class="fa fa-times text-danger"></i>
-                            </button>
+                            </a>
                         </td>
                     </tr>
                 @endforeach
@@ -88,7 +88,7 @@
                         <h1 class="display-6 mb-4">Cart <span class="fw-normal">Total</span></h1>
                         <div class="d-flex justify-content-between mb-4">
                             <h5 class="mb-0 me-4">Subtotal:</h5>
-                            <p class="mb-0">$96.00</p>
+                            <p class="mb-0">${{$sub_total}}</p>
                         </div>
                         <div class="d-flex justify-content-between">
                             <h5 class="mb-0 me-4">Shipping</h5>
@@ -100,7 +100,7 @@
                     </div>
                     <div class="py-4 mb-4 border-top border-bottom d-flex justify-content-between">
                         <h5 class="mb-0 ps-4 me-4">Total</h5>
-                        <p class="mb-0 pe-4">$99.00</p>
+                        <p class="mb-0 pe-4">${{$grand_total}}</p>
                     </div>
                     <a class="btn border-secondary rounded-pill px-4 py-3 text-primary text-uppercase mb-4 ms-4"
                         href="{{route('checkout')}}">Proceed Checkout</a>

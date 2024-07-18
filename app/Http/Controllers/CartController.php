@@ -17,7 +17,6 @@ class CartController extends Controller
 {
     protected $cartRepository;
     protected $productRepository;
-    protected $cart;
 
 
 
@@ -53,10 +52,10 @@ class CartController extends Controller
      */
     public function store(CreateCartRequest $createCartRequest)
     {
-       
+
         $cart = CartDTO::handleData($createCartRequest);
         $this->cartRepository->createObject($cart);
-        
+
 
         return redirect()->route('cart.index');
 
@@ -66,8 +65,16 @@ class CartController extends Controller
      * Display the specified resource.
      */
     public function show(string $id)
-    {return view('cart.show');
-        
+    {
+
+        $products = $this->productRepository->getAll();
+
+        $cart = $this->cartRepository->insertCart($products);
+        return view(
+            'cart.show',
+            $cart
+        );
+
     }
 
     /**
@@ -77,17 +84,8 @@ class CartController extends Controller
     public function add($id)
     {
         $product = $this->productRepository->getObject($id);
-        Cart::addItem([
-            'id' => $product->id,
-            'title' => $product->name,
-            'price' => $product->price,
-            'stock' => $product->stock,
-            'description' => $product->description,
-            'gwnre_id' => $product->gwnre_id,
-            'rate' => $product->rate,
-            'product_img' => $product->product_img,
-        ]);
 
+       $this->cartRepository->addToCart($product);
 
         Alert::success('success', 'New product added to the cart');
 
@@ -99,7 +97,8 @@ class CartController extends Controller
     {
 
         $cart = $this->cartRepository->getObject($id);
-        return view('admindashboard.carts.edit', ['cart' => $cart]);    }
+        return view('admindashboard.carts.edit', ['cart' => $cart]);
+    }
 
     /**
      * Update the specified resource in storage.
@@ -109,10 +108,11 @@ class CartController extends Controller
         $cart = $this->cartRepository->getObject($id);
         $cartDTO = cartDTO::handleData($createCartRequest);
         $updated = $this->cartRepository->updateObject($cart, $cartDTO);
-        
 
-        return redirect()->route('cart.index');    }
-    
+
+        return redirect()->route('cart.index');
+    }
+
 
     /**
      * Remove the specified resource from storage.
@@ -129,20 +129,20 @@ class CartController extends Controller
 
         $products = $this->productRepository->getAll();
 
+        $cart = $this->cartRepository->insertCart($products);
         return view(
             'index',
-            [
-                'products' => $products,
-                'total' => Cart::getDetails()->quantities_sum,
-                'items' => Cart::getDetails()->items,
-            ]
+            $cart
         );
+
     }
 
-    public function remove($id){
-        
-        Cart::removeItem($id);
+    public function remove($id)
+    {
+        $this->cartRepository->removeFromCart($id);
+
         Alert::success('success', 'Product removed to the cart');
+
         return redirect()->back();
     }
 }

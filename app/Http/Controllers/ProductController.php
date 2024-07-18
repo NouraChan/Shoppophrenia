@@ -2,8 +2,10 @@
 
 namespace App\Http\Controllers;
 
+use App\Models\Product;
 use App\Repository\Interface\ICartRepository;
 use App\Repository\Interface\IGenreRepository;
+use App\Repository\Interface\IReviewRepository;
 use Illuminate\Http\Request;
 use App\Repository\Interface\IProductRepository;
 use App\DTO\ProductDTO;
@@ -11,19 +13,23 @@ use App\Http\Requests\CreateProductRequest;
 use Jackiedo\Cart\Facades\Cart;
 use RealRashid\SweetAlert\Facades\Alert;
 
+
+
 class ProductController extends Controller
 {
     protected $productRepository;
+    protected $reviewRepository;
 
     protected $genreRepository;
-    protected $cart;
+    protected $cartRepository;
 
-    public function __construct(IProductRepository $productRepository, ICartRepository $cartRepository, IGenreRepository $genreRepository)
+    public function __construct(IProductRepository $productRepository, ICartRepository $cartRepository, IGenreRepository $genreRepository, IReviewRepository $reviewRepository)
     {
         $this->middleware('auth');
         $this->productRepository = $productRepository;
         $this->cartRepository = $cartRepository;
         $this->genreRepository = $genreRepository;
+        $this->reviewRepository = $reviewRepository;
     }
     /**
      * Display a listing of the resource.
@@ -32,7 +38,7 @@ class ProductController extends Controller
     {
         $products = $this->productRepository->getAll();
 
-        return view('admindashboard.products.index', ['products' => $products] );
+        return view('admindashboard.products.index', ['products' => $products]);
 
 
     }
@@ -41,11 +47,11 @@ class ProductController extends Controller
      * Show the form for creating a new resource.
      */
 
-    
+
     public function create()
     {
         $genres = $this->genreRepository->getAll();
-        return view('admindashboard.products.create' , ['genres' => $genres ]);
+        return view('admindashboard.products.create', ['genres' => $genres]);
     }
 
     /**
@@ -63,7 +69,23 @@ class ProductController extends Controller
      */
     public function show(string $id)
     {
-        //
+        $genres = $this->genreRepository->getAll();
+        $reviews = $this->reviewRepository->getAll();
+        $carts = $this->cartRepository->getAll();
+        $product = $this->productRepository->getObject($id) ;
+        $products = $this->productRepository->getAll();
+
+// $targetgenre=
+
+        return view('product.details', [
+            'product' => $product,
+            'reviews' => $reviews,
+            'genres' => $genres,
+            'carts' => $carts,
+            'products' => $products,
+            'total' => Cart::getDetails()->quantities_sum,
+            'items' => Cart::getDetails()->items,
+        ]);
     }
 
     /**
@@ -73,7 +95,8 @@ class ProductController extends Controller
     {
 
         $product = $this->productRepository->getObject($id);
-        return view('admindashboard.products.edit', ['product' => $product]);    }
+        return view('admindashboard.products.edit', ['product' => $product]);
+    }
 
     /**
      * Update the specified resource in storage.

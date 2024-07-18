@@ -19,19 +19,20 @@
 <div class="container-fluid py-5 mt-5">
     <div class="container py-5">
         <div class="row g-4 mb-5">
-            <div class="col-lg-8 col-xl-9">
+            <div class="col-lg-8">
                 <div class="row g-4">
                     <div class="col-lg-6">
-                        <div class="border rounded">
+                        <div class=" text-center">
                             <a href="#">
-                                <img src="{{asset($product->product_img)}}" class="img-fluid rounded" alt="Image">
+                                <img src="{{asset($product->product_img)}}"
+                                    class="img-fluid rounded w-50 border rounded" alt="Image">
                             </a>
                         </div>
                     </div>
                     <div class="col-lg-6">
                         <h4 class="fw-bold mb-3">{{$product->name}}</h4>
-                        <p class="mb-3">{{$genre->name}}</p>
-                        <h5 class="fw-bold mb-3">{{$product->price}} $</h5>
+                        <p class="mb-3" id="" value="{{$product->genre_id}}"></p>
+                        <h5 class="fw-bold mb-3">{{$product->price}}$</h5>
                         <div class="d-flex mb-4">
                             <i class="fa fa-star" id="rate1"></i>
                             <i class="fa fa-star" id="rate2"></i>
@@ -56,7 +57,7 @@
                                 </button>
                             </div>
                         </div>
-                        <a href="#" class="btn border border-secondary rounded-pill px-4 py-2 mb-4 text-primary"><i
+                        <a href="{{route('product.add' , ['id' => $product->id])}}" class="btn border border-secondary rounded-pill px-4 py-2 mb-4 text-primary"><i
                                 class="fa fa-shopping-bag me-2 text-primary"></i> Add to cart</a>
                     </div>
                     <div class="col-lg-12">
@@ -156,13 +157,13 @@
                                 <div class="col-lg-6">
                                     <div class="border-bottom rounded">
                                         <input type="text" name="name" class="form-control border-0 me-4"
-                                            placeholder="Your Name *" value="{{Auth::user()->username}}">
+                                            placeholder="Your Name *" value="{{Auth::user()->username}}" disabled>
                                     </div>
                                 </div>
                                 <div class="col-lg-6">
                                     <div class="border-bottom rounded">
                                         <input name="email" type="email" class="form-control border-0"
-                                            placeholder="Your Email *" value="{{Auth::user()->email}}">
+                                            placeholder="Your Email *" value="{{Auth::user()->email}}" disabled>
                                     </div>
                                 </div>
                                 <div class="col-lg-12">
@@ -176,12 +177,18 @@
                                         <div class="d-flex align-items-center">
                                             <p class="mb-0 me-3">Please rate:</p>
                                             <div class="d-flex align-items-center" style="font-size: 12px;">
-                                                <a href="#"><i class="fa fa-star user_rate" id="user_rate1" onclick="changerate('user_rate1')"></i></a>
-                                                <a href="#"><i class="fa fa-star user_rate" id="user_rate2" onclick="changerate('user_rate2')"></i></a>
-                                                <a href="#"><i class="fa fa-star user_rate" id="user_rate3" onclick="changerate('user_rate3')"></i></a>
-                                                <a href="#"><i class="fa fa-star user_rate" id="user_rate4" onclick="changerate('user_rate4')"></i></a>
-                                                <a href="#"><i class="fa fa-star user_rate" id="user_rate5" onclick="changerate('user_rate5')"></i></a>
-                                                <input type="text" hidden value="" id="userrate" onchange="userrate_detect()" name="rate">
+                                                <a href="#"><i class="fa fa-star user_rate" id="user_rate1"
+                                                        onclick="changerate('user_rate1')"></i></a>
+                                                <a href="#"><i class="fa fa-star user_rate" id="user_rate2"
+                                                        onclick="changerate('user_rate2')"></i></a>
+                                                <a href="#"><i class="fa fa-star user_rate" id="user_rate3"
+                                                        onclick="changerate('user_rate3')"></i></a>
+                                                <a href="#"><i class="fa fa-star user_rate" id="user_rate4"
+                                                        onclick="changerate('user_rate4')"></i></a>
+                                                <a href="#"><i class="fa fa-star user_rate" id="user_rate5"
+                                                        onclick="changerate('user_rate5')"></i></a>
+                                                <input type="text" hidden value="" id="userrate"
+                                                    onchange="userrate_detect()" name="rate">
                                             </div>
                                         </div>
                                         <button type="submit"
@@ -193,7 +200,13 @@
                         </form>
                     </div>
                 </div>
-                <div class="col-lg-4 col-xl-3">
+
+
+
+            </div>
+            <div class="col-3">
+
+                <div class="col-lg-12">
                     <div class="row g-4 fruite">
                         <div class="col-lg-12">
                             <div class="input-group w-100 mx-auto d-flex mb-4">
@@ -349,6 +362,7 @@
                         </div>
                     </div>
                 </div>
+
             </div>
             <h1 class="fw-bold mb-0">Related products</h1>
             <div class="vesitable">
@@ -361,7 +375,9 @@
                             style="top: 10px; right: 10px;">Vegetable</div>
                         <div class="p-4 pb-0 rounded-bottom">
                             <h4>Parsely</h4>
-                            <p>Lorem ipsum dolor sit amet consectetur adipisicing elit sed do eiusmod te incididunt</p>
+                            <p>Lorem ipsum dolor sit amet consectetur adipisicing elit sed do eiusmod te
+                                incididunt
+                            </p>
                             <div class="d-flex justify-content-between flex-lg-wrap">
                                 <p class="text-dark fs-5 fw-bold">$4.99 / kg</p>
                                 <a href="#"
@@ -378,7 +394,9 @@
                             style="top: 10px; right: 10px;">Vegetable</div>
                         <div class="p-4 pb-0 rounded-bottom">
                             <h4>Parsely</h4>
-                            <p>Lorem ipsum dolor sit amet consectetur adipisicing elit sed do eiusmod te incididunt</p>
+                            <p>Lorem ipsum dolor sit amet consectetur adipisicing elit sed do eiusmod te
+                                incididunt
+                            </p>
                             <div class="d-flex justify-content-between flex-lg-wrap">
                                 <p class="text-dark fs-5 fw-bold">$4.99 / kg</p>
                                 <a href="#"
@@ -395,7 +413,9 @@
                             style="top: 10px; right: 10px;">Vegetable</div>
                         <div class="p-4 pb-0 rounded-bottom">
                             <h4>Banana</h4>
-                            <p>Lorem ipsum dolor sit amet consectetur adipisicing elit sed do eiusmod te incididunt</p>
+                            <p>Lorem ipsum dolor sit amet consectetur adipisicing elit sed do eiusmod te
+                                incididunt
+                            </p>
                             <div class="d-flex justify-content-between flex-lg-wrap">
                                 <p class="text-dark fs-5 fw-bold">$7.99 / kg</p>
                                 <a href="#"
@@ -412,7 +432,9 @@
                             style="top: 10px; right: 10px;">Vegetable</div>
                         <div class="p-4 pb-0 rounded-bottom">
                             <h4>Bell Papper</h4>
-                            <p>Lorem ipsum dolor sit amet consectetur adipisicing elit sed do eiusmod te incididunt</p>
+                            <p>Lorem ipsum dolor sit amet consectetur adipisicing elit sed do eiusmod te
+                                incididunt
+                            </p>
                             <div class="d-flex justify-content-between flex-lg-wrap">
                                 <p class="text-dark fs-5 fw-bold">$7.99 / kg</p>
                                 <a href="#"
@@ -429,7 +451,9 @@
                             style="top: 10px; right: 10px;">Vegetable</div>
                         <div class="p-4 pb-0 rounded-bottom">
                             <h4>Potatoes</h4>
-                            <p>Lorem ipsum dolor sit amet consectetur adipisicing elit sed do eiusmod te incididunt</p>
+                            <p>Lorem ipsum dolor sit amet consectetur adipisicing elit sed do eiusmod te
+                                incididunt
+                            </p>
                             <div class="d-flex justify-content-between flex-lg-wrap">
                                 <p class="text-dark fs-5 fw-bold">$7.99 / kg</p>
                                 <a href="#"
@@ -446,7 +470,9 @@
                             style="top: 10px; right: 10px;">Vegetable</div>
                         <div class="p-4 pb-0 rounded-bottom">
                             <h4>Parsely</h4>
-                            <p>Lorem ipsum dolor sit amet consectetur adipisicing elit sed do eiusmod te incididunt</p>
+                            <p>Lorem ipsum dolor sit amet consectetur adipisicing elit sed do eiusmod te
+                                incididunt
+                            </p>
                             <div class="d-flex justify-content-between flex-lg-wrap">
                                 <p class="text-dark fs-5 fw-bold">$7.99 / kg</p>
                                 <a href="#"
@@ -463,7 +489,9 @@
                             style="top: 10px; right: 10px;">Vegetable</div>
                         <div class="p-4 pb-0 rounded-bottom">
                             <h4>Potatoes</h4>
-                            <p>Lorem ipsum dolor sit amet consectetur adipisicing elit sed do eiusmod te incididunt</p>
+                            <p>Lorem ipsum dolor sit amet consectetur adipisicing elit sed do eiusmod te
+                                incididunt
+                            </p>
                             <div class="d-flex justify-content-between flex-lg-wrap">
                                 <p class="text-dark fs-5 fw-bold">$7.99 / kg</p>
                                 <a href="#"
@@ -480,7 +508,9 @@
                             style="top: 10px; right: 10px;">Vegetable</div>
                         <div class="p-4 pb-0 rounded-bottom">
                             <h4>Parsely</h4>
-                            <p>Lorem ipsum dolor sit amet consectetur adipisicing elit sed do eiusmod te incididunt</p>
+                            <p>Lorem ipsum dolor sit amet consectetur adipisicing elit sed do eiusmod te
+                                incididunt
+                            </p>
                             <div class="d-flex justify-content-between flex-lg-wrap">
                                 <p class="text-dark fs-5 fw-bold">$7.99 / kg</p>
                                 <a href="#"

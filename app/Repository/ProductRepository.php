@@ -39,4 +39,10 @@ class ProductRepository implements IProductRepository
         return Product::findOrFail($id);
     }
 
+    public function productFind(string $search){
+
+        return Product::where('name' , 'like' , "%$search%")->get();
+
+    }
+
 }

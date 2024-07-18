@@ -14,5 +14,8 @@ interface IProductRepository {
     public function getAll();
 
     public function getObject($id) : object;
+
+    public function productFind(string $search);
+
 }
 

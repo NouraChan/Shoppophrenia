@@ -12,4 +12,10 @@ class Genre extends Model
     protected $fillable = [
         "name"
     ];
+
+    public function productLink()
+    {
+        
+        return $this->hasMany('Product');
+    }
 }
