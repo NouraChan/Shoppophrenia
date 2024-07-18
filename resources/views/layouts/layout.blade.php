@@ -95,7 +95,7 @@
                                 <a href="#" class="dropdown-item">More ...</a>
                             </div>
                         </div>
-                        <a href="#" class="nav-item nav-link">Announcements</a>
+                        <a href="{{route('announcement.home')}}" class="nav-item nav-link">Announcements</a>
                     </div>
                     <div class="d-flex m-3 me-0">
                         <button

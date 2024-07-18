@@ -4,7 +4,6 @@ namespace App\Http\Controllers;
 
 // use App\Models\Cart;
 use App\Repository\Interface\IProductRepository;
-use Illuminate\Http\Request;
 use App\Repository\Interface\ICartRepository;
 use Jackiedo\Cart\Facades\Cart;
 use RealRashid\SweetAlert\Facades\Alert;

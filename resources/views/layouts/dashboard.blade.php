@@ -104,7 +104,7 @@
           </a>
         </li>
         <li class="nav-item">
-          <a class="nav-link " href="{{route('settings')}}">
+          <a class="nav-link " href="{{route('user.profile' , ['id' => Auth::user()->id])}}">
             <div
               class="icon icon-shape icon-sm border-radius-md text-center me-2 d-flex align-items-center justify-content-center">
               <i class="ni ni-single-02 text-success text-sm opacity-10"></i>
@@ -113,7 +113,7 @@
           </a>
         </li>
         <li class="nav-item">
-          <a class="nav-link " href="{{route('settings')}}">
+          <a class="nav-link " href="{{route('orders.show',['id' => Auth::user()->id])}}">
             <div
               class="icon icon-shape icon-sm border-radius-md text-center me-2 d-flex align-items-center justify-content-center">
               <i class="fa fa-book text-primary text-sm opacity-10"></i>
@@ -122,7 +122,7 @@
           </a>
         </li>
         <li class="nav-item">
-          <a class="nav-link " href="{{route('settings')}}">
+          <a class="nav-link " href="{{route('wishlist.show' , ['id' => Auth::user()->id])}}">
             <div
               class="icon icon-shape icon-sm border-radius-md text-center me-2 d-flex align-items-center justify-content-center">
               <i class="fa fa-heart text-sm opacity-10 text-danger"></i>
@@ -141,16 +141,16 @@
         </li>
         @else
         <li class="nav-item">
-          <a class="nav-link " href="{{route('settings')}}">
+          <a class="nav-link " href="{{route('user.profile' , ['id' => Auth::user()->id])}}">
             <div
               class="icon icon-shape icon-sm border-radius-md text-center me-2 d-flex align-items-center justify-content-center">
-              <i class="ni ni-single-02 text-sm opacity-10 text-orange"></i>
+              <i class="ni ni-single-02 text-sm opacity-10"></i>
             </div>
             <span class="nav-link-text ms-1">Profile</span>
           </a>
         </li>
         <li class="nav-item">
-          <a class="nav-link " href="{{route('settings')}}">
+          <a class="nav-link " href="{{route('orders.show' , ['id' => Auth::user()->id])}}">
             <div
               class="icon icon-shape icon-sm border-radius-md text-center me-2 d-flex align-items-center justify-content-center">
               <i class="fa fa-book text-sm opacity-10 text-orange"></i>
@@ -159,7 +159,7 @@
           </a>
         </li>
         <li class="nav-item">
-          <a class="nav-link " href="{{route('settings')}}">
+          <a class="nav-link " href="{{route('wishlist.show' , ['id' => Auth::user()->id])}}">
             <div
               class="icon icon-shape icon-sm border-radius-md text-center me-2 d-flex align-items-center justify-content-center">
               <i class="fa fa-heart text-sm opacity-10 text-orange"></i>
@@ -168,7 +168,7 @@
           </a>
         </li>
         <li class="nav-item">
-          <a class="nav-link " href="{{route('settings')}}">
+          <a class="nav-link " href="{{route('settings' , ['id' => Auth::user()->id])}}">
             <div
               class="icon icon-shape icon-sm border-radius-md text-center me-2 d-flex align-items-center justify-content-center">
               <i class="fa fa-cog text-sm opacity-10 text-orange"></i>

@@ -30,7 +30,6 @@ class SearchController extends Controller
             'grand_total' => Cart::name('shopping')->getTotal(),
         ];
 
-
         // $cart = $this->cartRepository->insertCart($products);
         $results = $this->productRepository->productFind($request->search);
         return view('results' , $cart, ['results' => $results]);

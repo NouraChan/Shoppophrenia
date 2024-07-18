@@ -3,21 +3,47 @@
 namespace App\Http\Controllers;
 
 use App\Models\Announcement;
+use Jackiedo\Cart\Facades\Cart;
 use App\Repository\AnnouncementRepository;
 use Illuminate\Http\Request;
 use App\Repository\Interface\IAnnouncementRepository;
 use App\DTO\AnnouncementDTO;
 use App\Http\Requests\CreateAnnouncementRequest;
+use App\Repository\Interface\IProductRepository;
+use App\Repository\Interface\ICartRepository;
 
 class AnnouncementController extends Controller
 {
 
     protected $announcementRepository;
+    protected $cartRepository;
+    protected $productRepository;
 
-    public function __construct(IAnnouncementRepository $announcementRepository){
-        $this->middleware('auth');
+    public function __construct(IAnnouncementRepository $announcementRepository , ICartRepository $cartRepository, IProductRepository $productRepository)
+    {
         $this->announcementRepository = $announcementRepository;
+        $this->cartRepository = $cartRepository;
+        $this->productRepository = $productRepository;
     }
+
+
+
+    public function toAnnouncements()
+    {
+
+        $announcements = $this->announcementRepository->getAll();
+        $products = $this->productRepository->getAll();
+        $cart = $this->cartRepository->insertCart($products);
+
+        return view('announcements', $cart, ['announcements' => $announcements]);
+    }
+
+
+
+
+
+
+
     /**
      * Display a listing of the resource.
      */
@@ -26,13 +52,13 @@ class AnnouncementController extends Controller
         $announcements = $this->announcementRepository->getAll();
 
         return view('admindashboard.announcements.index', ['announcements' => $announcements]);
-  
+
     }
 
     /**
      * Show the form for creating a new resource.
      */
-    
+
     /**
      * Show the form for creating a new resource.
      */
@@ -46,10 +72,10 @@ class AnnouncementController extends Controller
      */
     public function store(CreateAnnouncementRequest $createAnnouncementRequest)
     {
-       
+
         $announcement = AnnouncementDTO::handleData($createAnnouncementRequest);
         $this->announcementRepository->createObject($announcement);
-        
+
 
         return redirect()->route('Announcement.index');
 
@@ -60,7 +86,12 @@ class AnnouncementController extends Controller
      */
     public function show(string $id)
     {
-        //
+        $announcement = $this->announcementRepository->getObject($id);
+        $products = $this->productRepository->getAll();
+        $cart = $this->cartRepository->insertCart($products);
+
+       
+        return view('announcement.show', $cart , ['announcement' => $announcement] );
     }
 
     /**
@@ -68,7 +99,7 @@ class AnnouncementController extends Controller
      */
     public function edit(string $id)
     {
-        
+
         $announcement = $this->announcementRepository->getObject($id);
         return view('admindashboard.announcements.edit', ['announcement' => $announcement]);
     }
@@ -81,9 +112,10 @@ class AnnouncementController extends Controller
         $announcement = $this->announcementRepository->getObject($id);
         $announcementDTO = AnnouncementDTO::handleData($createAnnouncementRequest);
         $updated = $this->announcementRepository->updateObject($announcement, $announcementDTO);
-        
 
-        return redirect()->route('Announcement.index');    }
+
+        return redirect()->route('Announcement.index');
+    }
 
     /**
      * Remove the specified resource from storage.
@@ -93,4 +125,5 @@ class AnnouncementController extends Controller
         $announcement = $this->announcementRepository->getObject($id);
         $announcement->delete();
         return redirect()->back();
-}}
+    }
+}

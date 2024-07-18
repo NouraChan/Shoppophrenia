@@ -6,6 +6,7 @@ use Illuminate\Http\Request;
 use App\Repository\Interface\IWishlistRepository;
 use App\DTO\WishlistDTO;
 use App\Http\Requests\CreateWishlistRequest;
+use Auth;
 
 class WishlistController extends Controller
 { 
@@ -53,7 +54,9 @@ class WishlistController extends Controller
      */
     public function show(string $id)
     {
-        //
+        $wishlist = $this->wishlistRepository->getObject(Auth::id());
+
+        return view('wishlist', ['wishlist' => $wishlist]);
     }
 
     /**

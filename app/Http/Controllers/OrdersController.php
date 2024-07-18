@@ -6,6 +6,7 @@ use App\DTO\OrdersDTO;
 use Illuminate\Http\Request;
 use App\Repository\Interface\IOrdersRepository;
 use App\Http\Requests\CreateOrderRequest;
+use Auth;
 
 class OrdersController extends Controller
 {
@@ -53,7 +54,8 @@ class OrdersController extends Controller
      */
     public function show(string $id)
     {
-        //
+        $orders = $this->ordersRepository->getObject(Auth::id());
+        return view('orders.show');
     }
 
     /**

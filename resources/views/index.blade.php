@@ -10,7 +10,7 @@
                 <h4 class="mb-3 text-secondary">Booktopia</h4>
                 <h1 class="mb-5 display-3 text-primary">All Books You Can Think Of</h1>
                 <div class="position-relative mx-auto">
-                    <form action="{{route('search')}}" method="POST">
+                    <form action="{{route('search')}}" method="GET">
                         @csrf
                         <input class="form-control border-2 border-secondary w-75 py-3 px-4 rounded-pill" name="search"
                             type="text" placeholder="Search">
