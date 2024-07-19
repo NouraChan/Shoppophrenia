@@ -93,9 +93,11 @@ protected $queryRepository;
      */
     public function edit(string $id)
     {
+        $genres = $this->genreRepository->getAll();
 
         $product = $this->productRepository->getObject($id);
-        return view('admindashboard.products.edit', ['product' => $product]);
+        return view('admindashboard.products.edit', ['product' => $product,'genres' => $genres,
+    ]);
     }
 
     /**
@@ -103,10 +105,11 @@ protected $queryRepository;
      */
     public function update(CreateProductRequest $createproductRequest, string $id)
     {
-        $product = $this->productRepository->getObject($id);
-        $productDTO = ProductDTO::handleData($createproductRequest);
-        $updated = $this->productRepository->updateObject($product, $productDTO);
+        $product = $this->productRepository->getObject($id);        
 
+        $productDTO = ProductDTO::handleData($createproductRequest);
+
+        $updated = $this->productRepository->updateObject($product, $productDTO);
 
         return redirect()->route('product.index');
     }

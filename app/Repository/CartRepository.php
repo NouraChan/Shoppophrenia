@@ -5,6 +5,7 @@ namespace App\Repository;
 use App\Models\Product;
 use App\Repository\Interface\ICartRepository;
 use App\DTO\CartDTO;
+use Auth;
 use Jackiedo\Cart\Facades\Cart;
 
 class CartRepository implements ICartRepository
@@ -39,9 +40,10 @@ class CartRepository implements ICartRepository
         return Cart::findOrFail($id);
     }
 
-    public function insertCart($products) : array {
+    public function insertCart($products): array
+    {
 
-        $cart =   [
+        $cart = [
             'products' => $products,
             'total' => Cart::name('shopping')->getDetails()->quantities_sum,
             'items' => Cart::name('shopping')->getDetails()->items,
@@ -50,11 +52,11 @@ class CartRepository implements ICartRepository
             // 'taxes_count' => Cart::name('shopping')
         ];
 
-    return $cart;
+        return $cart;
 
     }
 
-    public function addToCart($product) 
+    public function addToCart($product)
     {
 
         $cart = [];
@@ -75,9 +77,14 @@ class CartRepository implements ICartRepository
         return $cart;
     }
 
-    public function removeFromCart($id) {
+    public function removeFromCart($id)
+    {
         Cart::name('shopping')->removeItem($id);
     }
+
+
+
+
 
 }
 

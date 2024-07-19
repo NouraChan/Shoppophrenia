@@ -11,15 +11,11 @@ return new class extends Migration
      */
     public function up(): void
     {
-        Schema::create('payment', function (Blueprint $table) {
+        Schema::create('gallery', function (Blueprint $table) {
             $table->id();
+            $table->unsignedBigInteger('product_id');
+            $table->foreign('product_id')->references('id')->on('product');
             $table->timestamps();
-            $table->date('payment_date');
-            $table->enum('method', ['credit' , 'cash' ,'installment']);
-            $table->decimal('amount');
-            $table->unsignedBigInteger('customer_id');
-            $table->foreign('customer_id')->references('id')->on('users');
-            
         });
     }
 
@@ -28,6 +24,6 @@ return new class extends Migration
      */
     public function down(): void
     {
-        Schema::dropIfExists('payment');
+        Schema::dropIfExists('gallery');
     }
 };

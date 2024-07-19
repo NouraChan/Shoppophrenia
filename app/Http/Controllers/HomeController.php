@@ -9,21 +9,27 @@ use App\Models\User;
 use Illuminate\Http\Request;
 use App\Repository\Interface\IUserRepository;
 use App\Enums\role;
+use Jackiedo\Cart\Facades\Cart;
+use App\Repository\Interface\ICartRepository;
+use App\Repository\Interface\IProductRepository;
 
 class HomeController extends Controller
 {
-
     protected $userRepository;
-
+    protected $productRepository;
+    protected $cartRepository;
     /**
      * Create a new controller instance.
      *
      * @return void
      */
-    public function __construct(IUserRepository $userRepository)
+    public function __construct(IUserRepository $userRepository, ICartRepository $cartRepository, IProductRepository $productRepository)
     {
-        $this->middleware('auth');
+        // $this->middleware('auth');
         $this->userRepository = $userRepository;
+        $this->cartRepository = $cartRepository;
+        $this->productRepository = $productRepository;
+
     }
 
     /**
@@ -44,7 +50,7 @@ class HomeController extends Controller
         $sellers = $this->userRepository->getCount(role::SELLER);
         $user = $this->userRepository->getAll();
 
-        return view('admindashboard.home', ['customers' => $customers , 'sellers' => $sellers ,'user' => $user]);
+        return view('admindashboard.home', ['customers' => $customers, 'sellers' => $sellers, 'user' => $user]);
     }
 
     public function usersAffair()
@@ -72,15 +78,19 @@ class HomeController extends Controller
     public function productIndex()
     {
 
-        $products = Product::all();
-
+        $products = $this->productRepository->getAll();
         return view('admindashboard.products.index', ['products' => $products]);
     }
 
     public function checkOut()
     {
+        $products = $this->productRepository->getAll();
+        $cart = $this->cartRepository->insertCart($products);
 
-        return view('checkout');
+        // dd(gettype($cart));
+
+
+        return view('checkout',['items' => $cart]);
     }
 
 

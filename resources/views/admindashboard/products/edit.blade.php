@@ -35,12 +35,14 @@
                                             class="text-secondary opacity-5">($)</span></label>
                                     <input class="form-control" type="text" name="price" value="{{$product->price}}">
                                 </div>
-                                <div class="form-group col-md-2">
+                                <div class="form-group col-md-4">
                                     <label for="product_img" class="form-control-label"><img class="mt-4"
                                             src="{{asset('img/add-image.png')}}" alt="img"
                                             style="width:50px; cursor:pointer;"></label>
                                     <input class="form-control" type="file" name="product_img" hidden id="product_img">
                                     <img src="{{$product->product_img}}" alt="">
+                                    <img src="{{asset($product->product_img)}}" alt="" style="width:100px; height:150px; display:inline-block">
+
 
                                 </div>
                                 <div class="form-group col-md-12">

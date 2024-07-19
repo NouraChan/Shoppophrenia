@@ -20,7 +20,7 @@ return new class extends Migration
             $table->string('first_name')->nullable();
             $table->string('last_name')->nullable();
             $table->string ('fullname')->nullable();
-            $table->string('phone_number')->nullable();
+            $table->string('phone_number')->nullable()->unique();
             $table->enum('role',['customer','seller','admin'])->default('customer');
             $table->enum('gender', ['male', 'female'])->nullable();
             $table->string('user_img')->nullable()->default('img/userimg/avatar.jpg');

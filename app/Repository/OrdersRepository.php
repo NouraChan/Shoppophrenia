@@ -9,10 +9,31 @@ use App\Models\Orders;
 class OrdersRepository implements IOrdersRepository
 {
 
+    public function placeOrder()
+    {
+        dd($cart = Cart::name('shopping')->getDetails());
 
+        // dd(typeOf($cart));
+        $order = 
+        [ 
+            'total_price' => $cart->total ,
+            'customer_id' =>Auth::id() ,
+            'shipment_id'=> $shipment->id,
+            'order_id' =>$order->id,
+        ];
+        
+
+    }
     public function createObject($createorderRequest)
     {
+
+
+
+        
         return Orders::create($createorderRequest);
+
+
+
     }
 
     public function updateObject(object $order, $orderDTO)

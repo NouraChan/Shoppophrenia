@@ -15,6 +15,7 @@ return new class extends Migration
             $table->id();
             $table->timestamps();
             $table->decimal('total_price');
+            $table->enum('status' , ['inprogress', 'returned','complete']);
             $table->unsignedBigInteger('customer_id');
             $table->foreign('customer_id')->references('id')->on('users');
             $table->unsignedBigInteger('payment_id');

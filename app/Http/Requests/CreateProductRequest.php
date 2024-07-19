@@ -25,9 +25,9 @@ class CreateProductRequest extends FormRequest
             'name' => 'required',
             'description' => 'required',
             'product_img' => 'required',
-            'stock' => 'required|integer',
+            'stock' => 'required',
             'price' => 'required',
-            'rate' => 'nullable|integer',
+            'rate' => 'nullable',
             'genre_id' => 'required',
 
         ];

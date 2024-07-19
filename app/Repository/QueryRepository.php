@@ -9,7 +9,7 @@ class QueryRepository implements IQueryRepository {
 
 
     public function getRomance($products){
-        $products =DB::table('product')->where('genre_id' ,'=' ,'4')->get();
+        $products =DB::table('product')->where('genre_id' ,'=' ,'1')->get();
 
         return $products;
     }

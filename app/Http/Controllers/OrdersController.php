@@ -5,15 +5,38 @@ namespace App\Http\Controllers;
 use App\DTO\OrdersDTO;
 use Illuminate\Http\Request;
 use App\Repository\Interface\IOrdersRepository;
+use App\Repository\Interface\IShipmentRepository;
+use App\Repository\Interface\IPaymentRepository;
+use App\Repository\Interface\IUserRepository;
+use App\Repository\Interface\IProductRepository;
+use App\Repository\Interface\ICartRepository;
+
+
 use App\Http\Requests\CreateOrderRequest;
 use Auth;
 
 class OrdersController extends Controller
 {
-    protected $ordersRepository;
+    protected $cartRepository;
 
-    public function __construct(IOrdersRepository $ordersRepository){
+    protected $ordersRepository;
+    protected $userRepository;
+    protected $paymentRepository;
+    protected $productRepository;
+    protected $shipmentRepository;
+
+    public function __construct(IOrdersRepository $ordersRepository,ICartRepository $cartRepository, IProductRepository $productRepository, IUserRepository $userRepository,IPaymentRepository $paymentRepository,IShipmentRepository $shipmentRepository)
+    {
         $this->ordersRepository = $ordersRepository;
+        $this->shipmentRepository = $shipmentRepository;
+        $this->paymentRepository = $paymentRepository;
+        $this->productRepository = $productRepository;
+        $this->userRepository = $userRepository;
+        $this->cartRepository = $cartRepository;
+
+
+
+
     }
     /**
      * Display a listing of the resource.
