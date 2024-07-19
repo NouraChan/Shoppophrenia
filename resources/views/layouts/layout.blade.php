@@ -406,12 +406,14 @@
                         <h6 class="mb-0">Grand Total</h6>
 
                     </div>
+                    @auth
                     <hr class="horizontal dark my-sm-4">
                     <div class="mt-2 mb-5 ">
                         <h6 class="mb-0"></h6>
-                        <a role="submit" href="{{route('checkout')}}" class="btn btn-primary form-control">Proceed to
+                        <a role="submit" href="{{route('checkout', ['id' => Auth::id()])}}" class="btn btn-primary form-control">Proceed to
                             Checkout</a>
                     </div>
+                    @endauth
                 </form>
             </div>
         </div>

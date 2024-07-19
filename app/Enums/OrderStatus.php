@@ -5,7 +5,9 @@ namespace App\Enums;
 
 enum OrderStatus : string {
 
-  case //uppercaserole = 'lowercaserole';
+  case INPROGRESS = 'inprogress' ;
+  case RETURNED = 'returned';
+  case COMPLETED = 'delivered';
 
 }
 

@@ -41,7 +41,7 @@ Route::get('/usersindex', [HomeController::class, 'usersIndex'])->name('usersind
 Route::get('/settings', [HomeController::class, 'index2'])->name('settings');
 Route::get('/genres', [HomeController::class, 'genreIndex'])->name('genres');
 Route::get('/products', [HomeController::class, 'productIndex'])->name('products');
-Route::get('/checkout', [HomeController::class, 'checkOut'])->name('checkout');
+Route::get('/checkout/{id}', [HomeController::class, 'checkOut'])->name('checkout');
 
 Route::get('/results', [SearchController::class ,'searchProduct'])->name('search');
 
@@ -122,7 +122,7 @@ Route::group(['prefix' => 'orders'], function () {
 
 //Wishlists group
 
-Route::group(['prefix' => 'wishlists'], function () {
+Route::group(['prefix' => 'wishlist'], function () {
     Route::get('/create', [WishlistController::class, 'create'])->name('wishlist.create');
     Route::post('/store', [WishlistController::class, 'store'])->name('wishlist.store');
     Route::get('/destroy/{id}', [WishlistController::class, 'destroy'])->name('wishlist.destroy');
@@ -144,27 +144,7 @@ Route::group(['prefix' => 'genre'], function () {
     Route::get('/edit/{id}', [GenreController::class, 'edit'])->name('genre.edit');
 });
 
-//Shipment group
 
-Route::group(['prefix' => 'shipment'], function () {
-    Route::get('/create', [ShipmentController::class, 'create'])->name('shipment.create');
-    Route::post('/store', [ShipmentController::class, 'store'])->name('shipment.store');
-    Route::get('/destroy/{id}', [ShipmentController::class, 'destroy'])->name('shipment.destroy');
-    Route::get('/index', [ShipmentController::class, 'index'])->name('shipment.index');
-    Route::post('/update/{id}', [ShipmentController::class, 'update'])->name('shipment.update');
-    Route::get('/edit{/id}', [ShipmentController::class, 'edit'])->name('shipment.edit');
-});
-
-//Payment group
-
-Route::group(['prefix' => 'payment'], function () {
-    Route::get('/create', [PaymentController::class, 'create'])->name('payment.create');
-    Route::post('/store', [PaymentController::class, 'store'])->name('payment.store');
-    Route::get('/destroy/{id}', [PaymentController::class, 'destroy'])->name('payment.destroy');
-    Route::get('/index', [PaymentController::class, 'index'])->name('payment.index');
-    Route::post('/update/{id}', [PaymentController::class, 'update'])->name('payment.update');
-    Route::get('/edit/{id}', [PaymentController::class, 'edit'])->name('payment.edit');
-});
 
 //Announcement group
 

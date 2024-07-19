@@ -25,7 +25,7 @@ class HomeController extends Controller
      */
     public function __construct(IUserRepository $userRepository, ICartRepository $cartRepository, IProductRepository $productRepository)
     {
-        // $this->middleware('auth');
+        $this->middleware('auth');
         $this->userRepository = $userRepository;
         $this->cartRepository = $cartRepository;
         $this->productRepository = $productRepository;
@@ -82,15 +82,22 @@ class HomeController extends Controller
         return view('admindashboard.products.index', ['products' => $products]);
     }
 
-    public function checkOut()
+    public function checkOut(string $id)
     {
+        $product = $this->productRepository->getObject($id);
         $products = $this->productRepository->getAll();
         $cart = $this->cartRepository->insertCart($products);
+        $items= $this->cartRepository->addToCart($product);
 
         // dd(gettype($cart));
 
 
-        return view('checkout',['items' => $cart]);
+        return view('checkout',$cart , [
+            'items' => $items,
+            'product' => $product,
+            'products' => $products,
+             
+        ]);
     }
 
 

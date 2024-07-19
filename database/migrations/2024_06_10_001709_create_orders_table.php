@@ -14,14 +14,16 @@ return new class extends Migration
         Schema::create('orders', function (Blueprint $table) {
             $table->id();
             $table->timestamps();
+            $table->date('shipment_date');
+            $table->string('address');
+            $table->string('city');
+            $table->string('country');
             $table->decimal('total_price');
-            $table->enum('status' , ['inprogress', 'returned','complete']);
+            $table->enum('method', ['credit' , 'cash' ,'paypal','check']);
+            $table->decimal('amount');
+            $table->enum('status' , ['inprogress', 'returned','delivered']);
             $table->unsignedBigInteger('customer_id');
             $table->foreign('customer_id')->references('id')->on('users');
-            $table->unsignedBigInteger('payment_id');
-            $table->foreign('payment_id')->references('id')->on('payment');
-            $table->unsignedBigInteger('shipment_id');
-            $table->foreign('shipment_id')->references('id')->on('shipment');
             
         });
     }

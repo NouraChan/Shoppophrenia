@@ -18,7 +18,6 @@ class OrdersRepository implements IOrdersRepository
         [ 
             'total_price' => $cart->total ,
             'customer_id' =>Auth::id() ,
-            'shipment_id'=> $shipment->id,
             'order_id' =>$order->id,
         ];
         
