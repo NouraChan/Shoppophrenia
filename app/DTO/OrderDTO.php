@@ -41,7 +41,7 @@ class OrderDTO extends Data
 
 
             ];
-
+            
             foreach ($data as $dat => $val) {
 
                 $data["$dat"] = trim($data["$dat"]);

@@ -5,7 +5,7 @@
 
 <!-- Single Page Header start -->
 <div class="container-fluid bg-white py-5">
-   
+
 </div>
 <!-- Single Page Header End -->
 
@@ -53,12 +53,14 @@
                             </div>
                         </div>
                         <div class=""><a href="{{route('product.add', ['id' => $product->id])}}"
-                            class="btn border border-secondary rounded-pill w-50 px-4 py-2 mb-4 text-primary"><i
-                                class="fa fa-shopping-bag me-2 text-primary"></i> Add to cart</a>
-                        <a href="#" class="btn border border-secondary rounded-pill w-50 px-4 py-2 mb-4 text-primary"><i
-                                class="fa fa-heart me-2 text-primary"></i> Add to
-                            wishlist</a></div>
-                        
+                                class="btn border border-secondary rounded-pill w-50 px-4 py-2 mb-4 text-primary"><i
+                                    class="fa fa-shopping-bag me-2 text-primary"></i> Add to cart</a>
+                            <a href="#"
+                                class="btn border border-secondary rounded-pill w-50 px-4 py-2 mb-4 text-primary"><i
+                                    class="fa fa-heart me-2 text-primary"></i> Add to
+                                wishlist</a>
+                        </div>
+
                     </div>
                     <div class="col-lg-12">
                         <nav>
@@ -150,51 +152,62 @@
                             </div>
 
                         </div>
+
                         <form action="{{route('review.store')}}" method="post">
                             @csrf
+
                             <h4 class="mb-5 fw-bold">Leave a Reply</h4>
                             <div class="row g-4">
                                 <div class="col-lg-6">
-                                    <div class="border-bottom rounded">
-                                        <input type="text" name="name" class="form-control border-0 me-4"
-                                            placeholder="Your Name *" value="{{Auth::user()->username}}" disabled>
-                                    </div>
-                                </div>
-                                <div class="col-lg-6">
-                                    <div class="border-bottom rounded">
-                                        <input name="email" type="email" class="form-control border-0"
-                                            placeholder="Your Email *" value="{{Auth::user()->email}}" disabled>
-                                    </div>
-                                </div>
-                                <div class="col-lg-12">
-                                    <div class="border-bottom rounded my-4">
-                                        <textarea name="content" id="" class="form-control border-secondary" cols="30" rows="8" style="resize:none;"
-                                            placeholder="Your Review *" spellcheck="false"></textarea>
-                                    </div>
-                                </div>
-                                <div class="col-lg-12">
-                                    <div class="d-flex justify-content-between py-3 mb-5">
-                                        <div class="d-flex align-items-center">
-                                            <p class="mb-0 me-3">Please rate:</p>
-                                            <div class="d-flex align-items-center" style="font-size: 12px;">
-                                                <a href="#"><i class="fa fa-star user_rate" id="user_rate1"
-                                                        onclick="changerate('user_rate1')"></i></a>
-                                                <a href="#"><i class="fa fa-star user_rate" id="user_rate2"
-                                                        onclick="changerate('user_rate2')"></i></a>
-                                                <a href="#"><i class="fa fa-star user_rate" id="user_rate3"
-                                                        onclick="changerate('user_rate3')"></i></a>
-                                                <a href="#"><i class="fa fa-star user_rate" id="user_rate4"
-                                                        onclick="changerate('user_rate4')"></i></a>
-                                                <a href="#"><i class="fa fa-star user_rate" id="user_rate5"
-                                                        onclick="changerate('user_rate5')"></i></a>
-                                                <input type="text" hidden value="" id="userrate"
-                                                    onchange="userrate_detect()" name="rate">
+                                    @guest
+                                    <h4 class="mb-5 fw-bold">Login to leave a review here</h4>
+
+                                    @endguest
+                                    @auth
+
+                                            <div class="border-bottom rounded">
+                                                <input type="text" name="name" class="form-control border-0 me-4"
+                                                    placeholder="Your Name *" value="{{Auth::user()->username}}" disabled>
                                             </div>
                                         </div>
-                                        <button type="submit"
-                                            class="btn border border-secondary text-primary rounded-pill px-4 py-3">
-                                            Post Comment</button>
-                                    </div>
+                                        <div class="col-lg-6">
+                                            <div class="border-bottom rounded">
+                                                <input name="email" type="email" class="form-control border-0"
+                                                    placeholder="Your Email *" value="{{Auth::user()->email}}" disabled>
+                                            </div>
+                                        </div>
+                                        <div class="col-lg-12">
+                                            <div class="border-bottom rounded my-4">
+                                                <textarea name="content" id="" class="form-control border-secondary" cols="30"
+                                                    rows="8" style="resize:none;" placeholder="Your Review *"
+                                                    spellcheck="false"></textarea>
+                                            </div>
+                                        </div>
+                                        <div class="col-lg-12">
+                                            <div class="d-flex justify-content-between py-3 mb-5">
+                                                <div class="d-flex align-items-center">
+                                                    <p class="mb-0 me-3">Please rate:</p>
+                                                    <div class="d-flex align-items-center" style="font-size: 12px;">
+                                                        <a href="#"><i class="fa fa-star user_rate" id="user_rate1"
+                                                                onclick="changerate('user_rate1')"></i></a>
+                                                        <a href="#"><i class="fa fa-star user_rate" id="user_rate2"
+                                                                onclick="changerate('user_rate2')"></i></a>
+                                                        <a href="#"><i class="fa fa-star user_rate" id="user_rate3"
+                                                                onclick="changerate('user_rate3')"></i></a>
+                                                        <a href="#"><i class="fa fa-star user_rate" id="user_rate4"
+                                                                onclick="changerate('user_rate4')"></i></a>
+                                                        <a href="#"><i class="fa fa-star user_rate" id="user_rate5"
+                                                                onclick="changerate('user_rate5')"></i></a>
+                                                        <input type="text" hidden value="" id="userrate"
+                                                            onchange="userrate_detect()" name="rate">
+                                                    </div>
+                                                </div>
+                                                <button type="submit"
+                                                    class="btn border border-secondary text-primary rounded-pill px-4 py-3">
+                                                    Post Comment</button>
+                                            </div>
+                                    @endauth
+
                                 </div>
                             </div>
                         </form>
@@ -221,7 +234,8 @@
                                     @foreach ($genres as $genre)
                                         <li>
                                             <div class="d-flex justify-content-between fruite-name">
-                                                <a href="#"><i class="fa fa-book me-2" aria-hidden="true"></i>{{$genre->name}}</a>
+                                                <a href="#"><i class="fa fa-book me-2"
+                                                        aria-hidden="true"></i>{{$genre->name}}</a>
                                                 <span>($)</span>
                                             </div>
                                         </li>

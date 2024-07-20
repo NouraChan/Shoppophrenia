@@ -3,7 +3,6 @@
 namespace App\Repository;
 
 use App\Repository\Interface\IProductRepository;
-use App\DTO\ProductDTO;
 use App\Models\Product;
 
 class ProductRepository implements IProductRepository
@@ -39,9 +38,14 @@ class ProductRepository implements IProductRepository
         return Product::findOrFail($id);
     }
 
-    public function productFind(string $search){
+    public function productFind(string $search)
+    {
 
-        return Product::where('name' , 'like' , "%$search%")->get();
+        $search = trim($search);
+        $search = stripcslashes($search);
+        $search = htmlspecialchars($search);
+
+        return Product::where('name', 'like', "%$search%")->get();
 
     }
 

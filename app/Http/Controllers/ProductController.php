@@ -28,7 +28,7 @@ protected $queryRepository;
 
     public function __construct(IQueryRepository $queryRepository ,IProductRepository $productRepository, ICartRepository $cartRepository, IGenreRepository $genreRepository, IReviewRepository $reviewRepository)
     {
-        $this->middleware('auth');
+        // $this->middleware('auth');
         $this->productRepository = $productRepository;
         $this->cartRepository = $cartRepository;
         $this->genreRepository = $genreRepository;

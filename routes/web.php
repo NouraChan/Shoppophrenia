@@ -49,9 +49,7 @@ Route::get('/results', [SearchController::class, 'searchProduct'])->name('search
 //User group
 
 Route::group(['prefix' => 'user'], function () {
-    // Route::get('/create', [UserController::class, 'create'])->name('user.create');
-    // Route::post('/store', [UserController::class, 'store'])->name('user.store');
-    Route::get('/destroy/{id}', [UserController::class, 'destroy'])->name('user.destroy');
+      Route::get('/destroy/{id}', [UserController::class, 'destroy'])->name('user.destroy');
     Route::get('/index', [UserController::class, 'index'])->name('user.index');
     Route::post('/update/{id}', [UserController::class, 'update'])->name('user.update');
     Route::get('/show/{id}', [UserController::class, 'show'])->name('user.show');
@@ -110,7 +108,6 @@ Route::group(['prefix' => 'product'], function () {
 //Orders group
 
 Route::group(['prefix' => 'order'], function () {
-    // Route::get('/create', [OrdersController::class, 'create'])->name('order.create');
     Route::post('/store', [OrdersController::class, 'store'])->name('order.store');
     Route::get('/destroy/{id}', [OrdersController::class, 'destroy'])->name('order.destroy');
     Route::get('/index', [OrdersController::class, 'index'])->name('order.index');

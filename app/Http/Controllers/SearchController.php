@@ -29,14 +29,10 @@ class SearchController extends Controller
             'sub_total' => Cart::name('shopping')->getSubtotal(),
             'grand_total' => Cart::name('shopping')->getTotal(),
         ];
-
-        // $cart = $this->cartRepository->insertCart($products);
         $results = $this->productRepository->productFind($request->search);
         return view('results' , $cart, ['results' => $results]);
 
     }
 
-    public function resultShow()
-    {
-    }
+
 }
