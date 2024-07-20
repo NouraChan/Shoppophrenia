@@ -22,9 +22,10 @@ class CreateAnnouncementRequest extends FormRequest
     public function rules(): array
     {
         return [
-            'title' => 'required',
-            'content' => 'required',
-            'image' => 'nullable',
+            // 'title' => 'required',
+            // 'content' => 'required',
+            // 'image' => 'required',
+            // 'user_id' => 'required',
         ];
     }
 }

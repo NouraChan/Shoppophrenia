@@ -118,7 +118,7 @@ Route::group(['prefix' => 'order'], function () {
     Route::get('/edit/{id}', [OrdersController::class, 'edit'])->name('order.edit');
     Route::get('/show/{id}', [OrdersController::class, 'show'])->name('order.show');
 
-});
+})->middleware('auth');
 
 //Wishlists group
 
@@ -131,7 +131,7 @@ Route::group(['prefix' => 'wishlist'], function () {
     Route::get('/edit/{id}', [WishlistController::class, 'edit'])->name('wishlist.edit');
     Route::get('/show/{id}', [WishlistController::class, 'show'])->name('wishlist.show');
 
-});
+})->middleware('auth');
 
 //Genre group
 
@@ -142,7 +142,7 @@ Route::group(['prefix' => 'genre'], function () {
     Route::get('/index', [GenreController::class, 'index'])->name('genre.index');
     Route::post('/update/{id}', [GenreController::class, 'update'])->name('genre.update');
     Route::get('/edit/{id}', [GenreController::class, 'edit'])->name('genre.edit');
-});
+})->middleware('auth');
 
 
 
@@ -159,7 +159,7 @@ Route::group(['prefix' => 'announcement'], function () {
     Route::get('/', [AnnouncementController::class, 'toAnnouncements'])->name('announcement.home');
 
 
-});
+})->middleware('auth');
 
 
 

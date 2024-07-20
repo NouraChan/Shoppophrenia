@@ -25,11 +25,9 @@ class OrdersController extends Controller
     protected $productRepository;
     protected $shipmentRepository;
 
-    public function __construct(IOrderRepository $orderRepository,ICartRepository $cartRepository, IProductRepository $productRepository, IUserRepository $userRepository,IPaymentRepository $paymentRepository,IShipmentRepository $shipmentRepository)
+    public function __construct(IOrderRepository $orderRepository,ICartRepository $cartRepository, IProductRepository $productRepository, IUserRepository $userRepository)
     {
         $this->orderRepository = $orderRepository;
-        $this->shipmentRepository = $shipmentRepository;
-        $this->paymentRepository = $paymentRepository;
         $this->productRepository = $productRepository;
         $this->userRepository = $userRepository;
         $this->cartRepository = $cartRepository;

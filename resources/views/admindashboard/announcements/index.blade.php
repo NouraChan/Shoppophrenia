@@ -42,20 +42,16 @@
                                             <span class="text-secondary text-xs font-weight-bold">{{$announcement->id}}</span>
                                         </td>
                                         <td class="align-middle px-4">
-                                            <img src="{{asset($announcement->announcement_img)}}" alt=""
-                                                style="width:100px; height:150px;">
+                                            <img src="{{asset($announcement->image)}}" alt=""
+                                                style="width:300px; height:150px;">
                                         </td>
                                         <td>
-                                            <span class="text-black text-xs font-weight-bold">{{$announcement->name}}</span>
+                                            <span class="text-black text-xs font-weight-bold">{{$announcement->title}}</span>
                                         </td>
                                         <td>
                                             <span
-                                                class="text-secondary text-xs font-weight-bold">{{$announcement->description}}</span>
+                                                class="text-secondary text-xs font-weight-bold">{{$announcement->user_id}}</span>
                                         </td>
-                                        <td>
-                                            <span class="text-secondary text-xs font-weight-bold">{{$announcement->stock}}</span>
-                                        </td>
-                                        
                                         <td class="align-middle">
                                             <a href="{{route('announcement.edit', ['id' => $announcement->id])}}"
                                                 class="text-secondary font-weight-bold text-xs" data-toggle="tooltip"

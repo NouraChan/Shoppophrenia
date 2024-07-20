@@ -65,13 +65,13 @@ class AnnouncementController extends Controller
      * Store a newly created resource in storage.
      */
     public function store(CreateAnnouncementRequest $createAnnouncementRequest)
-    {
-
+{
         $announcement = AnnouncementDTO::handleData($createAnnouncementRequest);
+
         $this->announcementRepository->createObject($announcement);
 
 
-        return redirect()->route('Announcement.index');
+        return redirect()->route('announcement.index');
 
     }
 

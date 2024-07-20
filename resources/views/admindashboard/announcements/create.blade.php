@@ -15,17 +15,17 @@
                             <div class="col-md-10 row">
                                 <div class="form-group col-md-6">
                                     <label for="name" class="form-control-label">Title</label>
-                                    <input class="form-control" type="text" name="name">
+                                    <input class="form-control" type="text" name="title">
                                 </div>
                                 <div class="form-group col-md-2">
-                                    <label for="product_img" class="form-control-label"><img class="mt-4"
+                                    <label for="image" class="form-control-label"><img class="mt-4"
                                             src="{{asset('img/add-image.png')}}" alt="img"
                                             style="width:50px; cursor:pointer;"></label>
-                                    <input class="form-control" type="file" name="product_img" hidden id="product_img">
+                                    <input class="form-control" type="file" name="image" hidden id="image">
                                 </div>
                                 <div class="form-group col-md-12">
                                     <label for="example-text-input" class="form-control-label">Content</label>
-                                    <textarea class="form-control" name="description" style="resize:none;" rows="5"></textarea>
+                                    <textarea class="form-control" name="content" style="resize:none;" rows="5"></textarea>
                                 </div>
                                 <button class="form-control btn bghalf me-3 w-10 text-nowrap text-white align-end"
                                     type="submit">Create</button>
