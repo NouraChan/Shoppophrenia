@@ -21,56 +21,47 @@
                                 </td>
                                 <td>
                                     <div class="text-center">
-                                        <p class="text-xs font-weight-bold mb-0">Value:</p>
-                                        <h6 class="text-sm mb-0">$230,900</h6>
+                                        <p class="text-xs font-weight-bold mb-0">Product</p>
                                     </div>
                                 </td>
                                 <td class="align-middle text-sm">
                                     <div class="col text-center">
-                                        <p class="text-xs font-weight-bold mb-0">Bounce:</p>
-                                        <h6 class="text-sm mb-0">29.9%</h6>
+                                        <p class="text-xs font-weight-bold mb-0">Payment Method</p>
                                     </div>
                                 </td>
                                 <td>
                                     <div class="text-center">
-                                        <p class="text-xs font-weight-bold mb-0">Sales:</p>
-                                        <h6 class="text-sm mb-0">2500</h6>
+                                        <p class="text-xs font-weight-bold mb-0">Order Status</p>
                                     </div>
                                 </td>
                                 <td>
                                     <div class="text-center">
-                                        <p class="text-xs font-weight-bold mb-0">Sales:</p>
-                                        <h6 class="text-sm mb-0">2500</h6>
+                                        <p class="text-xs font-weight-bold mb-0">Total Price</p>
                                     </div>
                                 </td>
                                 <td>
                                     <div class="text-center">
-                                        <p class="text-xs font-weight-bold mb-0">Sales:</p>
-                                        <h6 class="text-sm mb-0">2500</h6>
+                                        <p class="text-xs font-weight-bold mb-0">Address</p>
                                     </div>
                                 </td>
                                 <td>
                                     <div class="text-center">
-                                        <p class="text-xs font-weight-bold mb-0">Sales:</p>
-                                        <h6 class="text-sm mb-0">2500</h6>
+                                        <p class="text-xs font-weight-bold mb-0">City</p>
                                     </div>
                                 </td>
                                 <td>
                                     <div class="text-center">
-                                        <p class="text-xs font-weight-bold mb-0">Sales:</p>
-                                        <h6 class="text-sm mb-0">2500</h6>
+                                        <p class="text-xs font-weight-bold mb-0">Country</p>
                                     </div>
                                 </td>
                                 <td>
                                     <div class="text-center">
-                                        <p class="text-xs font-weight-bold mb-0">Sales:</p>
-                                        <h6 class="text-sm mb-0">2500</h6>
+                                        <p class="text-xs font-weight-bold mb-0">Shipping date</p>
                                     </div>
                                 </td>
                                 <td>
                                     <div class="text-center">
-                                        <p class="text-xs font-weight-bold mb-0">Sales:</p>
-                                        <h6 class="text-sm mb-0">2500</h6>
+                                        <p class="text-xs font-weight-bold mb-0">Order Date:</p>
                                     </div>
                                 </td>
                             </tr>
