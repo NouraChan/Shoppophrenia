@@ -14,6 +14,7 @@ use App\Repository\Interface\ICartRepository;
 
 use App\Http\Requests\CreateOrderRequest;
 use Auth;
+use RealRashid\SweetAlert\Facades\Alert;
 
 class OrdersController extends Controller
 {
@@ -64,6 +65,9 @@ class OrdersController extends Controller
        
         $order = OrderDTO::handleData($createOrderRequest);
         $this->orderRepository->createObject($order);
+
+        Alert::success('Yay!, You have placed an order, look forward for its arrival. Thanks for shopping with us');
+        $this->cartRepository->clearCart();
         
 
         return redirect()->route('order.index');

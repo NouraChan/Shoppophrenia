@@ -21,6 +21,7 @@ interface ICartRepository {
 
     public function removeFromCart($id);
 
+    public function clearCart();
 
 }
 

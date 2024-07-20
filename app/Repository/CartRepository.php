@@ -81,6 +81,12 @@ class CartRepository implements ICartRepository
 
 
 
+    
+    public function clearCart(){
+        Cart::name('shopping')->clearItems();
+
+    }
+
 
 
 }
