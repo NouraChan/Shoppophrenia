@@ -26,45 +26,76 @@
                             </div>-->
                             <div class="col-md-12 justify-content-center">
                                 <div class="form-group text-center">
-                                    <label for="img" class="form-control-label"><img src="{{asset($user->user_img)}}" alt="img" style="cursor:pointer;"></label>
-                                    <input class="form-control" type="file" readonly hidden id="img" name="user_img" readonly disabled>
+                                    <label for="img" class="form-control-label"><img src="{{asset($user->user_img)}}"
+                                            alt="img" style="cursor:pointer;"></label>
+                                    <input class="form-control text-uppercase" type="file" readonly hidden id="img"
+                                        name="user_img" readonly disabled>
                                 </div>
-                            </div> 
+                            </div>
                             <div class="col-md-6">
                                 <div class="form-group">
                                     <label for="example-text-input" class="form-control-label">First name</label>
-                                    <input class="form-control" type="text" value="{{$user->first_name}}" readonly name="first_name" disabled>
+                                    <input class="form-control text-capitalize" type="text"
+                                        value="{{$user->first_name}}" readonly name="first_name" disabled>
                                 </div>
                             </div>
                             <div class="col-md-6">
                                 <div class="form-group">
                                     <label for="example-text-input" class="form-control-label">Last name</label>
-                                    <input class="form-control" type="text" value="{{$user->last_name}}" readonly name="last_name" disabled>
+                                    <input class="form-control text-capitalize" type="text" value="{{$user->last_name}}"
+                                        readonly name="last_name" disabled>
                                 </div>
                             </div>
                             <div class="col-md-4">
                                 <div class="form-group mt-3">
                                     <label for="gender" class="form-control-label d-block">Gender</label>
                                     <label for="male">Male</label>
-                                    <input type="radio" name="gender" id="male" value="male" class="me-8" disabled> <span> </span>
-                                    <label for="female">Female</label>
-                                    <input type="radio" name="gender" id="female" value="female" class="" disabled>
+                                    @if (Auth::user()->gender == 'male')
+
+                                        <input type="radio" name="gender" id="male" value="male" class="me-8" disabled
+                                            checked>
+                                        <span> </span>
+                                        <label for="female">Female</label>
+                                        <input type="radio" name="gender" id="female" value="female" class="" disabled>
+                                    @elseif (Auth::user()->gender == 'female')
+                                        <input type="radio" name="gender" id="male" value="male" class="me-8" disabled>
+                                        <span> </span>
+                                        <label for="female">Female</label>
+                                        <input type="radio" name="gender" id="female" value="female" class="" disabled
+                                            checked>
+                                            @else
+                                            <input type="radio" name="gender" id="male" value="male" class="me-8" disabled
+                                            >
+                                        <span> </span>
+                                        <label for="female">Female</label>
+                                        <input type="radio" name="gender" id="female" value="female" class="" disabled>
+                
+                                    @endif
+
                                 </div>
                             </div>
                             <div class="col-md-4">
                                 <div class="form-group">
                                     <label for="role" class="form-control-label">Role</label>
                                     <select name="role" id="user_role" readonly class="form-control" disabled>
-                                        <option value="customer" selected>Customer</option>
-                                        <option value="seller" selected>Seller</option>
-                                        <option value="admin" selected>Admin</option>
+                                        @if (Auth::user()->role == 'admin')
+                                            <option value="admin" selected>Admin</option>
+                                        @endif
+                                        @if (Auth::user()->role == 'customer')
+                                            <option value="customer" selected>Customer</option>
+                                        @endif
+                                        @if (Auth::user()->role == 'seller')
+
+                                            <option value="seller" selected>Seller</option>
+                                        @endif
                                     </select>
                                 </div>
                             </div>
                             <div class="col-md-4">
                                 <div class="form-group">
                                     <label for="birthday" class="form-control-label">Birthdate</label>
-                                  <input type="date" id="birthday" name="birthday" disabled class="form-control" readonly value="{{$user->birthday}}">
+                                    <input type="date" id="birthday" name="birthday" disabled class="form-control"
+                                        readonly value="{{$user->birthday}}">
                                 </div>
                             </div>
                         </div>
@@ -74,7 +105,7 @@
                             <div class="col-md-12">
                                 <div class="form-group">
                                     <label for="example-text-input" class="form-control-label">Address</label>
-                                    <input class="form-control" type="text" name="address"readonly
+                                    <input class="form-control" type="text" name="address" readonly
                                         value="{{$user->address}}" disabled>
                                 </div>
                             </div>
@@ -83,7 +114,8 @@
                             <div class="col-md-4">
                                 <div class="form-group">
                                     <label for="example-text-input" class="form-control-label">Phone number</label>
-                                    <input class="form-control" type="text" value="{{$user->phone_number}}" name="phone_number" readonly disabled>
+                                    <input class="form-control" type="text" value="{{$user->phone_number}}"
+                                        name="phone_number" readonly disabled>
                                 </div>
                             </div>
                         </div>

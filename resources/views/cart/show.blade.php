@@ -63,7 +63,7 @@
                             </div>
                         </td>
                         <td>
-                            <p class="mb-0 mt-4">{{$product->price}} $</p>
+                            <p class="mb-0 mt-4">{{$product->total_price}} $</p>
                         </td>
                         <td>
                             <a class="btn btn-md rounded-circle bg-light border mt-4" href="{{route('product.remove', ['id' => $product->hash])}}">

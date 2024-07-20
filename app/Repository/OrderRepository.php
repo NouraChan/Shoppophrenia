@@ -2,13 +2,13 @@
 
 namespace App\Repository;
 
-use App\Repository\Interface\IOrdersRepository;
-use App\DTO\OrdersDTO;
-use App\Models\Orders;
+use App\Repository\Interface\IOrderRepository;
+use App\DTO\OrderDTO;
+use App\Models\Order;
 use Auth;
 use Jackiedo\Cart\Facades\Cart;
 
-class OrdersRepository implements IOrdersRepository
+class OrderRepository implements IOrderRepository
 {
 
     public function placeOrder()
@@ -27,13 +27,8 @@ class OrdersRepository implements IOrdersRepository
     }
     public function createObject($createorderRequest)
     {
-
-
-
         
-        return Orders::create($createorderRequest);
-
-
+        return Order::create($createorderRequest);
 
     }
 
@@ -52,10 +47,10 @@ class OrdersRepository implements IOrdersRepository
 
     public function getAll()
     {
-        return Orders::all();
+        return Order::all();
     }
     public function getObject($id): object
     {
-        return Orders::findOrFail($id);
+        return Order::findOrFail($id);
     }
 }

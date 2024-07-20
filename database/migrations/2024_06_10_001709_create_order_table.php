@@ -11,7 +11,7 @@ return new class extends Migration
      */
     public function up(): void
     {
-        Schema::create('orders', function (Blueprint $table) {
+        Schema::create('order', function (Blueprint $table) {
             $table->id();
             $table->timestamps();
             $table->date('shipment_date');
@@ -20,10 +20,11 @@ return new class extends Migration
             $table->string('country');
             $table->decimal('total_price');
             $table->enum('method', ['credit' , 'cash' ,'paypal','check']);
-            $table->decimal('amount');
-            $table->enum('status' , ['inprogress', 'returned','delivered']);
+            $table->enum('status' , ['inprogress','returned','delivered'])->default('inprogress');
             $table->unsignedBigInteger('customer_id');
             $table->foreign('customer_id')->references('id')->on('users');
+            $table->unsignedBigInteger('product_id');
+            $table->foreign('product_id')->references('id')->on('product');
             
         });
     }
@@ -33,6 +34,6 @@ return new class extends Migration
      */
     public function down(): void
     {
-        Schema::dropIfExists('orders');
+        Schema::dropIfExists('order');
     }
 };

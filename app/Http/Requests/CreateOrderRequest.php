@@ -22,7 +22,19 @@ class CreateOrderRequest extends FormRequest
     public function rules(): array
     {
         return [
-            'total_price'=> 'required|decimal',
+            'total_price'=> 'required',
+            'shipment_date'=> 'required',
+            'address'=> 'required',
+            'city'=> 'required',
+            'country'=> 'required',
+            'method'=> 'required',
+            'amount'=> 'required',
+            'status'=> 'required',
+            'customer_id'=> 'required',
+            'product_id'=> 'required',
+
+
+
             
         ];
     }

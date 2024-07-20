@@ -2,9 +2,9 @@
 
 namespace App\Http\Controllers;
 
-use App\DTO\OrdersDTO;
+use App\DTO\OrderDTO;
 use Illuminate\Http\Request;
-use App\Repository\Interface\IOrdersRepository;
+use App\Repository\Interface\IOrderRepository;
 use App\Repository\Interface\IShipmentRepository;
 use App\Repository\Interface\IPaymentRepository;
 use App\Repository\Interface\IUserRepository;
@@ -19,15 +19,15 @@ class OrdersController extends Controller
 {
     protected $cartRepository;
 
-    protected $ordersRepository;
+    protected $orderRepository;
     protected $userRepository;
     protected $paymentRepository;
     protected $productRepository;
     protected $shipmentRepository;
 
-    public function __construct(IOrdersRepository $ordersRepository,ICartRepository $cartRepository, IProductRepository $productRepository, IUserRepository $userRepository,IPaymentRepository $paymentRepository,IShipmentRepository $shipmentRepository)
+    public function __construct(IOrderRepository $orderRepository,ICartRepository $cartRepository, IProductRepository $productRepository, IUserRepository $userRepository,IPaymentRepository $paymentRepository,IShipmentRepository $shipmentRepository)
     {
-        $this->ordersRepository = $ordersRepository;
+        $this->orderRepository = $orderRepository;
         $this->shipmentRepository = $shipmentRepository;
         $this->paymentRepository = $paymentRepository;
         $this->productRepository = $productRepository;
@@ -43,7 +43,7 @@ class OrdersController extends Controller
      */
     public function index()
     {
-        $orders = $this->ordersRepository->getAll();
+        $orders = $this->orderRepository->getAll();
 
         return view('admindashboard.orders.index', ['orders' => $orders]);
   
@@ -64,8 +64,8 @@ class OrdersController extends Controller
     public function store(CreateOrderRequest $createOrderRequest)
     {
        
-        $order = OrdersDTO::handleData($createOrderRequest);
-        $this->ordersRepository->createObject($order);
+        $order = OrderDTO::handleData($createOrderRequest);
+        $this->orderRepository->createObject($order);
         
 
         return redirect()->route('order.index');
@@ -77,7 +77,7 @@ class OrdersController extends Controller
      */
     public function show(string $id)
     {
-        $orders = $this->ordersRepository->getObject(Auth::id());
+        $orders = $this->orderRepository->getObject(Auth::id());
         return view('orders.show');
     }
 
@@ -87,16 +87,16 @@ class OrdersController extends Controller
     public function edit(string $id)
     {
 
-        $order = $this->ordersRepository->getObject($id);
+        $order = $this->orderRepository->getObject($id);
         return view('admindashboard.orders.edit', ['order' => $order]);    }
 
     /**
      * Update the specified resource in storage.
      */
     public function update(CreateOrderRequest $createOrderRequest, string $id)
-    { $order = $this->ordersRepository->getObject($id);
-        $orderDTO = OrdersDTO::handleData($createOrderRequest);
-        $updated = $this->ordersRepository->updateObject($order, $orderDTO);
+    { $order = $this->orderRepository->getObject($id);
+        $orderDTO = OrderDTO::handleData($createOrderRequest);
+        $updated = $this->orderRepository->updateObject($order, $orderDTO);
 
         return redirect()->route('orders.index');
     }
@@ -106,7 +106,7 @@ class OrdersController extends Controller
      */
     public function destroy(string $id)
     {
-        $order = $this->ordersRepository->getObject($id);
+        $order = $this->orderRepository->getObject($id);
         $order->delete();
         return redirect()->back();    }
 }

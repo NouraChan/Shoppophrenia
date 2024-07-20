@@ -69,8 +69,6 @@ class CartController extends Controller
     public function toCart()
     {
 
-        $products = $this->productRepository->getAll();
-
         $cart = $this->cartRepository->insertCart();
         return view(
             'cart.show',

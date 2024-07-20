@@ -8,7 +8,7 @@ use App\Repository\CartRepository;
 use App\Repository\WishlistRepository;
 use App\Repository\UserRepository;
 use App\Repository\ProductRepository;
-use App\Repository\OrdersRepository;
+use App\Repository\OrderRepository;
 use App\Repository\ItemsRepository;
 use App\Repository\GenreRepository;
 use App\Repository\Interface\IAnnouncementRepository;
@@ -16,7 +16,7 @@ use App\Repository\Interface\ICartRepository;
 use App\Repository\Interface\IWishlistRepository;
 use App\Repository\Interface\IUserRepository;
 use App\Repository\Interface\IProductRepository;
-use App\Repository\Interface\IOrdersRepository;
+use App\Repository\Interface\IOrderRepository;
 use App\Repository\Interface\IItemsRepository;
 use App\Repository\Interface\IGenreRepository;
 use App\Repository\ReviewRepository;
@@ -40,7 +40,7 @@ class AppServiceProvider extends ServiceProvider
         
         $this->app->singleton(IUserRepository::class,UserRepository::class);
         $this->app->singleton(IGenreRepository::class,GenreRepository::class);
-        $this->app->singleton(IOrdersRepository::class,OrdersRepository::class);
+        $this->app->singleton(IOrderRepository::class,OrderRepository::class);
         $this->app->singleton(IProductRepository::class,ProductRepository::class);
         $this->app->singleton(ICartRepository::class,CartRepository::class);
         $this->app->singleton(IAnnouncementRepository::class,AnnouncementRepository::class);

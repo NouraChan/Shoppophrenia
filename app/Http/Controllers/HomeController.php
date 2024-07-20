@@ -12,7 +12,9 @@ use App\Enums\role;
 use Jackiedo\Cart\Facades\Cart;
 use App\Repository\Interface\ICartRepository;
 use App\Repository\Interface\IProductRepository;
-use Auth;
+use DB;
+
+
 
 class HomeController extends Controller
 {
@@ -89,6 +91,11 @@ class HomeController extends Controller
         $cart = $this->cartRepository->insertCart();
         $items = Cart::name('shopping')->getDetails()->items;
 
+
+        // foreach (Genre::all() as $genre) {
+        //     $products = DB::table('product')->where('genre_id', '=', $genre->id)->get();
+        // }
+        // dd($products);
 
         // dd(gettype($cart));        
         return view('checkout', $cart, [

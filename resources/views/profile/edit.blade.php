@@ -62,9 +62,10 @@
                                 <div class="form-group">
                                     <label for="role" class="form-control-label">Role</label>
                                     <select name="role" id="user_role" class="form-control">
-                                        <option value="customer" selected>Customer</option>
-                                        <option value="seller" selected>Seller</option>
-                                        <option value="admin" selected>Admin</option>
+                                        <option value="" disabled selected>Select...</option>
+                                        <option value="customer">Customer</option>
+                                        <option value="seller">Seller</option>
+                                        <option value="admin">Admin</option>
                                     </select>
                                 </div>
                             </div>
@@ -94,10 +95,10 @@
                                         name="phone_number">
                                 </div>
                             </div>
-                         
+
                         </div>
                         <button type="submit"
-                                class="btn bg-gradient-warning btn-sm ms-auto form-control w-50 text-center">Submit</button>
+                            class="btn bg-gradient-warning btn-sm ms-auto form-control w-50 text-center">Submit</button>
 
                     </div>
                 </form>

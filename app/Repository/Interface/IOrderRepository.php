@@ -4,7 +4,7 @@ namespace App\Repository\Interface;
 use App\DTO\OrdersDTO;
 
 
-interface IOrdersRepository {
+interface IOrderRepository {
 
     public function createObject($createOrderRequest) ;
 

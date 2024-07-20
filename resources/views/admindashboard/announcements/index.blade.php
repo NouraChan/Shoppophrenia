@@ -35,34 +35,34 @@
                                 </tr>
                             </thead>
                             <tbody>
-                                @foreach ($products as $product)
+                                @foreach ($announcements as $announcement)
                                     <tr>
 
                                         <td class="align-middle px-4">
-                                            <span class="text-secondary text-xs font-weight-bold">{{$product->id}}</span>
+                                            <span class="text-secondary text-xs font-weight-bold">{{$announcement->id}}</span>
                                         </td>
                                         <td class="align-middle px-4">
-                                            <img src="{{asset($product->product_img)}}" alt=""
+                                            <img src="{{asset($announcement->announcement_img)}}" alt=""
                                                 style="width:100px; height:150px;">
                                         </td>
                                         <td>
-                                            <span class="text-black text-xs font-weight-bold">{{$product->name}}</span>
+                                            <span class="text-black text-xs font-weight-bold">{{$announcement->name}}</span>
                                         </td>
                                         <td>
                                             <span
-                                                class="text-secondary text-xs font-weight-bold">{{$product->description}}</span>
+                                                class="text-secondary text-xs font-weight-bold">{{$announcement->description}}</span>
                                         </td>
                                         <td>
-                                            <span class="text-secondary text-xs font-weight-bold">{{$product->stock}}</span>
+                                            <span class="text-secondary text-xs font-weight-bold">{{$announcement->stock}}</span>
                                         </td>
                                         
                                         <td class="align-middle">
-                                            <a href="{{route('product.edit', ['id' => $product->id])}}"
+                                            <a href="{{route('announcement.edit', ['id' => $announcement->id])}}"
                                                 class="text-secondary font-weight-bold text-xs" data-toggle="tooltip"
                                                 data-original-title="Edit user">
                                                 <i class="fa fa-pencil text-warning" aria-hidden="true"></i>
                                             </a>
-                                            <a href="{{route('product.destroy', ['id' => $product->id])}}"
+                                            <a href="{{route('announcement.destroy', ['id' => $announcement->id])}}"
                                                 class="text-secondary font-weight-bold text-xs ms-4" data-toggle="tooltip"
                                                 data-original-title="Delete user">
                                                 <i class="fa fa-trash text-warning" aria-hidden="true"></i>

@@ -13,6 +13,8 @@ use App\DTO\ProductDTO;
 use App\Http\Requests\CreateProductRequest;
 use Jackiedo\Cart\Facades\Cart;
 use RealRashid\SweetAlert\Facades\Alert;
+use App\Models\Genre;
+use DB;
 
 
 
@@ -123,4 +125,13 @@ protected $queryRepository;
         $product->delete();
         return redirect()->back();
     }
+public function showRom(){
+$genre =Genre::select('id')->get();
+$products = DB::table('product')->where($genre->id)->all();
+dd($products);
 }
+
+
+}
+
+
