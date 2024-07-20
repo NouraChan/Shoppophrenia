@@ -76,7 +76,7 @@ protected $queryRepository;
         $reviews = $this->reviewRepository->getAll();
         $product = $this->productRepository->getObject($id);
         $products = $this->productRepository->getAll();
-        $cart = $this->cartRepository->insertCart($products);
+        $cart = $this->cartRepository->insertCart();
 
         return view('product.details',$cart , [
             'product' => $product,

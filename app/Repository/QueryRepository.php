@@ -16,4 +16,7 @@ class QueryRepository implements IQueryRepository {
 
 
 }
+// $genre = Genre::all();
+// $products =DB::table('product')->where($genreid);
 
+// dd($products);

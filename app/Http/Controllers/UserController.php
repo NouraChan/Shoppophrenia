@@ -76,7 +76,8 @@ class UserController extends Controller
     }
 
     public function toProfile(){
-        $user = $this->userRepository->getObject(Auth::id());
+        $user = $this->userRepository->getAuth();
+        // dd($user);
         return view('profile.show',['user' => $user]);
     }
 }

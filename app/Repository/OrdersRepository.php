@@ -5,6 +5,8 @@ namespace App\Repository;
 use App\Repository\Interface\IOrdersRepository;
 use App\DTO\OrdersDTO;
 use App\Models\Orders;
+use Auth;
+use Jackiedo\Cart\Facades\Cart;
 
 class OrdersRepository implements IOrdersRepository
 {
@@ -18,7 +20,7 @@ class OrdersRepository implements IOrdersRepository
         [ 
             'total_price' => $cart->total ,
             'customer_id' =>Auth::id() ,
-            'order_id' =>$order->id,
+            // 'order_id' =>$order->id,
         ];
         
 

@@ -113,7 +113,7 @@
                         </a>
                         @endif
                         @else
-                        <a href="{{route('cart.show', ['id' => Auth::user()->id ])}}" class="position-relative me-4 my-auto">
+                        <a href="{{route('cart.show')}}" class="position-relative me-4 my-auto">
                             <i class="fa fa-shopping-bag fa-2x"></i>
                             <span
                                 class="position-absolute bg-secondary rounded-circle d-flex align-items-center justify-content-center text-white px-1"
@@ -410,7 +410,7 @@
                     <hr class="horizontal dark my-sm-4">
                     <div class="mt-2 mb-5 ">
                         <h6 class="mb-0"></h6>
-                        <a role="submit" href="{{route('checkout', ['id' => Auth::id()])}}" class="btn btn-primary form-control">Proceed to
+                        <a role="submit" href="{{route('checkout')}}" class="btn btn-primary form-control">Proceed to
                             Checkout</a>
                     </div>
                     @endauth

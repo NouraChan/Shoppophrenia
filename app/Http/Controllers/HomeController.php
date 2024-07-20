@@ -12,6 +12,7 @@ use App\Enums\role;
 use Jackiedo\Cart\Facades\Cart;
 use App\Repository\Interface\ICartRepository;
 use App\Repository\Interface\IProductRepository;
+use Auth;
 
 class HomeController extends Controller
 {
@@ -44,7 +45,7 @@ class HomeController extends Controller
         return view('index', ['customers' => $customers]);
     }
 
-    public function index2()
+    public function dashIndex()
     {
         $customers = $this->userRepository->getCount(role::CUSTOMER);
         $sellers = $this->userRepository->getCount(role::SELLER);
@@ -61,7 +62,7 @@ class HomeController extends Controller
     public function usersIndex()
     {
 
-        $users = User::all();
+        $users = $this->userRepository->getAll();
 
         return view('admindashboard.users.index', ['users' => $users]);
     }
@@ -82,21 +83,18 @@ class HomeController extends Controller
         return view('admindashboard.products.index', ['products' => $products]);
     }
 
-    public function checkOut(string $id)
+    public function checkOut()
     {
-        $product = $this->productRepository->getObject($id);
-        $products = $this->productRepository->getAll();
-        $cart = $this->cartRepository->insertCart($products);
-        $items= $this->cartRepository->addToCart($product);
-
-        // dd(gettype($cart));
+        $user = $this->userRepository->getAuth();
+        $cart = $this->cartRepository->insertCart();
+        $items = Cart::name('shopping')->getDetails()->items;
 
 
-        return view('checkout',$cart , [
+        // dd(gettype($cart));        
+        return view('checkout', $cart, [
+            'user' => $user,
             'items' => $items,
-            'product' => $product,
-            'products' => $products,
-             
+
         ]);
     }
 

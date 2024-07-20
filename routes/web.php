@@ -10,7 +10,7 @@ use App\Http\Controllers\PaymentController;
 use App\Http\Controllers\ProductController;
 use App\Http\Controllers\ShipmentController;
 use App\Http\Controllers\WishlistController;
-use App\Http\Controllers\ItemsController; 
+use App\Http\Controllers\ItemsController;
 use App\Http\Controllers\AnnouncementController;
 use App\Http\Controllers\ReviewController;
 use Illuminate\Support\Facades\Auth;
@@ -29,21 +29,21 @@ use App\Http\Controllers\ProfileController;
 |
 */
 
-Route::get('/', [CartController::class , 'showHome'])->name('home');
+Route::get('/', [CartController::class, 'showHome'])->name('home');
 
 Auth::routes();
 
 //Navigation
 
-Route::get('/home', [HomeController::class, 'index2'])->name('dash');
+Route::get('/dashboard', [HomeController::class, 'dashIndex'])->name('dash');
 Route::get('/users', [HomeController::class, 'usersAffair'])->name('usersdash');
 Route::get('/usersindex', [HomeController::class, 'usersIndex'])->name('usersindex');
-Route::get('/settings', [HomeController::class, 'index2'])->name('settings');
+Route::get('/settings', [HomeController::class, 'dashIndex'])->name('settings');
 Route::get('/genres', [HomeController::class, 'genreIndex'])->name('genres');
 Route::get('/products', [HomeController::class, 'productIndex'])->name('products');
-Route::get('/checkout/{id}', [HomeController::class, 'checkOut'])->name('checkout');
+Route::get('/checkout', [HomeController::class, 'checkOut'])->name('checkout');
 
-Route::get('/results', [SearchController::class ,'searchProduct'])->name('search');
+Route::get('/results', [SearchController::class, 'searchProduct'])->name('search');
 
 
 //User group
@@ -55,11 +55,11 @@ Route::group(['prefix' => 'user'], function () {
     Route::get('/index', [UserController::class, 'index'])->name('user.index');
     Route::post('/update/{id}', [UserController::class, 'update'])->name('user.update');
     Route::get('/show/{id}', [UserController::class, 'show'])->name('user.show');
- Route::get('profile/show/{id}', [UserController::class, 'toProfile'])->name('user.profile');
+    Route::get('profile/show/{id}', [UserController::class, 'toProfile'])->name('user.profile');
     Route::get('profile/edit/{id}', [UserController::class, 'edit'])->name('user.edit');
 });
 
-   
+
 
 
 
@@ -72,11 +72,11 @@ Route::group(['prefix' => 'cart'], function () {
     Route::get('/index', [CartController::class, 'index'])->name('cart.index');
     Route::post('/update/{id}', [CartController::class, 'update'])->name('cart.update');
     Route::get('/edit/{id}', [CartController::class, 'edit'])->name('cart.edit');
-    Route::get('/add/{id}', [CartController::class , 'add'])->name('product.add');
-    Route::get('/remove/{id}', [CartController::class , 'remove'])->name('product.remove');
-    Route::get('/show/{id}', [CartController::class , 'show'])->name('cart.show');
+    Route::get('/add/{id}', [CartController::class, 'add'])->name('product.add');
+    Route::get('/remove/{id}', [CartController::class, 'remove'])->name('product.remove');
+    Route::get('/show', [CartController::class, 'toCart'])->name('cart.show');
 
-    
+
 
 
 
@@ -109,14 +109,14 @@ Route::group(['prefix' => 'product'], function () {
 
 //Orders group
 
-Route::group(['prefix' => 'orders'], function () {
-    Route::get('/create', [OrdersController::class, 'create'])->name('orders.create');
-    Route::post('/store', [OrdersController::class, 'store'])->name('orders.store');
-    Route::get('/destroy/{id}', [OrdersController::class, 'destroy'])->name('orders.destroy');
-    Route::get('/index', [OrdersController::class, 'index'])->name('orders.index');
-    Route::post('/update/{id}', [OrdersController::class, 'update'])->name('orders.update');
-    Route::get('/edit/{id}', [OrdersController::class, 'edit'])->name('orders.edit');
-    Route::get('/show/{id}', [OrdersController::class, 'show'])->name('orders.show');
+Route::group(['prefix' => 'order'], function () {
+    // Route::get('/create', [OrdersController::class, 'create'])->name('order.create');
+    Route::post('/store', [OrdersController::class, 'store'])->name('order.store');
+    Route::get('/destroy/{id}', [OrdersController::class, 'destroy'])->name('order.destroy');
+    Route::get('/index', [OrdersController::class, 'index'])->name('order.index');
+    Route::post('/update/{id}', [OrdersController::class, 'update'])->name('order.update');
+    Route::get('/edit/{id}', [OrdersController::class, 'edit'])->name('order.edit');
+    Route::get('/show/{id}', [OrdersController::class, 'show'])->name('order.show');
 
 });
 

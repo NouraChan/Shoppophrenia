@@ -40,11 +40,11 @@ class CartRepository implements ICartRepository
         return Cart::findOrFail($id);
     }
 
-    public function insertCart($products): array
+    public function insertCart(): array
     {
 
         $cart = [
-            'products' => $products,
+            // 'products' => $products,
             'total' => Cart::name('shopping')->getDetails()->quantities_sum,
             'items' => Cart::name('shopping')->getDetails()->items,
             'sub_total' => Cart::name('shopping')->getSubtotal(),
@@ -58,9 +58,6 @@ class CartRepository implements ICartRepository
 
     public function addToCart($product)
     {
-
-        $cart = [];
-
         $cart = Cart::name('shopping')->addItem([
             'id' => $product->id,
             'title' => $product->name,

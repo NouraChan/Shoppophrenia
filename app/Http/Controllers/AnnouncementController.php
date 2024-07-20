@@ -32,16 +32,10 @@ class AnnouncementController extends Controller
     {
 
         $announcements = $this->announcementRepository->getAll();
-        $products = $this->productRepository->getAll();
-        $cart = $this->cartRepository->insertCart($products);
+        $cart = $this->cartRepository->insertCart();
 
         return view('announcements', $cart, ['announcements' => $announcements]);
     }
-
-
-
-
-
 
 
     /**
@@ -87,8 +81,7 @@ class AnnouncementController extends Controller
     public function show(string $id)
     {
         $announcement = $this->announcementRepository->getObject($id);
-        $products = $this->productRepository->getAll();
-        $cart = $this->cartRepository->insertCart($products);
+        $cart = $this->cartRepository->insertCart();
 
        
         return view('announcement.show', $cart , ['announcement' => $announcement] );

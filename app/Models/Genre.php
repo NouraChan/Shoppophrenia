@@ -13,9 +13,9 @@ class Genre extends Model
         "name"
     ];
 
-    public function productLink()
-    {
+    // public function productLink()
+    // {
         
-        return $this->hasMany('Product');
-    }
+    //     return $this->hasMany('Product');
+    // }
 }

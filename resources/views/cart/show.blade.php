@@ -50,15 +50,15 @@
                         <td>
                             <div class="input-group quantity mt-4" style="width: 100px;">
                                 <div class="input-group-btn">
-                                    <button class="btn btn-sm btn-minus rounded-circle bg-light border">
+                                    <a class="btn btn-sm btn-minus rounded-circle bg-light border">
                                         <i class="fa fa-minus"></i>
-                                    </button>
+                                    </a>
                                 </div>
                                 <input type="text" class="form-control form-control-sm text-center border-0" value="{{$product->quantity}}">
                                 <div class="input-group-btn">
-                                    <button class="btn btn-sm btn-plus rounded-circle bg-light border">
+                                    <a href="{{route('product.add', ['id' => $product->id])}}" class="btn btn-sm btn-plus rounded-circle bg-light border">
                                         <i class="fa fa-plus"></i>
-                                    </button>
+                                    </a>
                                 </div>
                             </div>
                         </td>

@@ -77,7 +77,7 @@
           </a>
         </li>
         <li class="nav-item">
-          <a class="nav-link " href="{{route('orders.index')}}">
+          <a class="nav-link " href="{{route('order.index')}}">
             <div
               class="icon icon-shape icon-sm border-radius-md text-center me-2 d-flex align-items-center justify-content-center">
               <i class="ni ni-world-2 text-danger text-sm opacity-10"></i>
@@ -113,7 +113,7 @@
           </a>
         </li>
         <li class="nav-item">
-          <a class="nav-link " href="{{route('orders.show',['id' => Auth::user()->id])}}">
+          <a class="nav-link " href="{{route('order.show',['id' => Auth::user()->id])}}">
             <div
               class="icon icon-shape icon-sm border-radius-md text-center me-2 d-flex align-items-center justify-content-center">
               <i class="fa fa-book text-primary text-sm opacity-10"></i>
@@ -150,7 +150,7 @@
           </a>
         </li>
         <li class="nav-item">
-          <a class="nav-link " href="{{route('orders.show' , ['id' => Auth::user()->id])}}">
+          <a class="nav-link " href="{{route('order.show' , ['id' => Auth::user()->id])}}">
             <div
               class="icon icon-shape icon-sm border-radius-md text-center me-2 d-flex align-items-center justify-content-center">
               <i class="fa fa-book text-sm opacity-10 text-orange"></i>

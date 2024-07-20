@@ -66,12 +66,12 @@ class CartController extends Controller
     /**
      * Display the specified resource.
      */
-    public function show(string $id)
+    public function toCart()
     {
 
         $products = $this->productRepository->getAll();
 
-        $cart = $this->cartRepository->insertCart($products);
+        $cart = $this->cartRepository->insertCart();
         return view(
             'cart.show',
             $cart
@@ -133,11 +133,11 @@ class CartController extends Controller
         $roms = $this->queryRepository->getRomance($products);
 
 
-        $cart = $this->cartRepository->insertCart($products);
+        $cart = $this->cartRepository->insertCart();
         return view(
             'index',
             $cart,
-            ['roms' => $roms],
+            ['roms' => $roms , 'products' =>  $products],
 
         );
 
