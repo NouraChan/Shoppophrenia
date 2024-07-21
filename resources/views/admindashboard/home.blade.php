@@ -60,9 +60,9 @@
                     <div class="row">
                         <div class="col-8">
                             <div class="numbers">
-                                <p class="text-sm mb-0 text-uppercase font-weight-bold">New Clients</p>
+                                <p class="text-sm mb-0 text-uppercase font-weight-bold">Orders</p>
                                 <h5 class="font-weight-bolder">
-                                    +3,462
+                                    
                                 </h5>
                                 <!-- <p class="mb-0">
                                     <span class="text-danger text-sm font-weight-bolder">-2%</span>
@@ -87,7 +87,7 @@
                             <div class="numbers">
                                 <p class="text-sm mb-0 text-uppercase font-weight-bold">Sales</p>
                                 <h5 class="font-weight-bolder">
-                                    $103,430
+                                    $
                                 </h5>
                                 <!-- <p class="mb-0">
                                     <span class="text-success text-sm font-weight-bolder">+5%</span> than last month
@@ -105,7 +105,7 @@
         </div>
     </div>
 
-    <div class="row mt-4">
+    <!-- <div class="row mt-4">
         <div class="col-lg-7 mb-lg-0 mb-4">
             <div class="card ">
                 <div class="card-header pb-0 p-3">
@@ -323,7 +323,7 @@
                 </div>
             </div>
         </div>
-    </div>
+    </div> -->
 
 
 @endsection

@@ -25,12 +25,12 @@
                 <div id="carouselId" class="carousel slide position-relative" data-bs-ride="carousel">
                     <div class="carousel-inner" role="listbox">
                         <div class="carousel-item active rounded">
-                            <img src="img/hero-img-1.png" class="img-fluid w-100 h-100 bg-secondary rounded"
-                                alt="First slide">
+                            <img src="img/home11.jpg" class="img-fluid w-100 h-100 bg-secondary rounded"
+                                alt="First slide" style="width:300px; height:400px;">
                             <a href="#" class="btn px-4 py-2 text-white rounded">Order Whatever, Whenever.</a>
                         </div>
                         <div class="carousel-item rounded">
-                            <img src="img/hero-img-2.jpg" class="img-fluid w-100 h-100 rounded" alt="Second slide">
+                            <img src="img/home12.jpg" class="img-fluid w-100 h-100 rounded" alt="Second slide" style="width:300px; height:400px;">
                             <a href="#" class="btn px-4 py-2 text-white rounded">Always Within Reach.</a>
                         </div>
                     </div>
@@ -133,12 +133,12 @@
                         </li>
                         <li class="nav-item">
                             <a class="d-flex m-2 py-2 bg-light rounded-pill" data-bs-toggle="pill" href="#tab-4">
-                                <span class="text-dark" style="width: 130px;">Mystery</span>
+                                <span class="text-dark" style="width: 130px;">Horror</span>
                             </a>
                         </li>
                         <li class="nav-item">
                             <a class="d-flex m-2 py-2 bg-light rounded-pill" data-bs-toggle="pill" href="#tab-5">
-                                <span class="text-dark" style="width: 130px;">Horror</span>
+                                <span class="text-dark" style="width: 130px;">Mystery</span>
                             </a>
                         </li>
                     </ul>
@@ -213,20 +213,21 @@
                     <div class="row g-4">
                         <div class="col-lg-12">
                             <div class="row g-4">
-                                <div class="col-md-6 col-lg-4 col-xl-3">
+                                @foreach ( $fan as $f )
+                                  <div class="col-md-6 col-lg-4 col-xl-3">
                                     <div class="rounded position-relative fruite-item">
                                         <div class="fruite-img">
-                                            <img src="img/fruite-item-1.jpg" class="img-fluid w-100 rounded-top" alt="">
-                                        </div>
+                                        <a href="{{route('product.show', ['id' => $f->id])}}"><img
+                                                        src="{{asset($f->product_img)}}"
+                                                        class="img-fluid w-100 rounded-top" alt="" style="height:400px"></a>                                        </div>
                                         <div class="text-white bg-secondary px-3 py-1 rounded position-absolute"
                                             style="top: 10px; left: 10px;">Sale</div>
                                         <div class="p-4 border border-secondary border-top-0 rounded-bottom">
-                                            <h4>Oranges</h4>
-                                            <p>Lorem ipsum dolor sit amet consectetur adipisicing elit sed do eiusmod te
-                                                incididunt</p>
+                                            <h4>{{$f->name}}</h4>
+                                            <p>{{$f->description}}</p>
                                             <div class="d-flex justify-content-between flex-lg-wrap">
-                                                <p class="text-dark fs-5 fw-bold mb-0">$19.99</p>
-                                                <a href="#"
+                                                <p class="text-dark fs-5 fw-bold mb-0">${{$f->price}}</p>
+                                                <a href="{{route('product.add', ['id' => $f->id])}}"
                                                     class="btn border border-secondary rounded-pill px-3 text-primary"><i
                                                         class="fa fa-shopping-bag me-2 text-primary"></i> Add to
                                                     cart</a>
@@ -234,27 +235,7 @@
                                         </div>
                                     </div>
                                 </div>
-                                <div class="col-md-6 col-lg-4 col-xl-3">
-                                    <div class="rounded position-relative fruite-item">
-                                        <div class="fruite-img">
-                                            <img src="img/fruite-item-6.jpg" class="img-fluid w-100 rounded-top" alt="">
-                                        </div>
-                                        <div class="text-white bg-secondary px-3 py-1 rounded position-absolute"
-                                            style="top: 10px; left: 10px;">Sale</div>
-                                        <div class="p-4 border border-secondary border-top-0 rounded-bottom">
-                                            <h4>Apple</h4>
-                                            <p>Lorem ipsum dolor sit amet consectetur adipisicing elit sed do eiusmod te
-                                                incididunt</p>
-                                            <div class="d-flex justify-content-between flex-lg-wrap">
-                                                <p class="text-dark fs-5 fw-bold mb-0">$19.99</p>
-                                                <a href="#"
-                                                    class="btn border border-secondary rounded-pill px-3 text-primary"><i
-                                                        class="fa fa-shopping-bag me-2 text-primary"></i> Add to
-                                                    cart</a>
-                                            </div>
-                                        </div>
-                                    </div>
-                                </div>
+                                @endforeach
                             </div>
                         </div>
                     </div>
@@ -394,7 +375,7 @@
             <div class="col-md-6 col-lg-4">
                 <a href="#">
                     <div class="service-item bg-secondary rounded border border-secondary">
-                        <img src="img/featur-1.jpg" class="img-fluid rounded-top w-100" alt="">
+                        <img src="img/carsl3.webp" class="img-fluid rounded-top w-100" alt="" style="width:300px; height:400px;">
                         <div class="px-4 rounded-bottom">
                             <div class="service-content bg-primary text-center p-4 rounded">
                                 <h5 class="text-white">Second-hands</h5>
@@ -407,7 +388,7 @@
             <div class="col-md-6 col-lg-4">
                 <a href="#">
                     <div class="service-item bg-dark rounded border border-dark">
-                        <img src="img/featur-2.jpg" class="img-fluid rounded-top w-100" alt="">
+                        <img src="img/carsl2.jpg" class="img-fluid rounded-top w-100" alt="" style="width:300px; height:400px;">
                         <div class="px-4 rounded-bottom">
                             <div class="service-content bg-light text-center p-4 rounded">
                                 <h5 class="text-primary">Series & Collections</h5>
@@ -420,7 +401,7 @@
             <div class="col-md-6 col-lg-4">
                 <a href="#">
                     <div class="service-item bg-primary rounded border border-primary">
-                        <img src="img/featur-3.jpg" class="img-fluid rounded-top w-100" alt="">
+                        <img src="img/caarsl1.jpg" class="img-fluid rounded-top w-100" alt="" style="width:300px; height:400px;">
                         <div class="px-4 rounded-bottom">
                             <div class="service-content bg-secondary text-center p-4 rounded">
                                 <h5 class="text-white">Educational</h5>

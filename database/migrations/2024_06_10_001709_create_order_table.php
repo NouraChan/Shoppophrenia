@@ -23,9 +23,6 @@ return new class extends Migration
             $table->enum('status' , ['inprogress','returned','delivered'])->default('inprogress');
             $table->unsignedBigInteger('customer_id');
             $table->foreign('customer_id')->references('id')->on('users');
-            $table->unsignedBigInteger('product_id');
-            $table->foreign('product_id')->references('id')->on('product');
-            
         });
     }
 

@@ -6,16 +6,12 @@ use Illuminate\Support\Facades\Route;
 use App\Http\Controllers\CartController;
 use App\Http\Controllers\GenreController;
 use App\Http\Controllers\OrdersController;
-use App\Http\Controllers\PaymentController;
 use App\Http\Controllers\ProductController;
-use App\Http\Controllers\ShipmentController;
 use App\Http\Controllers\WishlistController;
-use App\Http\Controllers\ItemsController;
 use App\Http\Controllers\AnnouncementController;
 use App\Http\Controllers\ReviewController;
 use Illuminate\Support\Facades\Auth;
 use App\Http\Controllers\UserController;
-use App\Http\Controllers\ProfileController;
 
 
 /*
@@ -57,10 +53,6 @@ Route::group(['prefix' => 'user'], function () {
     Route::get('profile/edit/{id}', [UserController::class, 'edit'])->name('user.edit');
 });
 
-
-
-
-
 //Cart group
 
 Route::group(['prefix' => 'cart'], function () {
@@ -74,22 +66,8 @@ Route::group(['prefix' => 'cart'], function () {
     Route::get('/remove/{id}', [CartController::class, 'remove'])->name('product.remove');
     Route::get('/show', [CartController::class, 'toCart'])->name('cart.show');
 
-
-
-
-
 });
 
-//Items group
-
-Route::group(['prefix' => 'items'], function () {
-    Route::get('/create', [ItemsController::class, 'create'])->name('items.create');
-    Route::post('/store', [ItemsController::class, 'store'])->name('items.store');
-    Route::get('/destroy/{id}', [ItemsController::class, 'destroy'])->name('items.destroy');
-    Route::get('/index', [ItemsController::class, 'index'])->name('items.index');
-    Route::post('/update/{id}', [ItemsController::class, 'update'])->name('items.update');
-    Route::get('/edit/{id}', [ItemsController::class, 'edit'])->name('items.edit');
-});
 
 //Product group
 

@@ -129,13 +129,29 @@ class CartController extends Controller
 
         $products = $this->productRepository->getAll();
         $roms = $this->queryRepository->getRomance($products);
+        $fan = $this->queryRepository->getFantacy($products);
+        $mys = $this->queryRepository->getMystery($products);
+        $horr = $this->queryRepository->getHorror($products);
+        $edu = $this->queryRepository->getEducational($products);
+        $hist = $this->queryRepository->getHistorical($products);
+        $drm = $this->queryRepository->getDrama($products);
+
 
 
         $cart = $this->cartRepository->insertCart();
         return view(
             'index',
             $cart,
-            ['roms' => $roms , 'products' =>  $products],
+            [
+                'roms' => $roms,
+                'products' => $products,
+                'fan' => $fan,
+                'mys' => $mys,
+                'horr' => $horr,
+                'edu' => $edu,
+                'hist' => $hist,
+                'drm' => $drm,
+            ],
 
         );
 

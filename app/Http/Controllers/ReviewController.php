@@ -25,15 +25,8 @@ class ReviewController extends Controller
      * Show the form for creating a new resource.
      */
     public function __construct(IReviewRepository $reviewRepository){
-        $this->middleware('auth');
+        // $this->middleware('auth');
         $this->reviewRepository = $reviewRepository;
-    }
-    /**
-     * Show the form for creating a new resource.
-     */
-    public function create()
-    {
-        return view('admindashboard.reviews.create');
     }
 
     /**
@@ -45,40 +38,35 @@ class ReviewController extends Controller
         $review = ReviewDTO::handleData($createReviewRequest);
         $this->reviewRepository->createObject($review);
         
-
-        return redirect()->route('review.index');
+        return redirect()->back();
 
     }
 
     /**
      * Display the specified resource.
      */
-    public function show(string $id)
-    {
-        //
-    }
 
     /**
      * Show the form for editing the specified resource.
      */
-    public function edit(string $id)
-    {
+    // public function edit(string $id)
+    // {
         
-        $review = $this->reviewRepository->getObject($id);
-        return view('admindashboard.reviews.edit', ['review' => $review]);
-    }
+    //     $review = $this->reviewRepository->getObject($id);
+    //     return view('admindashboard.reviews.edit', ['review' => $review]);
+    // }
 
     /**
      * Update the specified resource in storage.
      */
-    public function update(CreateReviewRequest $createReviewRequest, string $id)
-    {
-        $review = $this->reviewRepository->getObject($id);
-        $reviewDTO = ReviewDTO::handleData($createReviewRequest);
-        $updated = $this->reviewRepository->updateObject($review, $reviewDTO);
+    // public function update(CreateReviewRequest $createReviewRequest, string $id)
+    // {
+    //     $review = $this->reviewRepository->getObject($id);
+    //     $reviewDTO = ReviewDTO::handleData($createReviewRequest);
+    //     $updated = $this->reviewRepository->updateObject($review, $reviewDTO);
         
 
-        return redirect()->route('review.index');    }
+    //     return redirect()->back();    }
 
     /**
      * Remove the specified resource from storage.

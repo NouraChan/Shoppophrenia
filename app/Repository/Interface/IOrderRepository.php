@@ -6,7 +6,7 @@ use App\DTO\OrdersDTO;
 
 interface IOrderRepository {
 
-    public function createObject($createOrderRequest) ;
+    public function createObject($orderDTO) ;
 
     public function updateObject(object $order, $orderDTO);
 

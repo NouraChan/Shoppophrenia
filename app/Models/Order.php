@@ -18,6 +18,13 @@ class Order extends Model
         'country',
         'method',
         'status',
-        'product_id',
     ];
+
+    public function orderItem(){
+        return $this->hasMany(Order_item::class, 'order_id' ,'id');
+    }
+
+    public function orderItems(){
+        return $this->belongsToMany(Product::class, 'product_id')->withPivot(['quantity','price']);
+    }
 }

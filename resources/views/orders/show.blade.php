@@ -3,167 +3,90 @@
 @section('content')
 
 <div class="row mt-4">
-        <div class="col-lg-12 mb-lg-0 mb-4">
-            <div class="card ">
-                <div class="card-header pb-0 p-3">
-                    <div class="d-flex justify-content-between">
-                        <h6 class="mb-2">Orders</h6>
-                    </div>
-                </div>
-                <div class="table-responsive">
-                    <table class="table align-items-center ">
-                        <tbody>
-                            <tr>
-                                <td>
-                                    <div class="text-center">
-                                        <p class="text-xs font-weight-bold mb-0">Id</p>
-                                    </div>
-                                </td>
-                                <td>
-                                    <div class="text-center">
-                                        <p class="text-xs font-weight-bold mb-0">Product</p>
-                                    </div>
-                                </td>
-                                <td class="align-middle text-sm">
-                                    <div class="col text-center">
-                                        <p class="text-xs font-weight-bold mb-0">Payment Method</p>
-                                    </div>
-                                </td>
-                                <td>
-                                    <div class="text-center">
-                                        <p class="text-xs font-weight-bold mb-0">Order Status</p>
-                                    </div>
-                                </td>
-                                <td>
-                                    <div class="text-center">
-                                        <p class="text-xs font-weight-bold mb-0">Total Price</p>
-                                    </div>
-                                </td>
-                                <td>
-                                    <div class="text-center">
-                                        <p class="text-xs font-weight-bold mb-0">Address</p>
-                                    </div>
-                                </td>
-                                <td>
-                                    <div class="text-center">
-                                        <p class="text-xs font-weight-bold mb-0">City</p>
-                                    </div>
-                                </td>
-                                <td>
-                                    <div class="text-center">
-                                        <p class="text-xs font-weight-bold mb-0">Country</p>
-                                    </div>
-                                </td>
-                                <td>
-                                    <div class="text-center">
-                                        <p class="text-xs font-weight-bold mb-0">Shipping date</p>
-                                    </div>
-                                </td>
-                                <td>
-                                    <div class="text-center">
-                                        <p class="text-xs font-weight-bold mb-0">Order Date:</p>
-                                    </div>
-                                </td>
-                            </tr>
-                            <tr>
-                                <td class="w-30">
-                                    <div class="d-flex px-2 py-1 align-items-center">
-                                        <div>
-                                            <img src="./assets/img/icons/flags/DE.png" alt="Country flag">
-                                        </div>
-                                        <div class="ms-4">
-                                            <p class="text-xs font-weight-bold mb-0">Country:</p>
-                                            <h6 class="text-sm mb-0">Germany</h6>
-                                        </div>
-                                    </div>
-                                </td>
-                                <td>
-                                    <div class="text-center">
-                                        <p class="text-xs font-weight-bold mb-0">Sales:</p>
-                                        <h6 class="text-sm mb-0">3.900</h6>
-                                    </div>
-                                </td>
-                                <td>
-                                    <div class="text-center">
-                                        <p class="text-xs font-weight-bold mb-0">Value:</p>
-                                        <h6 class="text-sm mb-0">$440,000</h6>
-                                    </div>
-                                </td>
-                                <td class="align-middle text-sm">
-                                    <div class="col text-center">
-                                        <p class="text-xs font-weight-bold mb-0">Bounce:</p>
-                                        <h6 class="text-sm mb-0">40.22%</h6>
-                                    </div>
-                                </td>
-                            </tr>
-                            <tr>
-                                <td class="w-30">
-                                    <div class="d-flex px-2 py-1 align-items-center">
-                                        <div>
-                                            <img src="./assets/img/icons/flags/GB.png" alt="Country flag">
-                                        </div>
-                                        <div class="ms-4">
-                                            <p class="text-xs font-weight-bold mb-0">Country:</p>
-                                            <h6 class="text-sm mb-0">Great Britain</h6>
-                                        </div>
-                                    </div>
-                                </td>
-                                <td>
-                                    <div class="text-center">
-                                        <p class="text-xs font-weight-bold mb-0">Sales:</p>
-                                        <h6 class="text-sm mb-0">1.400</h6>
-                                    </div>
-                                </td>
-                                <td>
-                                    <div class="text-center">
-                                        <p class="text-xs font-weight-bold mb-0">Value:</p>
-                                        <h6 class="text-sm mb-0">$190,700</h6>
-                                    </div>
-                                </td>
-                                <td class="align-middle text-sm">
-                                    <div class="col text-center">
-                                        <p class="text-xs font-weight-bold mb-0">Bounce:</p>
-                                        <h6 class="text-sm mb-0">23.44%</h6>
-                                    </div>
-                                </td>
-                            </tr>
-                            <tr>
-                                <td class="w-30">
-                                    <div class="d-flex px-2 py-1 align-items-center">
-                                        <div>
-                                            <img src="./assets/img/icons/flags/BR.png" alt="Country flag">
-                                        </div>
-                                        <div class="ms-4">
-                                            <p class="text-xs font-weight-bold mb-0">Country:</p>
-                                            <h6 class="text-sm mb-0">Brasil</h6>
-                                        </div>
-                                    </div>
-                                </td>
-                                <td>
-                                    <div class="text-center">
-                                        <p class="text-xs font-weight-bold mb-0">Sales:</p>
-                                        <h6 class="text-sm mb-0">562</h6>
-                                    </div>
-                                </td>
-                                <td>
-                                    <div class="text-center">
-                                        <p class="text-xs font-weight-bold mb-0">Value:</p>
-                                        <h6 class="text-sm mb-0">$143,960</h6>
-                                    </div>
-                                </td>
-                                <td class="align-middle text-sm">
-                                    <div class="col text-center">
-                                        <p class="text-xs font-weight-bold mb-0">Bounce:</p>
-                                        <h6 class="text-sm mb-0">32.14%</h6>
-                                    </div>
-                                </td>
-                            </tr>
-                        </tbody>
-                    </table>
+    <div class="col-lg-8 mb-lg-0 mb-4">
+        <div class="card ">
+            <div class="card-header pb-0 p-3">
+                <div class="d-flex justify-content-between">
+                    <h6 class="mb-2">My Orders</h6>
                 </div>
             </div>
+            <div class="table-responsive">
+                <table class="table align-items-center ">
+                    <thead>
+                        <tr>
+                            <td class="w-30">
+                                <div class="text-center">
+                                    <h6 class="text-sm mb-0">Order No.</h6>
+                                </div>
+                            </td>
+                            <td>
+                                <div class="text-center">
+                                    <h6 class="text-sm mb-0">Address</h6>
+                                </div>
+                            </td>
+                            <td>
+                                <div class="text-center">
+                                    <h6 class="text-sm mb-0">Amount</h6>
+                                </div>
+                            </td>
+                            <td class="align-middle text-sm">
+                                <div class="col text-center">
+                                    <h6 class="text-sm mb-0">Payment Method</h6>
+                                </div>
+                            </td>
+                            <td class="align-middle text-sm">
+                                <div class="col text-center">
+                                    <h6 class="text-sm mb-0">Arrives on</h6>
+                                </div>
+                            </td>
+                            <td class="align-middle text-sm">
+                                <div class="col text-center">
+                                    <h6 class="text-sm mb-0">Status</h6>
+                                </div>
+                            </td>
+                        </tr>
+                    </thead>
+                    <tbody>
+                        @foreach ($orders as $order) 
+                            <tr>
+                                <td class="w-30">
+                                    <div class="text-center">
+                                        <h6 class="text-sm mb-0"></h6>
+                                    </div>
+                                </td>
+                                <td>
+                                    <div class="text-center">
+                                        <h6 class="text-sm mb-0">{{$order->address}} {{$order->city}} {{$order->country}}
+                                        </h6>
+                                    </div>
+                                </td>
+                                <td>
+                                    <div class="text-center">
+                                        <h6 class="text-sm mb-0">{{$order->total_price}}</h6>
+                                    </div>
+                                </td>
+                                <td class="align-middle text-sm">
+                                    <div class="col text-center">
+                                        <h6 class="text-sm mb-0">{{$order->method}}</h6>
+                                    </div>
+                                </td>
+                                <td class="align-middle text-sm">
+                                    <div class="col text-center">
+                                        <h6 class="text-sm mb-0">{{$order->shpiment_date}}</h6>
+                                    </div>
+                                </td>
+                                <td class="align-middle text-sm">
+                                    <div class="col text-center">
+                                        <h6 class="text-sm mb-0">{{$order->status}}</h6>
+                                    </div>
+                                </td>
+                            </tr>
+                        @endforeach
+                    </tbody>
+                </table>
+            </div>
         </div>
-       
     </div>
+</div>
 
 @endsection

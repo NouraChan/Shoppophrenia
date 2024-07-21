@@ -69,8 +69,7 @@ class OrdersController extends Controller
         Alert::success('Yay!, You have placed an order, look forward for its arrival. Thanks for shopping with us');
         $this->cartRepository->clearCart();
         
-
-        return redirect()->route('order.index');
+        return redirect()->route('order.show' , [ 'id' => Auth::id()]);
 
     }
 
@@ -80,7 +79,7 @@ class OrdersController extends Controller
     public function show(string $id)
     {
         $orders = $this->orderRepository->getObject(Auth::id());
-        return view('orders.show');
+        return view('orders.show', [ 'id' => Auth::id()]);
     }
 
     /**

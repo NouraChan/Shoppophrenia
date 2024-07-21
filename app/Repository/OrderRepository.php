@@ -2,6 +2,7 @@
 
 namespace App\Repository;
 
+use App\Models\Order_item;
 use App\Repository\Interface\IOrderRepository;
 use App\DTO\OrderDTO;
 use App\Models\Order;
@@ -11,25 +12,23 @@ use Jackiedo\Cart\Facades\Cart;
 class OrderRepository implements IOrderRepository
 {
 
-    public function placeOrder()
+    public function createObject($orderDTO)
     {
-        dd($cart = Cart::name('shopping')->getDetails());
 
-        // dd(typeOf($cart));
-        $order = 
-        [ 
-            'total_price' => $cart->total ,
-            'customer_id' =>Auth::id() ,
-            // 'order_id' =>$order->id,
-        ];
-        
+        $items = Cart::name('shopping')->getDetails()->items;
+        $order = Order::create($orderDTO);
 
-    }
-    public function createObject($createorderRequest)
-    {
-        
-        return Order::create($createorderRequest);
 
+        foreach ($items as $item) {
+
+            Order_item::create([
+                'quantity' => $item->quantity,
+                'price' => $item->price,
+                'total_price' => $item->total_price,
+                'product_id' => $item->id,
+                'order_id' => $order->id,
+            ]);
+        }
     }
 
     public function updateObject(object $order, $orderDTO)

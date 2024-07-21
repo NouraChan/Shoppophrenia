@@ -83,9 +83,9 @@ class RegisterController extends Controller
      */
     protected function create(array $data)
     {
-        $customers = $this->userRepository->roleCall(role::CUSTOMER);
-        $sellers = $this->userRepository->roleCall(role::SELLER);
-        $admin = $this->userRepository->roleCall(role::ADMIN);
+        // $customers = $this->userRepository->roleCall(role::CUSTOMER);
+        // $sellers = $this->userRepository->roleCall(role::SELLER);
+        // $admin = $this->userRepository->roleCall(role::ADMIN);
 
 
         return User::create([

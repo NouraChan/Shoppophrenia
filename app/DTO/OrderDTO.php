@@ -27,21 +27,16 @@ class OrderDTO extends Data
 
     public static function handleData(CreateOrderRequest $createOrderRequest)
     {
-        $items = Cart::name('shopping')->getDetails()->items;
-        foreach ($items as $hash => $item) {
             $data = [
                 'total_price' => $createOrderRequest->total_price,
                 'customer_id' => Auth::user()->id,
-                'product_id' => $item->id,
                 'shipment_date' => $createOrderRequest->shipment_date,
                 'method' => $createOrderRequest->method,
                 'address' => $createOrderRequest->address,
                 'country' => $createOrderRequest->country,
                 'city' => $createOrderRequest->city,
-
-
             ];
-            
+
             foreach ($data as $dat => $val) {
 
                 $data["$dat"] = trim($data["$dat"]);
@@ -49,8 +44,8 @@ class OrderDTO extends Data
                 $data["$dat"] = htmlspecialchars($data["$dat"]);
                 return $data;
             }
+        
             return $data;
-        }
 
-    }
-}
+    }}
+    

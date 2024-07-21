@@ -44,7 +44,6 @@ class AppServiceProvider extends ServiceProvider
         $this->app->singleton(IProductRepository::class,ProductRepository::class);
         $this->app->singleton(ICartRepository::class,CartRepository::class);
         $this->app->singleton(IAnnouncementRepository::class,AnnouncementRepository::class);
-        $this->app->singleton(IItemsRepository::class,ItemsRepository::class);
         $this->app->singleton(IWishlistRepository::class,WishlistRepository::class);
         $this->app->singleton(IReviewRepository::class,ReviewRepository::class);
         $this->app->singleton(IQueryRepository::class,QueryRepository::class);
